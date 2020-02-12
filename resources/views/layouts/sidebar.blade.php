@@ -32,10 +32,10 @@
               <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item">
-                    <a class="nav-link" href="/angkot">Angkot</a>
+                    <a class="nav-link" href="/trayek">Trayek</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/taksi">Taksi</a>
+                    <a class="nav-link" href="/taxi">Taksi</a>
                   </li>
                 </ul>
               </div>

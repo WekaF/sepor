@@ -12,11 +12,10 @@
     <link rel="stylesheet" href="{{ asset('assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/css/vendor.bundle.base.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/css/vendor.bundle.addons.css')}}">
-   
+    <link rel="stylesheet" href="{{ asset('css/dataTables.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/css/shared/style.css')}}">
    
-    <link rel="stylesheet" href="{{ asset('assets/css/demo_1/style.css')}}">
-    
+    <link rel="stylesheet" href="{{ asset('assets/css/demo_1/style.css')}}">    
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png')}}" />
     @section('css')
 
@@ -36,11 +35,7 @@
           <ul class="navbar-nav">
            
           </ul>
-          <form class="ml-auto search-form d-none d-md-block" action="#">
-            <div class="form-group">
-              <input type="search" class="form-control" placeholder="Search Here">
-            </div>
-          </form>
+         
 
           <ul class="navbar-nav ml-auto">
             
@@ -54,12 +49,11 @@
                   <p class="font-weight-light text-muted mb-0">{{Auth::user()->email}}</p>
                 </div>
                 <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">Sign Out<i class="dropdown-item-icon ti-power-off"></i>
-                                                     
-                                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                                     </a>
+                    document.getElementById('logout-form').submit();">Sign Out<i class="dropdown-item-icon ti-power-off"></i>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                    </form>
+                </a>
               </div>
             </li>
 
@@ -105,11 +99,15 @@
     <!-- plugins:js -->
     <script src="{{ asset('assets/vendors/js/vendor.bundle.base.js')}}"></script>
     <script src="{{ asset('assets/vendors/js/vendor.bundle.addons.js')}}"></script>
-    
+    <script src="{{ asset('js/jquery.min.js')}}"></script>
+    <script src="{{ asset('js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{ asset('js/dataTables.bootstrap4.min.js')}}"></script>
     <script src="{{ asset('assets/js/shared/off-canvas.js')}}"></script>
     <script src="{{ asset('assets/js/shared/misc.js')}}"></script>
     <script src="{{ asset('assets/js/shared/sweetalert2.all.js')}}"></script>
-    <script src="{{ asset('assets/js/demo_1/dashboard.js')}}"></script>
+    <script src="{{ asset('assets/js/demo_1/dashboard.js')}}"></script> 
+    <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
+  <script src="{{asset('js/dataTables.bootstrap4.min.js')}}"></script>
     <!-- End custom js for this page-->
   @include('sweetalert::alert')
   

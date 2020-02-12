@@ -2,18 +2,10 @@
 
 use Illuminate\Http\Request;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
 
 
-Route::get('taksi', 'TaksiController@taksi');
-Route::post('taksi', 'TaksiController@taksi');
-Route::get('universitas','UniversitasController@universitas');
+ Route::get('subkategori', 'SubKatController@subkat');
+ Route::get('kategori', 'KategoriController@kate');
+ Route::get('trayek','TrayekController@trayek');
+ Route::get('taxi','TaxiController@taxi');
+ Route::get('home','HomeController@homej');

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SubKategori extends Model
 {
+
     protected $table = 'subkategori';
     protected $fillable = ['nama_subkat','Deskrip','long','lat','kategori_id'];
     
@@ -15,5 +16,8 @@ class SubKategori extends Model
     }
     public function kategori(){
         return $this->belongsTo('App\Kategori');
+    }
+    public function index(){
+        return SubKategori::all();
     }
 }

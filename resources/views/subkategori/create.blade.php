@@ -34,6 +34,7 @@
                           <div class="form-group row">
                             <label class="col-form-label">Kategori</label>
                             <div class="col-sm-9">
+
                             {!! Form::select('kategori_id' ,$kategori,null,['class'=>'form-control']) !!}
                             
                             </div>
@@ -53,9 +54,9 @@
                       <button class="btn btn-light">Cancel</button>
                      
                     </form>
-                   
+                    {!! Form::close() !!}
                   </div>
                 </div>
               </div>
-              {!! Form::close() !!}
+              
 @endsection

@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 use App\SubKategori;
+use App\Trayek;
+use App\Taxi;
+use DataTables;
 use Illuminate\Http\Request;
-
-
-
-
-
+use DB;
 class HomeController extends Controller
 {
     /**
@@ -28,6 +27,12 @@ class HomeController extends Controller
     public function index()
     {
        $subkategori = SubKategori::get();
-        return view('home',compact('subkategori'));
+       $trayek = Trayek::get();
+       $taxi   = Taxi::get();
+      
+        return view('home',compact('subkategori','trayek','taxi'));
+      
     }
+    
+   
 }

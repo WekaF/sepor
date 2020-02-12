@@ -8,18 +8,37 @@ use App\User;
 use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
 use Carbon\Carbon;
+use Datatables;
 
 use Illuminate\Http\Request;
 
 class SubKatController extends Controller
 {
     private $subkate;
-    public function index()
+
+    public function __construct()
     {
-        $data = \App\SubKategori::all();
-        
+        // $this->middleware('auth');
+    }
+
+    public function subkat(){
+
+        $subkat = SubKategori::all();
       
-        return view('/subkategori.index')->with('SubKategori', $data);
+        return response()->json($subkat,200);
+
+    }
+    
+    public function index(Request $request)
+
+    {
+
+        // $data = SubKategori::all();
+        $subkategori = SubKategori::get();
+        $count = SubKategori::count();
+      
+        return view('subkategori.index',compact('subkategori'))->with('count',$count);
+        
         
     }
     public function create(Request $request)
@@ -36,9 +55,7 @@ class SubKatController extends Controller
     {
          
         $data = SubKategori::findOrFail($id);
-        // return view('subkategori.edit', compact('data'));
-
-        // $subkategori = $this->subkate->findOrFail($id);
+      
         $kategori = Kategori::pluck('nama_kategori','id');
        
         if (empty($data)) {
@@ -81,17 +98,7 @@ class SubKatController extends Controller
         $data = SubKategori::findOrFail($id);
 
         SubKategori::find($id)->update($request->all());
-
-        // SubKategori::create([  
-        //     'nama_subkat' => $request->get('nama_subkat'),
-        //     'Deskrip'     => $request->get('Deskrip'),
-        //     'long'        => $request->get('long'),
-        //     'lat'         => $request->get('lat'),
-        //     'kategori_id' => $request->input('kategori_id'),
-           
-        // ]);
                 
-
          alert()->success('Berhasil.','Data telah diubah!');
         return redirect()->route('subkategori.index',compact('data'));
     }
@@ -105,4 +112,8 @@ class SubKatController extends Controller
         return redirect()->route('subkategori.index');
         
        }
+
+      
+   
 }
+

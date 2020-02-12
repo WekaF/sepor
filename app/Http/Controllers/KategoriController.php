@@ -11,9 +11,23 @@ use Illuminate\Http\Request;
 
 class KategoriController extends Controller
 {
+
+    public function __construct()
+    {
+        // $this->middleware('auth');
+    }
+    
+    public function kate(){
+        
+        $subkat = Kategori::all();
+      
+        return response()->json($subkat,200);
+
+
+    }
     public function index()
     {
-        $data = \App\Kategori::all();
+        $data = Kategori::all();
       
         return view('/kategori.index')->with('Kategori', $data);
         

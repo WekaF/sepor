@@ -1,3 +1,13 @@
+@section('js')
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#table').DataTable({
+      "iDisplayLength": 10
+    });
+
+} );
+</script>
+@stop
 
 @extends('layouts.app')
 
@@ -16,25 +26,25 @@
                           </div>
 
                       <div class="table-responsive">
-                      <table class="table table-striped">
+                      <table id="table" class="table table-striped data-table">
                         <thead>
                           <tr>
-                                  <th>Nama Kategori</th>
-                                  <th>Deskriptif</th>
+                                  <th>Nama Kategori</th>                                  
                                   <th>long</th>
-                                  <th>lat</th>
+                                  <th>lat</th>    
                                   <th>Kategori</th>
+                                  <th>Deskriptif</th>
                                   <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
-                        @foreach($SubKategori as $datang)
+                        @foreach($subkategori as $datang)
                           <tr>
-                                  <td>{{$datang->nama_subkat}}</td>
-                                  <td>{{$datang->Deskrip}}</td>
+                                  <td>{{$datang->nama_subkat}}</td>                                  
                                   <td>{{$datang->long}}</td>
                                   <td>{{$datang->lat}}</td>
                                   <td>{{$datang->kategori->nama_kategori}}</td>
+                                  <td>{{$datang->Deskrip}}</td>
                                   
                                   <td>
                             <div class="btn-group dropdown">

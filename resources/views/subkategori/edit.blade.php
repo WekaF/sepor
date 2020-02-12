@@ -12,23 +12,23 @@
                     <form class="forms-sample" method="POST" action="{{ route('subkategori.update', $data->id)}}">
                     {{ csrf_field() }}
                     {{ method_field('put') }}
-                    <div class="form-group">
+                    <div class="form-group{{ $errors->has('nama_subkat') ? ' has-error' : '' }}">
                         <label for="nama_subkat">Nama Destinasi</label>
-                        <input name='nama_subkat' type="text" class="form-control" placeholder="Nama Destinasi">
+                        <input name='nama_subkat' type="text" class="form-control" placeholder="Nama Destinasi" value="{{ $data->nama_subkat }}">
                       </div>
-                      <div class="form-group">
+                      <div class="form-group{{ $errors->has('Deskrip') ? ' has-error' : '' }}">
                         <label for="Deskrip">Deskriptif</label>
-                        <input name='Deskrip' type="text" class="form-control" placeholder="Keterangan">
+                        <input name='Deskrip' type="text" class="form-control" placeholder="Keterangan" value="{{ $data->Deskrip }}">
                       </div>
                       
-                      <div class="form-group">
+                      <div class="form-group {{ $errors->has('long') ? ' has-error' : '' }}">
                         <label for="long">Long</label>
-                        <input name='long' type="text" class="form-control" placeholder="long">
+                        <input name='long' type="text" class="form-control" placeholder="long" value="{{ $data->long }}">
                       </div>
                       
-                      <div class="form-group">
+                      <div class="form-group {{ $errors->has('long') ? ' has-error' : '' }}" >
                         <label for="lat">Lat</label>
-                        <input name='lat' type="text" class="form-control" placeholder="Lat">
+                        <input name='lat' type="text" class="form-control" placeholder="Lat" value="{{ $data->lat }}">
                       </div>
 
                       <div class="col-md-6">

@@ -13,4 +13,7 @@ class Kategori extends Model
     {
     	return $this->hasMany(kategori::class);
     }
+    public function index(){
+        return Kategori::all();
+    }
 }
