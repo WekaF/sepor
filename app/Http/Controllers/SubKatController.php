@@ -21,11 +21,14 @@ class SubKatController extends Controller
         // $this->middleware('auth');
     }
 
-    public function subkat(){
+    public function subkat($id){
 
-        $subkat = SubKategori::all();
+        // $subkat = SubKategori::all();
+
+
+        $data = SubKategori::where('kategori_id',$id)->get();
       
-        return response()->json($subkat,200);
+        return response()->json($data,200);
 
     }
     

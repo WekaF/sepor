@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 
 
 
- Route::get('subkategori', 'SubKatController@subkat');
+ Route::get('subkategori/{id}', 'SubKatController@subkat');
  Route::get('kategori', 'KategoriController@kate');
  Route::get('trayek','TrayekController@trayek');
  Route::get('taxi','TaxiController@taxi');
