@@ -12,11 +12,14 @@ use Illuminate\Http\Request;
 
 class KeretainfoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
+    public function infokereta(){
+
+        $data = DetailKA::all();
+    
+        return response()->json($data,200);
+    
+    }
     public function index()
     {
         $data = DetailKA::all();

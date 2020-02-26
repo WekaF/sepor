@@ -10,11 +10,13 @@ use Illuminate\Http\Request;
 
 class StasiunInfoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function infostat(){
+
+        $data = StasiunInfo::all();
+    
+        return response()->json($data,200);
+    
+    }
     public function index()
     {
         $data = StasiunInfo::all();

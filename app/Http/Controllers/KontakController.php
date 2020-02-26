@@ -9,11 +9,13 @@ use Illuminate\Http\Request;
 
 class KontakController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function kontak(){
+
+        $data = Kontak::all();
+    
+        return response()->json($data,200);
+    
+    }
     public function index()
     {
         $data = Kontak::all();
