@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\SubKategori;
 use App\Trayek;
 use App\Taxi;
+use App\DetailKA;
 use DataTables;
 use Illuminate\Http\Request;
 use DB;
@@ -29,8 +30,9 @@ class HomeController extends Controller
        $subkategori = SubKategori::get();
        $trayek = Trayek::get();
        $taxi   = Taxi::get();
+       $detail  = DetailKA::get();
       
-        return view('home',compact('subkategori','trayek','taxi'));
+        return view('home',compact('subkategori','trayek','taxi','detail'));
       
     }
     

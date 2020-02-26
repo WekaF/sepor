@@ -70,10 +70,16 @@
               <div class="collapse" id="ui">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item">
-                    <a class="nav-link" href="#"> Soon </a>
+                    <a class="nav-link" href="/keretainfo"> Info Kereta Api </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#"> Coming </a>
+                    <a class="nav-link" href="/jeniska"> jenis Kereta Api </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/stasiuninfo"> Info Stasiun </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/kontak"> Kontak </a>
                   </li>
                   
                 </ul>

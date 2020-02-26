@@ -8782,10 +8782,10 @@ pre {
   .grid-margin-xl-0 {
     margin-bottom: 0; } }
 
-.rounded-circle[class*='img'] {
+.square[class*='img'] {
   position: relative;
   overflow: hidden; }
-  .rounded-circle[class*='img'] .flag-icon {
+  .square[class*='img'] .flag-icon {
     position: absolute;
     top: auto;
     left: -10px;

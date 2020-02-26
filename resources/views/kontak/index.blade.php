@@ -2,7 +2,7 @@
 <script type="text/javascript">
   $(document).ready(function() {
     $('#table').DataTable({
-      "iDisplayLength": 10
+      "iDisplayLength": 50
     });
 
 } );
@@ -37,24 +37,28 @@ $('#form-delete').on('submit', function(e){
                   <div class="card">
                     <div class="card-body">
                     <div class="d-flex justify-content-between">
-                            <h4 class="card-title mb-0">Tambah Kategori Destinasi</h4>
-                            <a href="{{route('kategori.create')}}" class="btn btn-success btn-rounded btn-sm" >
+                            <h4 class="card-title mb-0">Tambah Kontak Stasiun</h4>
+                            <a href="{{route('kontak.create')}}" class="btn btn-success btn-rounded btn-sm" >
                             Tambah Data
                             </a>
                           </div>
 
                       <div class="table-responsive">
-                      <table id="table" class="table table-striped">
+                      <table class="table table-striped">
                         <thead>
                           <tr>
-                                  <th>Nama kategori</th>
+                                  <th>Jenis</th>
+                                  <th>Nama Kontak</th>
+                                  <th>Nomor</th>
                                   <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
-                        @foreach($Kategori as $datang)
+                        @foreach($data as $data)
                           <tr>
-                                  <td>{{$datang->nama_kategori}}</td>
+                                  <td>{{$data->jenis}}</td>
+                                  <td>{{$data->nama}}</td>
+                                  <td>{{$data->nomor}}</td>
                                  
                                   <td>
                             <div class="btn-group dropdown">
@@ -62,8 +66,8 @@ $('#form-delete').on('submit', function(e){
                               Action
                             </button>
                             <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
-                              <a class="dropdown-item" href="{{route('kategori.edit', $datang->id)}}"> Edit </a>
-                              <form action="{{route('kategori.destroy',$datang->id)}}" class="pull-left"  method="POST">
+                              <a class="dropdown-item" href="{{route('kontak.edit', $data->id)}}"> Edit </a>
+                              <form action="{{route('kontak.destroy',$data->id)}}" class="pull-left"  method="POST">
                               {{ csrf_field() }}
                               {{ method_field('DELETE') }}
                               <button class="dropdown-item" onclick="return confirm('Anda yakin ingin menghapus data ini?')"> Delete

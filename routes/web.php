@@ -22,6 +22,9 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::resource('kategori', 'KategoriController');
 Route::resource('subkategori', 'SubKatController');
-// Route::get('subkategori','SubKatController@subkatfind');
 Route::resource('trayek', 'TrayekController');
 Route::resource('taxi','TaxiController');
+Route::resource('keretainfo','KeretainfoController');
+Route::resource('jeniska','JenisKeretaController');
+Route::resource('stasiuninfo','StasiunInfoController');
+Route::resource('kontak','KontakController');
