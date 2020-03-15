@@ -34,6 +34,8 @@
                                   <th>lat</th>    
                                   <th>Kategori</th>
                                   <th>Deskriptif</th>
+                                  <th>Gambar</th>
+                                  <th>No Telpon</th>
                                   <th>Action</th>
                           </tr>
                         </thead>
@@ -45,8 +47,16 @@
                                   <td>{{$datang->lat}}</td>
                                   <td>{{$datang->kategori->nama_kategori}}</td>
                                   <td>{{$datang->Deskrip}}</td>
+                                  <td>
+                                     <?php foreach (json_decode($datang->gambar)as $picture) { ?>
+                                         <img src="{{url('images/destinasi/'. $picture)}}" style="height:150px; width:150px"/>
+                                        <?php } ?>
+                                        
+                                   </td>
+                                      <td>{{$datang->no_telp}}</td>
                                   
                                   <td>
+                                   
                             <div class="btn-group dropdown">
                             <button type="button" class="btn btn-success dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               Action

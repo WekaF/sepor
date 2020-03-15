@@ -29,7 +29,7 @@
                       <table id="table" class="table table-striped">
                         <thead>
                           <tr>
-                                  <th>Nama Trayek</th>
+                                  <th>Nama Angkutan</th>
                                   <th>Harga</th>
                                   <th>Deskripsi</th>
                                   <th>Gambar</th>

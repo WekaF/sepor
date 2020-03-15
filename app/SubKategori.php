@@ -8,11 +8,19 @@ class SubKategori extends Model
 {
 
     protected $table = 'subkategori';
-    protected $fillable = ['nama_subkat','Deskrip','long','lat','kategori_id'];
+    protected $fillable = [
+        'nama_subkat',
+        'Deskrip',
+        'long',
+        'lat',
+        'gambar',
+        'no_telp',
+        'kategori_id',      
+    ];
     
     public function subkategori()
     {
-    	return $this->hasMany(subkategori::class);
+    	return $this->hasMany(SubKategori::class);
     }
     public function kategori(){
         return $this->belongsTo('App\Kategori');

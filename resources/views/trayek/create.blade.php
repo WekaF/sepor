@@ -35,13 +35,9 @@
                     <form class="forms-sample" method="POST" action="{{ route('trayek.store')}}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                       <div class="form-group">
-                        <label for="trayek_name">Nama Trayek</label>
-                        <input name='trayek_name' type="text" class="form-control" placeholder="nama Trayek">
-                        @if ($errors->has('tahun_terbit'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('tahun_terbit') }}</strong>
-                                    </span>
-                                @endif
+                        <label for="trayek_name">Nama Angkutan</label>
+                        <input name='trayek_name' type="text" class="form-control" placeholder="nama Angkutan">
+                       
                       </div>
                       <div class="form-group">
                         <label for="trayek_price">Harga</label>
@@ -62,7 +58,7 @@
                             <label for="email" class="col-md-4 control-label">Gambar</label>
                             <div class="col-md-6">
                                 <img width="200" height="200" />
-                                <input type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar">
+                                <input type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar[]" multipart>
                             </div>
                         </div>
 

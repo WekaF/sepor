@@ -1,7 +1,65 @@
-@extends('layouts.app')
+@section('js')
 
+<script type="text/javascript">
+$("#gambar").change(function(){
+
+$('#image_preview').html("");
+
+var total_file=document.getElementById("uploadFile").files.length;
+
+for(var i=0;i<total_file;i++)
+
+{
+
+ $('#image_preview').append("<img src='"+URL.createObjectURL(event.target.files[i])+"'>");
+
+}
+
+});
+
+
+
+$('form').ajaxForm(function() 
+
+{
+
+alert("Uploaded SuccessFully");
+
+}); 
+
+
+ 
+</script>
+
+      
+@stop 
+
+@section('css')
+<style type="text/css">
+
+
+    #image_preview{
+
+      border: 1px solid black;
+
+      padding: 10px;
+
+    }
+
+    #image_preview img{
+
+      width: 150px;
+
+      padding: 5px;
+
+    }
+
+  </style>
+@stop
+
+@extends('layouts.app')
 @section('content')
-{!! Form::open(['route' => 'subkategori.store']) !!}
+
 <div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
@@ -30,31 +88,40 @@
                         <input name='lat' type="text" class="form-control" placeholder="Lat">
                       </div>
 
+                      <div class="form-group">
+                        <label for="no">No Telpon</label>
+                        <input name='no_telp' type="text" class="form-control" placeholder="no_telp">
+                      </div>
+
                         <div class="col-md-6">
                           <div class="form-group row">
                             <label class="col-form-label">Kategori</label>
                             <div class="col-sm-9">
 
-                            {!! Form::select('kategori_id' ,$kategori,null,['class'=>'form-control']) !!}
+                            <select name="kategori_id" id="">
+                              @foreach($kategori as $item)
+                              <option value="{{$item->id}}">{{$item->nama_kategori}}</option>
+                              @endforeach
+                            </select>
                             
                             </div>
                           </div>
                         </div>
-
                       
-                      <!-- <div class="form-group">
-                            <label for="email" class="col-md-4 control-label">Gambar</label>
-                            <div class="col-md-6">
-                                <img width="200" height="200" />
-                                <input type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar">
+                      <div class="form-group">
+                            <label for="gambar" class="col-md-4 control-label">Gambar</label>
+                            <div class="col-md-6">                                                       
+                            <input type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar[]" multiple/>
+                                <div id="image_preview" ></div>   
                             </div>
-                        </div> -->
+                             
+                        </div>
 
                       <button type="submit" class="btn btn-success mr-2">Submit</button>
                       <button class="btn btn-light">Cancel</button>
                      
                     </form>
-                    {!! Form::close() !!}
+                   
                   </div>
                 </div>
               </div>

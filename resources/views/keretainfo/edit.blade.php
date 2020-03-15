@@ -13,6 +13,10 @@
                     {{ csrf_field() }}
                     {{ method_field('put') }}
                     <div class="form-group">
+                        <label for="no_ka">No KA</label>
+                        <input name='no_ka' type="text" class="form-control" placeholder="no KA" value="{{$data->nama_kereta}}">
+                      </div>
+                    <div class="form-group">
                         <label for="nama_kereta">Nama Kereta</label>
                         <input name='nama_kereta' type="text" class="form-control" placeholder="Nama Kereta" value="{{$data->nama_kereta}}">
                       </div>
@@ -49,6 +53,17 @@
                           </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('keterangan') ? ' has-error' : '' }}">
+                            <label for="Keterangan">Keterangan</label>
+                            
+                            <select class="form-control" name="keterangan" required="">
+                                <option value=""></option>
+                                <option value="Normal">Normal</option>
+                                <option value="Bermasalah">Bermasalah</option>
+                               
+                            </select>
+                           
+                        </div>
                       <button type="submit" class="btn btn-success mr-2">Update</button>
                       <a href="{{route('keretainfo.index')}}">
                       <button class="btn btn-light">Cancel</button>

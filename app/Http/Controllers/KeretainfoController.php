@@ -50,10 +50,12 @@ class KeretainfoController extends Controller
     {
         DetailKA::create([  
             'nama_kereta'        => $request->get('nama_kereta'),
+            'no_ka'              => $request->get('no_ka'),
             'jam'                => $request->get('jam'),
             'jalur'              => $request->get('jalur'),
             'progres_stasiun'    => $request->get('progres_stasiun'),
             'jenis_id'           => $request->input('jenis_id'),
+            'keterangan'         => $request->get('keterangan'),
            
         ]);
     alert()->success('Berhasil.','Data telah ditambahkan!');       

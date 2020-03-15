@@ -50,10 +50,12 @@ $('#form-delete').on('submit', function(e){
                         <thead>
                           <tr>
                                   <th>Jenis Kereta</th>
+                                  <th>No KA</th>
                                   <th>Nama Kereta</th>
                                   <th>Jam Keberangkatan</th>
-                                  <th>Letak Gerbong</th>
+                                  <th>Letak Kereta <i>(jalur)</i> </th>
                                   <th>Progres Stasiun</th>
+                                  <th>Keterangan</th>
                                   <th>Action</th>
                           </tr>
                         </thead>
@@ -61,10 +63,12 @@ $('#form-delete').on('submit', function(e){
                           @foreach($data as $data)
                           <tr>
                                 <td>{{$data->jenis->jenis_kereta}}</td>
+                                <td>{{$data->no_ka}}</td>
                                 <td>{{$data->nama_kereta}}</td>
                                 <td>{{$data->jam}}</td>
                                 <td>{{$data->jalur}}</td>
                                 <td>{{$data->progres_stasiun}}</td>
+                                <td>{{$data->keterangan}}</td>
                                 <td>
                             <div class="btn-group dropdown">
                             <button type="button" class="btn btn-success dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

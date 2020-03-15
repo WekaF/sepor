@@ -47,7 +47,7 @@ class SubKatController extends Controller
     public function create(Request $request)
     {
         // return view('subkategori.create');
-        $kategori = Kategori::pluck('nama_kategori','id');
+        $kategori = Kategori::get();
 
         return view('subkategori.create')
         ->with('kategori',$kategori);
@@ -71,19 +71,41 @@ class SubKatController extends Controller
     }
     public function store(Request $request)
     {
-        // dd($request->all()) ;
-     
-    //    $sub = SubKategori::find('id');
-    //    $subkat = Subkategori::all();
+    
+       
+        // if(count($request->gambar) != null){
+        //     $file = $request->file('gambar');
+        //     $gambar = $file[0]->getClientOriginalName();
+        //     $gambar->move("/images/destinasi", $file[0]);
+        // }else{
+        //     dd('gagal');
+        //     $gambar = NULL;
+        // }
 
-        SubKategori::create([  
-            'nama_subkat' => $request->get('nama_subkat'),
-            'Deskrip'     => $request->get('Deskrip'),
-            'long'        => $request->get('long'),
-            'lat'         => $request->get('lat'),
-            'kategori_id' => $request->input('kategori_id'),
-           
+        $input=$request->all();
+        $gambar=array();
+        if($files=$request->file('gambar')){
+            foreach($files as $file){
+                $acak=$file->getClientOriginalExtension();
+                $dt = Carbon::now();
+                $name = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
+                $file->move('images/destinasi',$name);
+                $gambar[]=$name;
+            }
+        }
+ 
+    
+        SubKategori::Create( [
+            'nama_subkat' => $input['nama_subkat'],
+            'Deskrip'     => $input['Deskrip'],
+            'long'        => $input['long'],
+            'lat'         => $input['lat'],
+            'no_telp'     => $input['no_telp'],
+            'kategori_id' => $input['kategori_id'],
+            'gambar'      => json_encode($gambar),
         ]);
+
+       
     alert()->success('Berhasil.','Data telah ditambahkan!');       
     return redirect()->route('subkategori.index');
       

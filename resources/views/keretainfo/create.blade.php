@@ -39,6 +39,10 @@
                     
                     <form class="forms-sample" method="POST" action="{{ route('keretainfo.store')}}" enctype="multipart/form-data">
                     {{ csrf_field() }}
+                    <div class="form-group">
+                        <label for="no_ka">No KA</label>
+                        <input name='no_ka' type="text" class="form-control" placeholder="no KA">
+                      </div>
                       <div class="form-group">
                         <label for="nama_kereta">Nama Kereta</label>
                         <input name='nama_kereta' type="text" class="form-control" placeholder="nama Kereta">
@@ -76,6 +80,17 @@
                           </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('keterangan') ? ' has-error' : '' }}">
+                            <label for="Keterangan">Keterangan</label>
+                            
+                            <select class="form-control" name="keterangan" required="">
+                                <option value=""></option>
+                                <option value="Normal">Normal</option>
+                                <option value="Bermasalah">Bermasalah</option>
+                               
+                            </select>
+                           
+                        </div>
 
                       <button type="submit" class="btn btn-success mr-2">Submit</button>
                       <button class="btn btn-light">Cancel</button>

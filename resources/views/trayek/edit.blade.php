@@ -36,8 +36,8 @@
                     {{ csrf_field() }}
                     {{ method_field('put') }}
                     <div class="form-group">
-                        <label for="trayek_name">Nama Trayek</label>
-                        <input name='trayek_name' type="text" class="form-control" placeholder="nama Trayek" value="{{ $data->trayek_name}}">
+                        <label for="trayek_name">Nama Angkutan</label>
+                        <input name='trayek_name' type="text" class="form-control" placeholder="nama Angkutan" value="{{ $data->trayek_name}}">
                       </div>
                       <div class="form-group">
                         <label for="trayek_price">Harga</label>

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class DetailKA extends Model
 {
     protected $table = 'detkeretas';
-    protected $fillable = ['nama_kereta','jam','jalur','progres_stasiun','jenis_id'];
+    protected $fillable = ['nama_kereta','no_ka','jam','jalur','progres_stasiun','jenis_id','keterangan'];
     
     public function detail()
     {
