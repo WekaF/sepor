@@ -3,26 +3,53 @@
 
 @section('content')
 
-<div class="col-md-6 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">Tambah Data</h4>
-                    
-                    <form class="forms-sample" method="POST" action="{{ route('kategori.update', $data->id)}}">
-                    {{ csrf_field() }}
-                    {{ method_field('put') }}
+<form action="{{ route('kontak.update', $data->id)}}" method="post" enctype="multipart/form-data">
+        {{ csrf_field() }}
+        {{ method_field('put') }}
+<div class="row">
+            <div class="col-md-12 d-flex align-items-stretch grid-margin">
+              <div class="row flex-grow">
+                <div class="col-12">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">Edit Kategori <b>{{$data->jenis}}</b> </h4>
+                      <form class="forms-sample">
+                        
                       <div class="form-group">
-                        <label for="nama_kategori">Nama Kategori</label>
-                        <input name='nama_kategori' type="text" class="form-control" placeholder="Nama Kategori" value="{{ $data->kode_angkot }}">
-                      </div>
-                     
+                            <label for="deskripsi" class="col-md-4 control-label">jenis</label>
+                            <div class="col-md-6">
+                                 <select name="jenis" class="form-control" value="{{$data->jenis}}">
+                                    <option value="">-- Pilih Kategori --</option>
+                                    <option value="darurat">Darurat</option>
+                                    <option value="pelanggan">Pelanggan</option>
+                                  </select>
+                            </div>
+                        </div>
 
-                      <button type="submit" class="btn btn-success mr-2">Update</button>
-                      <a href="{{route('kategori.index')}}">
-                      <button class="btn btn-light">Cancel</button>
-                      </a>
-                    </form>
+                        <div class="form-group">
+                            <label for="judul" class="col-md-4 control-label">Nama Kontak</label>
+                            <div class="col-md-6">
+                                <input id="isbn" type="text" class="form-control" name="nama" value="{{$data->nama}}"required>
+                            </div>
+                        
+                            <div class="form-group">
+                            <label for="judul" class="col-md-4 control-label">Nomer Kontak</label>
+                            <div class="col-md-6">
+                                <input id="isbn" type="number" class="form-control" name="progres_stasiun" value="{{$data->nomor}}"required>
+                            </div>
+                            </div>
+                        <button type="submit" class="btn btn-primary" id="submit">
+                                    Update
+                        </button>
+                        <a href="{{route('kategori.index')}}" class="btn btn-light pull-right">Back</a>
+                    </div>
                   </div>
                 </div>
               </div>
+            </div>
+
+</div>
+</div>
+</div>
+</form>
 @endsection

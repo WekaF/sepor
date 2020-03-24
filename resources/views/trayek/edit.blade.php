@@ -64,7 +64,7 @@
                      
 
                       <button type="submit" class="btn btn-success mr-2">Update</button>
-                      <a href="{{route('kategori.index')}}">
+                      <a href="{{route('trayek.index')}}">
                       <button class="btn btn-light">Cancel</button>
                       </a>
                     </form>

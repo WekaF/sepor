@@ -12,3 +12,4 @@ use Illuminate\Http\Request;
  Route::get('keretainfo','KeretaInfoController@infokereta');
  Route::get('kontak','KontakController@kontak');
  Route::get('stasiuninfo','StasiunInfoController@infostat');
+ 

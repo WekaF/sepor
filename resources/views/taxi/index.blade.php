@@ -7,54 +7,31 @@
 
 } );
 </script>
-<script>
-$('#form-delete').on('submit', function(e){
-    var form = this;
-    e.preventDefault();
-    swal({
-      title: 'Data akan dihapus ?',
-      text: "Klik Hapus untuk menghapus data !",
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Hapus'
-    }).then((result) => {
-      if (result.value) {
-        return form.submit();
-      }
-    })
-});
-</script>
 @stop
 @extends('layouts.app')
 
 @section('content')
 
+              <div class="card">
+          <h4 class="card-title"><strong>Tambah</strong> Taxi</h4>
+          <div class="col-lg-2">
+            <a href="{{route('taxi.create')}}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Tambah Data</a>
+          </div>
 
-              <div class="row">
-                <div class="col-lg-12 grid-margin stretch-card">
-                  <div class="card">
-                    <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                            <h4 class="card-title mb-0">Data Angkot dikota Malang</h4>
-                            <a href="{{route('taxi.create')}}" class="btn btn-success btn-rounded btn-sm" >
-                            Tambah Data
-                            </a>
-                          </div>
+          <div class="card-body">
 
-                      <div class="table-responsive">
-                      <table id="table" class="table table-striped">
-                        <thead>
-                          <tr>
+            <table class="table table-striped table-bordered" cellspacing="0" data-provide="datatables">
+              <thead>
+              <tr>
                                   <th>Nama Taxi</th>
                                   <th>Harga</th>
                                   <th>Deskripsi</th>
-                                
+                                <th>Action</th>
                           </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($data as $datang)
+              </thead>
+              <tbody>
+             
+              @foreach($data as $datang)
                           <tr>
                                   <td>{{$datang->taxi_name}}</td>
                                   <td>{{$datang->taxi_price}}</td>
@@ -79,15 +56,10 @@ $('#form-delete').on('submit', function(e){
                             </td>
 
                           </tr>
-                          @endforeach
-                        </tbody>
-                      </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              
-              </div>
-
+                          @endforeach   
+              </tbody>
+            </table>
+          </div>
+        </div>
            
 @endsection

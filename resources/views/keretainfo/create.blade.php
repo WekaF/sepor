@@ -29,74 +29,92 @@
 @extends('layouts.app')
 
 @section('content')
-
 {!! Form::open(['route' => 'keretainfo.store']) !!}
 
-<div class="col-md-6 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">Tambah Data</h4>
-                    
-                    <form class="forms-sample" method="POST" action="{{ route('keretainfo.store')}}" enctype="multipart/form-data">
-                    {{ csrf_field() }}
-                    <div class="form-group">
-                        <label for="no_ka">No KA</label>
-                        <input name='no_ka' type="text" class="form-control" placeholder="no KA">
-                      </div>
-                      <div class="form-group">
-                        <label for="nama_kereta">Nama Kereta</label>
-                        <input name='nama_kereta' type="text" class="form-control" placeholder="nama Kereta">
-                      </div>
-                      <div class="form-group">
-                        <label for="jam">Jam</label>
-                        <input name='jam' type="time" class="form-control" data-provide="timepicker" placeholder="Jam">
-                      </div>
+              <form method="POST" action="{{ route('keretainfo.store') }}" enctype="multipart/form-data">
+    {{ csrf_field() }}
+<div class="row">
+            <div class="col-md-12 d-flex align-items-stretch grid-margin">
+              <div class="row flex-grow">
+                <div class="col-12">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">Tambah Data baru</h4>
                       
-                      <div class="form-group{{ $errors->has('jalur') ? ' has-error' : '' }}">
-                            <label for="jalur">Jalur</label>
-                            
-                            <select class="form-control" name="jalur" required="">
-                                <option value=""></option>
-                                <option value="1">Jalur 1</option>
-                                <option value="2">Jalur 2</option>
-                                <option value="3">Jalur 3</option>
-                            </select>
-                           
-                        </div>
-                        
                         <div class="form-group">
-                        <label for="progres_stasiun">Progres Stasiun</label>
-                        <input name='progres_stasiun' type="text" class="form-control" placeholder="Progres Stasiun">
-                      </div>
-
-                      <div class="col-md-6">
-                          <div class="form-group row">
-                            <label class="col-form-label">Jenis Kereta</label>
-                            <div class="col-sm-9">
-
-                            {!! Form::select('jenis_id' ,$jenis ,null,['class'=>'form-control']) !!}
-                            
+                            <label for="judul" class="col-md-4 control-label">No KA</label>
+                            <div class="col-md-6">
+                                <input id="isbn" type="text" class="form-control" name="no_ka" required>
                             </div>
-                          </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('keterangan') ? ' has-error' : '' }}">
-                            <label for="Keterangan">Keterangan</label>
-                            
-                            <select class="form-control" name="keterangan" required="">
-                                <option value=""></option>
-                                <option value="Normal">Normal</option>
-                                <option value="Bermasalah">Bermasalah</option>
-                               
-                            </select>
-                           
+                        <div class="form-group">
+                            <label for="judul" class="col-md-4 control-label">Nama Kereta</label>
+                            <div class="col-md-6">
+                                <input id="isbn" type="text" class="form-control" name="nama_kereta" required>
+                            </div>
                         </div>
 
-                      <button type="submit" class="btn btn-success mr-2">Submit</button>
-                      <button class="btn btn-light">Cancel</button>
-                    </form>
-                    {!! Form::close() !!}
+                        <div class="form-group">
+                            <label for="judul" class="col-md-4 control-label">Jam</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control"  data-autoclose="true" data-provide="clockpicker" name="jam" required>
+                            </div>
+
+
+                            <div class="form-group">
+                            <label for="deskripsi" class="col-md-4 control-label">Jalur</label>
+                            <div class="col-md-12">
+                                 <select name="jalur" class="form-control">
+                                    <option value="">-- Pilih Kategori --</option>
+                                    <option value="1">Jalur 1</option>
+                                    <option value="2">Jalur 2</option>
+                                    <option value="3">Jalur 3</option>
+                                  </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="judul" class="col-md-4 control-label">Progres Stasiun</label>
+                            <div class="col-md-6">
+                                <input id="isbn" type="text" class="form-control" name="progres_stasiun" required>
+                            </div>
+
+                            <div class="form-group">
+                            <label for="judul" class="col-md-4 control-label">Jenis Kereta</label>
+                            <div class="col-md-6">
+                            {!! Form::select('jenis_id' ,$jenis ,null,['class'=>'form-control']) !!}
+                            </div>
+
+                            <div class="form-group">
+                            <label for="deskripsi" class="col-md-4 control-label">Jalur</label>
+                            <div class="col-md-12">
+                                 <select name="keterangan" class="form-control">
+                                    <option value="">-- Pilih keterangan --</option>
+                                    <option value="Normal">Normal </option>
+                                    <option value="Bermasalah">Bermasalah </option>
+                                    
+                                  </select>
+                            </div>
+                        </div>
+
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="submit">
+                                    Submit
+                        </button>
+                        <button type="reset" class="btn btn-danger">
+                                    Reset
+                        </button>
+                        
+                    </div>
                   </div>
                 </div>
               </div>
+            </div>
+
+</div>
+</div>
+</div>
+</form>              
+{!! Form::close() !!}
 @endsection

@@ -13,34 +13,30 @@
 
 @section('content')
 
+              <div class="card">
+          <h4 class="card-title"><strong>Tambah</strong> Destinasi</h4>
+          <div class="col-lg-2">
+            <a href="{{route('subkategori.create')}}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Tambah Data</a>
+          </div>
 
-              <div class="row">
-                <div class="col-lg-12 grid-margin stretch-card">
-                  <div class="card">
-                    <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                            <h4 class="card-title mb-0">Data Kategori</h4>
-                            <a href="{{route('subkategori.create')}}" class="btn btn-success btn-rounded btn-sm" >
-                            Tambah Data
-                            </a>
-                          </div>
+          <div class="card-body">
 
-                      <div class="table-responsive">
-                      <table id="table" class="table table-striped data-table">
-                        <thead>
-                          <tr>
-                                  <th>Nama Kategori</th>                                  
-                                  <th>long</th>
-                                  <th>lat</th>    
-                                  <th>Kategori</th>
-                                  <th>Deskriptif</th>
-                                  <th>Gambar</th>
-                                  <th>No Telpon</th>
-                                  <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($subkategori as $datang)
+            <table class="table table-striped table-bordered" cellspacing="0" data-provide="datatables">
+              <thead>
+                <tr>
+                <th>Nama Kategori</th>                                  
+                <th>long</th>
+                <th>lat</th>    
+                <th>Kategori</th>
+                <th>Deskriptif</th>
+                <th>Gambar</th>
+                <th>No Telpon</th>
+                <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+             
+              @foreach($subkategori as $datang)
                           <tr>
                                   <td>{{$datang->nama_subkat}}</td>                                  
                                   <td>{{$datang->long}}</td>
@@ -49,7 +45,7 @@
                                   <td>{{$datang->Deskrip}}</td>
                                   <td>
                                      <?php foreach (json_decode($datang->gambar)as $picture) { ?>
-                                         <img src="{{url('images/destinasi/'. $picture)}}" style="height:150px; width:150px"/>
+                                         <img src="{{url('images/destinasi/'. $picture)}}" style="height:100px; width:100px"/>
                                         <?php } ?>
                                         
                                    </td>
@@ -75,14 +71,9 @@
 
                           </tr>
                           @endforeach
-                        </tbody>
-                      </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              
-              </div>
-
+              </tbody>
+            </table>
+          </div>
+        </div>
            
 @endsection

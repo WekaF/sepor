@@ -13,93 +13,130 @@
 @section('content')
 
 <div class="row">
-    
-          
-             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                      <i class="mdi mdi-car text-success icon-lg" style="width: 40px;height: 40px;"></i>
-                    </div>
-                    <div class="float-right">
-                      <p class="mb-0 text-right">Trayek</p>
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-right mb-0">{{$trayek->count()}}</h3>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-car mr-1" aria-hidden="true"></i> Total Trayek
-                  </p>
-                </div>
+<div class="col-6 col-lg-3">
+            <div class="card card-body ">
+              <h6 class="text-uppercase text-gray">Angkutan</h6>
+              <div class="flexbox mt-2">
+                <span class="fa fa-car text-gray fs-30"></span>
+                <span class="fs-30">{{$trayek->count()}}</span>
               </div>
             </div>
+          </div>
 
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                      <i class="mdi mdi-map-marker text-success icon-lg" style="width: 40px;height: 40px;"></i>
-                    </div>
-                    <div class="float-right">
-                      <p class="mb-0 text-right">Destinasi</p>
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-right mb-0">{{$subkategori->count()}}</h3>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-map-marker mr-1" aria-hidden="true"></i> Total Destinasi
-                  </p>
-                </div>
+
+
+          <div class="col-6 col-lg-3">
+            <div class="card card-body bg-gray">
+              <h6 class="text-uppercase text-white">Destinasi</h6>
+              <div class="flexbox mt-2">
+                <span class="fa fa-plus text-white fs-30"></span>
+                <span class="fs-30">{{$subkategori->count()}}</span>
               </div>
             </div>
+          </div>
 
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                      <i class="mdi mdi-taxi text-success icon-lg" style="width: 40px;height: 40px;"></i>
-                    </div>
-                    <div class="float-right">
-                      <p class="mb-0 text-right">Taxi</p>
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-right mb-0">{{$taxi->count()}}</h3>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-taxi mr-1" aria-hidden="true"></i> Total Taxi
-                  </p>
-                </div>
+
+
+
+          <div class="col-6 col-lg-3">
+            <div class="card card-body bg-danger">
+              <h6 class="text-uppercase text-white">Taxi</h6>
+              <div class="flexbox mt-2">
+                <span class="fa fa-car fs-30"></span>
+                <span class="fs-30">{{$taxi->count()}}</span>
               </div>
             </div>
+          </div>
 
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                      <i class="mdi mdi-car text-success icon-lg" style="width: 40px;height: 40px;"></i>
-                    </div>
-                    <div class="float-right">
-                      <p class="mb-0 text-right">Destinasi</p>
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-right mb-0">{{$subkategori->count()}}</h3>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-book mr-1" aria-hidden="true"></i> Total Destinasi
-                  </p>
-                </div>
+
+
+          <div class="col-6 col-lg-3">
+            <div class="card card-body bg-info">
+              <h6 class="text-uppercase text-white">Kereta</h6>
+              <div class="flexbox mt-2">
+                <span class="fa fa-train fs-30"></span>
+                <span class="fs-30">
+                  {{$detail->count()}}
+                </span>
               </div>
             </div>
+		  </div>
+		  
+<div class="col-12">
+  <div class="divider text-uppercase fw-500">Informasi</div>
+</div>
 
-            <div class="col-lg-4 grid-margin stretch-card">
+
+
+              <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">info KA</h4>
+                    <table id="" class="table table-striped">
+                        <thead>
+                          <tr>
+                                  <th>Jenis Kereta</th>
+                                  <th>Nama Kereta</th>
+                                  <th>Jam Keberangkatan</th>
+                                  <th>Letak Gerbong</th>
+                                  <th>Progres Stasiun</th>
+                                  <th>Keterangan</th>
+                                 
+                          </tr>
+                        </thead>
+                        <tbody>
+                          @foreach($detail as $data)
+                          <tr>
+                                <td>{{$data->jenis->jenis_kereta}}</td>
+                                <td>{{$data->nama_kereta}}</td>
+                                <td>{{$data->jam}}</td>
+                                <td>{{$data->jalur}}</td>
+                                <td>{{$data->progres_stasiun}}</td>  
+                                <td>
+                                @if($data->keterangan == "Normal")
+                                <span class="badge badge-success">{{$data->keterangan}}</span>
+                                @else
+                                <span class="badge badge-danger">{{$data->keterangan}}</span>
+                                @endif
+
+                                </td>
+                              
+                          </tr>
+                          @endforeach
+                        </tbody>
+                      </table>
+                  </div>
+                </div>
+              </div>
+             
+              <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Kontak</h4>
+                    <table id="" class="table table-striped">
+                      <thead>
+                        <tr>
+                        <th>Jenis</th>
+                        <th>Nama Kontak</th>
+                        <th>Nomor</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      @foreach($kontak as $data)
+                          <tr>
+                                  <td>{{$data->jenis}}</td>
+                                  <td>{{$data->nama}}</td>
+                                  <td>{{$data->nomor}}</td>
+                                  
+                        </tr>
+                        @endforeach
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Data Destinasi</h4>
@@ -124,39 +161,17 @@
                 </div>
               </div>
 
-              <div class="col-lg-8 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">info KA</h4>
-                    <table id="" class="table table-striped">
-                        <thead>
-                          <tr>
-                                  <th>Jenis Kereta</th>
-                                  <th>Nama Kereta</th>
-                                  <th>Jam Keberangkatan</th>
-                                  <th>Letak Gerbong</th>
-                                  <th>Progres Stasiun</th>
-                                 
-                          </tr>
-                        </thead>
-                        <tbody>
-                          @foreach($detail as $data)
-                          <tr>
-                                <td>{{$data->jenis->jenis_kereta}}</td>
-                                <td>{{$data->nama_kereta}}</td>
-                                <td>{{$data->jam}}</td>
-                                <td>{{$data->jalur}}</td>
-                                <td>{{$data->progres_stasiun}}</td>                                
-                          </tr>
-                          @endforeach
-                        </tbody>
-                      </table>
-                  </div>
-                </div>
-              </div>
-             
+
+
+
+
+
+
        
 </div>
+
+
+	 
 
 @endsection
 

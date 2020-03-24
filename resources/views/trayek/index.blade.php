@@ -13,31 +13,27 @@
 
 @section('content')
 
+              <div class="card">
+          <h4 class="card-title"><strong>Tambah</strong> Destinasi</h4>
+          <div class="col-lg-2">
+            <a href="{{route('trayek.create')}}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Tambah Data</a>
+          </div>
 
-              <div class="row">
-                <div class="col-lg-12 grid-margin stretch-card">
-                  <div class="card">
-                    <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                            <h4 class="card-title mb-0">Tambah Trayek</h4>
-                            <a href="{{route('trayek.create')}}" class="btn btn-success btn-rounded btn-sm" >
-                            Tambah Data
-                            </a>
-                          </div>
+          <div class="card-body">
 
-                      <div class="table-responsive">
-                      <table id="table" class="table table-striped">
-                        <thead>
-                          <tr>
-                                  <th>Nama Angkutan</th>
-                                  <th>Harga</th>
-                                  <th>Deskripsi</th>
-                                  <th>Gambar</th>
-                                  <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($data as $datang)
+            <table class="table table-striped table-bordered" cellspacing="0" data-provide="datatables">
+              <thead>
+                <tr>
+                <th>Nama Angkutan</th>
+                <th>Harga</th>
+                <th>Deskripsi</th>
+                <th>Gambar</th>
+                <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+             
+              @foreach($data as $datang)
                           <tr>
                                   <td>{{$datang->trayek_name}}</td>
                                   <td>{{$datang->trayek_price}}</td>
@@ -70,14 +66,10 @@
 
                           </tr>
                           @endforeach
-                        </tbody>
-                      </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              
-              </div>
+              </tbody>
+            </table>
+          </div>
+        </div>
 
            
 @endsection

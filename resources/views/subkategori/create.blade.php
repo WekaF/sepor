@@ -109,10 +109,10 @@ alert("Uploaded SuccessFully");
                         </div>
                       
                       <div class="form-group">
-                            <label for="gambar" class="col-md-4 control-label">Gambar</label>
+                            <label for="gambar" class="col-md-4 control-label gambar">Gambar</label>
                             <div class="col-md-6">                                                       
-                            <input type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar[]" multiple/>
-                                <div id="image_preview" ></div>   
+                            <input type="file" class="uploads form-control gambar" style="margin-top: 20px;" name="gambar[]" multiple/>
+                                <div id="image_preview"></div>   
                             </div>
                              
                         </div>

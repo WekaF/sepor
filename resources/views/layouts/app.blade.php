@@ -1,126 +1,240 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="TheAdmin - Responsive Bootstrap 4 Admin, Dashboard &amp; WebApp Template">
+    <meta name="keywords" content="dashboard, index, main">
+
     <title>SEPOR</title>
-   
-    <link rel="stylesheet" href="{{ asset('assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('assets/vendors/iconfonts/ionicons/css/ionicons.css')}}">
-    <link rel="stylesheet" href="{{ asset('assets/vendors/iconfonts/typicons/src/font/typicons.css')}}">
-    <link rel="stylesheet" href="{{ asset('assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('assets/vendors/css/vendor.bundle.base.css')}}">
-    <link rel="stylesheet" href="{{ asset('assets/vendors/css/vendor.bundle.addons.css')}}">
-    <link rel="stylesheet" href="{{ asset('css/dataTables.bootstrap4.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('assets/css/shared/style.css')}}">
-   
-    <link rel="stylesheet" href="{{ asset('assets/css/demo_1/style.css')}}">    
-   
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,300i|Dosis:300,500" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="{{ asset('assets/css/core.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/css/app.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/css/style.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('assets/css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/dataTables.bootstrap.css')}}">
+
     @section('css')
 
 @show
+ 
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="{{ asset('assets/img/apple-touch-icon.png')}}">
+    <link rel="icon" href="{{ asset('assets/img/favicon.png')}}">
+    
+
   </head>
-  <body>
-  
-    <div class="container-scroller">
-      <!-- partial:partials/_navbar.html -->
-      <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-        <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-          <a class="navbar-brand brand-logo" href="index.html">
-            <img src="../assets/images/logo.svg" alt="logo" /> </a>
-          <a class="navbar-brand brand-logo-mini" href="index.html">
-            <img src="../assets/images/logo-mini.svg" alt="logo" /> </a>
-        </div>
-        <div class="navbar-menu-wrapper d-flex align-items-center">
-          <ul class="navbar-nav">
-            
-          </ul>
-          <form class="ml-auto search-form d-none d-md-block" action="#">
-            <div class="form-group">
-              <input type="search" class="form-control" placeholder="Search Here">
-            </div>
-          </form>
 
-          <ul class="navbar-nav ml-auto">
-            
-            
-            <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
-              <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-              Hai, {{Auth::user()->name}} 
-              </a>
-              <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-                <div class="dropdown-header text-center">
-                  <img class="img-md rounded-circle" src="../assets/images/faces/face8.jpg" alt="Profile image">
-                  <p class="mb-1 mt-3 font-weight-semibold">{{Auth::user()->name}}</p>
-                  <p class="font-weight-light text-muted mb-0">{{Auth::user()->email}}</p>
-                </div>
-                
-                <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">Sign Out
-                    <i class="dropdown-item-icon ti-power-off"></i>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                    </form>
-                  </a>
-              </div>
-            </li>
-          </ul>
-          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-            <span class="mdi mdi-menu"></span>
-          </button>
-        </div>
-      </nav>
+  <body data-provide= "pace">
 
-      <!-- partial -->
-      <div class="container-fluid page-body-wrapper">
-        <!-- partial:partials/_sidebar.html -->
-        <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        @section('sidebar')
-          @include('layouts.sidebar',['user' => Auth::User()])
-      @show
-        </nav>
-        <!-- partial -->
-        <div class="main-panel">
-          <div class="content-wrapper">
-           @yield('content')
-        </div>
-        
-            <!-- Page Title Header Starts-->
-            <!-- Page Title Header Ends-->      
-          <!-- content-wrapper ends -->
-          <!-- partial:partials/_footer.html -->
-          <footer class="footer">
-            <div class="container-fluid clearfix">
-              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2019 <a href="#" target="_blank">Wekawk </a>. All rights reserved.</span>
-              
-            </div>
-          </footer>
-          <!-- partial -->
-        </div>
-        <!-- main-panel ends -->
+    <!-- Preloader -->
+    <div class="preloader">
+      <div class="spinner-dots">
+        <span class="dot1"></span>
+        <span class="dot2"></span>
+        <span class="dot3"></span>
       </div>
-      <!-- page-body-wrapper ends -->
     </div>
 
-    <!-- container-scroller -->
-    <!-- plugins:js -->
-    <script src="{{ asset('assets/vendors/js/vendor.bundle.base.js')}}"></script>
-    <script src="{{ asset('assets/vendors/js/vendor.bundle.addons.js')}}"></script>
-    <script src="{{ asset('js/jquery.min.js')}}"></script>
-    <script src="{{ asset('js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{ asset('js/dataTables.bootstrap4.min.js')}}"></script>
-    <script src="{{ asset('assets/js/shared/off-canvas.js')}}"></script>
-    <script src="{{ asset('assets/js/shared/misc.js')}}"></script>
-    <script src="{{ asset('assets/js/shared/sweetalert2.all.js')}}"></script>
-    <script src="{{ asset('assets/js/demo_1/dashboard.js')}}"></script> 
-    <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
-  <script src="{{asset('js/dataTables.bootstrap4.min.js')}}"></script>
-    <!-- End custom js for this page-->
-  @include('sweetalert::alert')
-  
-  @section('js')
 
-  @show
+    <!-- Sidebar -->
+    <aside class="sidebar sidebar-icons-right sidebar-icons-boxed sidebar-expand-lg">
+      <header class="sidebar-header">
+        <span class="logo">
+          <a href="{{ url('/') }}">
+          {{Auth::user()->name}}
+          </a>
+        </span>
+        <span class="sidebar-toggle-fold"></span>
+      </header>
+
+      <nav class="sidebar-navigation">
+    
+
+      @include('layouts.sidebar')
+      
+      </nav>
+
+    </aside>
+    <!-- END Sidebar -->
+
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <span class="topbar-btn sidebar-toggler"><i>&#9776;</i></span>
+
+        <a class="topbar-btn d-none d-md-block" href="#" data-provide="fullscreen tooltip" title="Fullscreen">
+          <i class="material-icons fullscreen-default">fullscreen</i>
+          <i class="material-icons fullscreen-active">fullscreen_exit</i>
+        </a>
+
+        <div class="topbar-divider d-none d-md-block"></div>
+
+        <div class="lookup d-none d-md-block topbar-search" id="theadmin-search">
+          <input class="form-control w-300px" type="text">
+          <div class="lookup-placeholder">
+            <i class="ti-search"></i>
+            <span data-provide="typing" data-type="<strong>Type</strong> Button|<strong>Type</strong> Slider|<strong>Type</strong> Layout|<strong>Type</strong> Modal|<strong>Try</strong> typing any keyword..." data-loop="false" data-type-speed="90" data-back-speed="50" data-show-cursor="false"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <a class="topbar-btn" href="#qv-global" data-toggle="quickview"><i class="ti-align-right"></i></a>
+
+        <div class="topbar-divider"></div>
+
+        <ul class="topbar-btns">
+          <li class="dropdown">
+            <span class="topbar-btn" data-toggle="dropdown">hai, {{ Auth::user()->name }}</span>
+            <div class="dropdown-menu dropdown-menu-right"> 
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="page-extra/user-lock-1.html"><i class="ti-lock"></i> Lock</a>
+              <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();"><i class="ti-power-off"></i> Logout
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                    </form>></a>
+            </div>
+          </li>
+
+          <!-- Notifications -->
+          <li class="dropdown d-none d-md-block">
+            <span class="topbar-btn has-new" data-toggle="dropdown"><i class="ti-bell"></i></span>
+            <div class="dropdown-menu dropdown-menu-right">
+
+              <div class="media-list media-list-hover media-list-divided media-list-xs">
+                <a class="media media-new" href="#">
+                  <span class="avatar bg-success"><i class="ti-user"></i></span>
+                  <div class="media-body">
+                    <p>New user registered</p>
+                    <time datetime="2017-07-14 20:00">Just now</time>
+                  </div>
+                </a>
+
+                <a class="media" href="#">
+                  <span class="avatar bg-info"><i class="ti-shopping-cart"></i></span>
+                  <div class="media-body">
+                    <p>New order received</p>
+                    <time datetime="2017-07-14 20:00">2 min ago</time>
+                  </div>
+                </a>
+
+                <a class="media" href="#">
+                  <span class="avatar bg-warning"><i class="ti-face-sad"></i></span>
+                  <div class="media-body">
+                    <p>Refund request from <b>Ashlyn Culotta</b></p>
+                    <time datetime="2017-07-14 20:00">24 min ago</time>
+                  </div>
+                </a>
+
+                <a class="media" href="#">
+                  <span class="avatar bg-primary"><i class="ti-money"></i></span>
+                  <div class="media-body">
+                    <p>New payment has made through PayPal</p>
+                    <time datetime="2017-07-14 20:00">53 min ago</time>
+                  </div>
+                </a>
+              </div>
+
+              <div class="dropdown-footer">
+                <div class="left">
+                  <a href="#">Read all notifications</a>
+                </div>
+
+                <div class="right">
+                  <a href="#" data-provide="tooltip" title="Mark all as read"><i class="fa fa-circle-o"></i></a>
+                  <a href="#" data-provide="tooltip" title="Update"><i class="fa fa-repeat"></i></a>
+                  <a href="#" data-provide="tooltip" title="Settings"><i class="fa fa-gear"></i></a>
+                </div>
+              </div>
+
+            </div>
+          </li>
+          <!-- END Notifications -->
+
+          <!-- Messages -->
+          
+        </ul>
+
+      </div>
+    </header>
+    <!-- END Topbar -->
+
+
+    <!-- Main container -->
+    <main>
+
+      <div class="main-content">
+
+            @yield('content')
+
+      </div><!--/.main-content -->
+
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <div class="row">
+          <div class="col-md-6">
+            <p class="text-center text-md-left">Copyright © 2017 <a href="http://thetheme.io/theadmin">TheAdmin</a>. All rights reserved.</p>
+          </div>
+
+          <div class="col-md-6">
+            <ul class="nav nav-primary nav-dotted nav-dot-separated justify-content-center justify-content-md-end">
+              <li class="nav-item">
+                <a class="nav-link" href="../help/articles.html">Documentation</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../help/faq.html">FAQ</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://themeforest.net/item/theadmin-responsive-bootstrap-4-admin-dashboard-webapp-template/20475359?license=regular&open_purchase_for_item_id=20475359&purchasable=source&ref=thethemeio">Purchase Now</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+      <!-- END Footer -->
+
+    </main>
+    <!-- END Main container -->
+
+
+
+    <!-- Global quickview -->
+    <div id="qv-global" class="quickview" data-url="../assets/data/quickview-global.html">
+      <div class="spinner-linear">
+        <div class="line"></div>
+      </div>
+    </div>
+    <!-- END Global quickview -->
+
+
+
+    <!-- Scripts -->
+    @section('script')  
+    <script src="{{ asset('assets/js/core.min.js')}}"></script>
+    <script src="{{ asset('assets/js/app.min.js')}}"></script>
+    <script src="{{ asset('assets/js/script.min.js')}}"></script>
+    <script src="{{asset('assets/js/select2.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('js/datatables.bootstrap.js')}}"></script>
+    <script src="{{ asset('js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{ asset('assets/js/shared/sweetalert2.all.js')}}"></script>
+    @include('sweetalert::alert')
+    @section('js')
+
+@show
+   
+  
+    
+
   </body>
 </html>

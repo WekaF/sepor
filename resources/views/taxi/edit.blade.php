@@ -8,7 +8,7 @@
                   <div class="card-body">
                     <h4 class="card-title">Tambah Data</h4>
                     
-                    <form class="forms-sample" method="POST" action="{{ route('angkot.update', $data->id)}}">
+                    <form class="forms-sample" method="POST" action="{{ route('taxi.update', $data->id)}}">
                     {{ csrf_field() }}
                     {{ method_field('put') }}
                     <div class="form-group">
@@ -28,7 +28,7 @@
                       </div>
 
                       <button type="submit" class="btn btn-success mr-2">Update</button>
-                      <a href="{{route('angkot.index')}}">
+                      <a href="{{route('taxi.index')}}">
                       <button class="btn btn-light">Cancel</button>
                       </a>
                     </form>

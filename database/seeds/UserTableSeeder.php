@@ -15,25 +15,12 @@ class UserTableSeeder extends Seeder
             [
               'id'  			=> 1,
               'name'  			=> 'Adminsepor',
-              'username'		=> 'Adminsepor',
               'email' 			=> 'admin@gmail.com',
               'email_verified_at'=> \Carbon\Carbon::now(),
-              'password'		=> bcrypt('admin123'),
-              'api token'	    => Str::random(100),
+              'password'		=> bcrypt('sepor123'),
               'created_at'      => \Carbon\Carbon::now(),
               'updated_at'      => \Carbon\Carbon::now()
             ],
-            [
-                'id'  			=> 2,
-                'name'  		=> 'Adminsepor',
-                'username'		=> 'Adminsepor',
-                'email' 		=> 'admin@gmail.com',
-                'email_verified_at'=> \Carbon\Carbon::now(),
-                'password'		=> bcrypt('admin123'),
-                'api_token'	    => Str::random(100),
-                'created_at'     => \Carbon\Carbon::now(),
-                'updated_at'      => \Carbon\Carbon::now()
-              ],
         ]);
     }
 }
