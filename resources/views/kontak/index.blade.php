@@ -27,6 +27,7 @@ $('#form-delete').on('submit', function(e){
 });
 </script>
 @stop
+@section('title','Kontak')
 @extends('layouts.app')
 
 @section('content')

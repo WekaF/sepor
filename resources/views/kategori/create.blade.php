@@ -1,4 +1,5 @@
 
+@section('title','Create Kategori Destinasi')
 @extends('layouts.app')
 
 @section('content')

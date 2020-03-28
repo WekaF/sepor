@@ -25,7 +25,7 @@
               <li class="menu-item">
                 <a class="menu-link" href="/trayek">
                   <span class="dot"></span>
-                  <span class="title">trayek</span>
+                  <span class="title">Angkutan</span>
                 </a>
               </li>
 
@@ -88,6 +88,12 @@
                 <a class="menu-link" href="/stasiuninfo">
                   <span class="dot"></span>
                   <span class="title">Info Stasiun</span>
+                </a>
+              </li>
+              <li class="menu-item ">
+                <a class="menu-link" href="/jalur">
+                  <span class="dot"></span>
+                  <span class="title">Jalur </span>
                 </a>
               </li>
               <li class="menu-item ">

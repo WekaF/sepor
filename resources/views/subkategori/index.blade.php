@@ -8,7 +8,7 @@
 } );
 </script>
 @stop
-
+@section('title','Destinasi')
 @extends('layouts.app')
 
 @section('content')
@@ -38,11 +38,11 @@
              
               @foreach($subkategori as $datang)
                           <tr>
-                                  <td>{{$datang->nama_subkat}}</td>                                  
+                                  <td>{{$datang->nama_subkategori}}</td>                                  
                                   <td>{{$datang->long}}</td>
                                   <td>{{$datang->lat}}</td>
                                   <td>{{$datang->kategori->nama_kategori}}</td>
-                                  <td>{{$datang->Deskrip}}</td>
+                                  <td>{{$datang->deskripsi}}</td>
                                   <td>
                                      <?php foreach (json_decode($datang->gambar)as $picture) { ?>
                                          <img src="{{url('images/destinasi/'. $picture)}}" style="height:100px; width:100px"/>

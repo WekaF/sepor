@@ -22,7 +22,7 @@
         })
         </script>
 @stop        
-
+@section('title','Create Angkutan')
 @extends('layouts.app')
 
 @section('content')
@@ -50,7 +50,7 @@
                       </div>
 
                       <div class="form-group">
-                        <label for="exampleTextarea1">Textarea</label>
+                        <label for="exampleTextarea1">Deskripsi</label>
                         <textarea name="trayek_desc" class="form-control" id="exampleTextarea1" rows="4"></textarea>
                       </div>
 

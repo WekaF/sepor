@@ -8,7 +8,7 @@
 } );
 </script>
 @stop
-
+@section('title','Angkutan')
 @extends('layouts.app')
 
 @section('content')

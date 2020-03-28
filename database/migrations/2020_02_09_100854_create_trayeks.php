@@ -19,6 +19,7 @@ class CreateTrayeks extends Migration
             $table->string('trayek_price');
             $table->text('trayek_desc');
             $table->string('trayek_slug')->unique();
+            $table ->String('gambar');
             $table->timestamps();
             $table->softDeletes();
             

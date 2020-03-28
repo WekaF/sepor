@@ -96,8 +96,8 @@ class SubKatController extends Controller
  
     
         SubKategori::Create( [
-            'nama_subkat' => $input['nama_subkat'],
-            'Deskrip'     => $input['Deskrip'],
+            'nama_subkategori' => $input['nama_subkategori'],
+            'deskripsi'     => $input['deskripsi'],
             'long'        => $input['long'],
             'lat'         => $input['lat'],
             'no_telp'     => $input['no_telp'],

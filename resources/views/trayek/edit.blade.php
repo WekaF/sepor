@@ -22,7 +22,7 @@
         })
         </script>
 @stop        
-
+@section('title','Edit Angkutan')
 @extends('layouts.app')
 
 @section('content')

@@ -1,4 +1,4 @@
-
+@section('title','Create Kontak')
 @extends('layouts.app')
 
 @section('content')

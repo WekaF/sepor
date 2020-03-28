@@ -1,14 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\JenisKA;
-use Illuminate\Support\Facades\Redirect;
-use RealRashid\SweetAlert\Facades\Alert;
-
+use App\Jalur;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
-class JeniskeretaController extends Controller
+class JalurController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +14,9 @@ class JeniskeretaController extends Controller
      */
     public function index()
     {
-        $data = JenisKA::all();
+        $data = Jalur::all();
 
-        return view('jeniska.index',compact('data'));
+        return view('jalur.index',compact('data'));
     }
 
     /**
@@ -29,7 +26,7 @@ class JeniskeretaController extends Controller
      */
     public function create()
     {
-        return view('jeniska.create');
+       return view('jalur.create');
     }
 
     /**
@@ -41,13 +38,24 @@ class JeniskeretaController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-    
-        JenisKA::create([  
-            'jenis_kereta' => $request->get('jenis_kereta'),
+        if($request->file('gambar')) {
+            $file = $request->file('gambar');
+            $dt = Carbon::now();
+            $acak  = $file->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $request->file('gambar')->move("images/jalur", $fileName);
+            $gambar = $fileName;
+        } else {
+            $gambar = NULL;
+        }
+        Jalur::create([  
+            'jalur'     => $request->get('jalur'),
+            'deskripsi'  => $request->get('deskripsi'),
+            'gambar'    => $gambar,
            
         ]);
     alert()->success('Berhasil.','Data telah ditambahkan!');       
-    return redirect()->route('jeniska.index');
+    return redirect()->route('jalur.index');
     }
 
     /**
@@ -94,6 +102,4 @@ class JeniskeretaController extends Controller
     {
         //
     }
-
-
 }

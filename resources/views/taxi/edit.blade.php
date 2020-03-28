@@ -1,4 +1,4 @@
-
+@section('title','Edit Taxi')
 @extends('layouts.app')
 
 @section('content')

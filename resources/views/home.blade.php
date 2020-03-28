@@ -8,6 +8,8 @@
 } );
 </script>
 @stop
+@section('title','Home')
+
 @extends('layouts.app')
 
 @section('content')
@@ -75,11 +77,13 @@
                     <table id="" class="table table-striped">
                         <thead>
                           <tr>
-                                  <th>Jenis Kereta</th>
+                                <th>No</th>
+                                  <th>Kategori</th>
                                   <th>Nama Kereta</th>
+                                  <th>jalur</th>
+                                  <th>Kelas Kereta</th>
+                                  <th>Relasi</th>
                                   <th>Jam Keberangkatan</th>
-                                  <th>Letak Gerbong</th>
-                                  <th>Progres Stasiun</th>
                                   <th>Keterangan</th>
                                  
                           </tr>
@@ -87,11 +91,14 @@
                         <tbody>
                           @foreach($detail as $data)
                           <tr>
+                                <td>{{$data->no_ka}}</td>
                                 <td>{{$data->jenis->jenis_kereta}}</td>
                                 <td>{{$data->nama_kereta}}</td>
-                                <td>{{$data->jam}}</td>
+                               
                                 <td>{{$data->jalur}}</td>
-                                <td>{{$data->progres_stasiun}}</td>  
+                                <td>{{$data->kelaska}}</td> 
+                                <td>{{$data->relasi}}</td> 
+                                <td>{{$data->jam}}</td>
                                 <td>
                                 @if($data->keterangan == "Normal")
                                 <span class="badge badge-success">{{$data->keterangan}}</span>
@@ -150,7 +157,7 @@
                       <tbody>
                       @foreach($subkategori as $datang)
                           <tr>
-                                  <td>{{$datang->nama_subkat}}</td>
+                                  <td>{{$datang->nama_subkategori}}</td>
                                   <td>{{$datang->kategori->nama_kategori}}</td>
                                   
                         </tr>

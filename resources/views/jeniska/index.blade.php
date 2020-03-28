@@ -7,29 +7,14 @@
 
 } );
 </script>
-<script>
-$('#form-delete').on('submit', function(e){
-    var form = this;
-    e.preventDefault();
-    swal({
-      title: 'Data akan dihapus ?',
-      text: "Klik Hapus untuk menghapus data !",
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Hapus'
-    }).then((result) => {
-      if (result.value) {
-        return form.submit();
-      }
-    })
-});
-</script>
 @stop
+@section('title','Jenis Kereta Api')
 @extends('layouts.app')
 
-@section('content')              
+@section('content') 
+
+<div class="row">
+<div class="col-lg-6 grid-margin stretch-card">      
           <div class="card">
           <h4 class="card-title"><strong>Tambah</strong> Jenis Kereta</h4>
           <div class="col-lg-2">
@@ -58,5 +43,9 @@ $('#form-delete').on('submit', function(e){
             </table>
           </div>
         </div>
+           </div>
+
            
+           </div>
+           </div>
 @endsection

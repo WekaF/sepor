@@ -15,7 +15,7 @@ class UserTableSeeder extends Seeder
             [
               'id'  			=> 1,
               'name'  			=> 'Adminsepor',
-              'email' 			=> 'admin@gmail.com',
+              'email' 			=> 'admin@sepor.com',
               'email_verified_at'=> \Carbon\Carbon::now(),
               'password'		=> bcrypt('sepor123'),
               'created_at'      => \Carbon\Carbon::now(),

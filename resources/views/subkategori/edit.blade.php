@@ -1,4 +1,4 @@
-
+@section('title','Edit Destinasi')
 @extends('layouts.app')
 
 @section('content')
@@ -14,11 +14,11 @@
                     {{ method_field('put') }}
                     <div class="form-group{{ $errors->has('nama_subkat') ? ' has-error' : '' }}">
                         <label for="nama_subkat">Nama Destinasi</label>
-                        <input name='nama_subkat' type="text" class="form-control" placeholder="Nama Destinasi" value="{{ $data->nama_subkat }}">
+                        <input name='nama_subkategori' type="text" class="form-control" placeholder="Nama Destinasi" value="{{ $data->nama_subkategori }}">
                       </div>
                       <div class="form-group{{ $errors->has('Deskrip') ? ' has-error' : '' }}">
                         <label for="Deskrip">Deskriptif</label>
-                        <input name='Deskrip' type="text" class="form-control" placeholder="Keterangan" value="{{ $data->Deskrip }}">
+                        <input name='desktipsi' type="text" class="form-control" placeholder="Keterangan" value="{{ $data->deskripsi }}">
                       </div>
                       
                       <div class="form-group {{ $errors->has('long') ? ' has-error' : '' }}">

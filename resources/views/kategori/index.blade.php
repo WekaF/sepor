@@ -8,6 +8,7 @@
 } );
 </script>
 @stop
+@section('title','Kategori Destinasi')
 @extends('layouts.app')
 
 @section('content')

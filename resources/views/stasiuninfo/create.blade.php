@@ -21,7 +21,8 @@
             })
         })
         </script>
-@stop        
+@stop     
+@section('title','Create Stasiun Info')   
 
 @extends('layouts.app')
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DetailKA;
 use App\JenisKA;
+use App\Jalur;
 use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
 use Carbon\Carbon;
@@ -24,7 +25,9 @@ class KeretainfoController extends Controller
     {
         $data = DetailKA::all();
         $jenis = JenisKA::pluck('jenis_kereta','id');
-        return view('keretainfo.index',compact('data'))->with('jenis',$jenis);
+        $jalur = Jalur::where('jalur');
+        
+        return view('keretainfo.index',compact('data','jalur'))->with('jenis',$jenis);
     }
 
     /**
@@ -35,9 +38,9 @@ class KeretainfoController extends Controller
     public function create()
     {
         $jenis = JenisKA::pluck('jenis_kereta','id');
-
+        $jalur = Jalur::pluck('jalur','id');
         return view('keretainfo.create')
-        ->with('jenis',$jenis);
+        ->with('jenis',$jenis)->with('jalur',$jalur);
     }
 
     /**
@@ -52,7 +55,9 @@ class KeretainfoController extends Controller
             'nama_kereta'        => $request->get('nama_kereta'),
             'no_ka'              => $request->get('no_ka'),
             'jam'                => $request->get('jam'),
-            'jalur'              => $request->get('jalur'),
+            'jalur_id'           => $request->get('jalur_id'),
+            'kelaska'            => $request->get('kelaska'),
+            'relasi'             => $request->get('relasi'),
             'progres_stasiun'    => $request->get('progres_stasiun'),
             'jenis_id'           => $request->input('jenis_id'),
             'keterangan'         => $request->get('keterangan'),
@@ -70,7 +75,10 @@ class KeretainfoController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = DetailKA::findOrFail($id);
+        $jalur = Jalur::get();
+        
+        return view('keretainfo.show', compact('data','jalur'));
     }
 
     /**
@@ -84,14 +92,14 @@ class KeretainfoController extends Controller
         $data = DetailKA::findOrFail($id);
       
         $jenis = JenisKA::pluck('jenis_kereta','id');
-       
+        $jalur = Jalur::pluck('jalur','id');
         if (empty($data)) {
             Flash::error('Barang not found');
 
             return redirect(route('keretainfo.index'));
         }
 
-        return view('keretainfo.edit',compact('data'))->with('jenis',$jenis);
+        return view('keretainfo.edit',compact('data'))->with('jenis',$jenis)->with('jalur',$jalur);
     }
 
     /**

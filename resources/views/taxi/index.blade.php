@@ -8,6 +8,7 @@
 } );
 </script>
 @stop
+@section('title','Taxi')
 @extends('layouts.app')
 
 @section('content')

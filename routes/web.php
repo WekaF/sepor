@@ -28,3 +28,4 @@ Route::resource('keretainfo','KeretainfoController');
 Route::resource('jeniska','JenisKeretaController');
 Route::resource('stasiuninfo','StasiunInfoController');
 Route::resource('kontak','KontakController');
+Route::resource('jalur','jalurController');

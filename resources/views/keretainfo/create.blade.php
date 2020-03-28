@@ -25,7 +25,7 @@
         </script>
 
 @stop
-
+@section('title','Create Info Kereta')
 @extends('layouts.app')
 
 @section('content')
@@ -63,16 +63,25 @@
 
 
                             <div class="form-group">
-                            <label for="deskripsi" class="col-md-4 control-label">Jalur</label>
-                            <div class="col-md-12">
-                                 <select name="jalur" class="form-control">
-                                    <option value="">-- Pilih Kategori --</option>
-                                    <option value="1">Jalur 1</option>
-                                    <option value="2">Jalur 2</option>
-                                    <option value="3">Jalur 3</option>
-                                  </select>
+                            <label for="judul" class="col-md-4 control-label">Jalur</label>
+                            <div class="col-md-6">
+                            {!! Form::select('jalur_id' ,$jalur,null,['class'=>'form-control']) !!}
                             </div>
-                        </div>
+                           </div>
+
+                           
+
+                        <div class="form-group">
+                            <label for="judul" class="col-md-4 control-label">Kelas Kereta </label>
+                            <div class="col-md-6">
+                                <input id="isbn" type="text" class="form-control" name="kelaska" required>
+                            </div>
+                            
+                            <div class="form-group">
+                            <label for="judul" class="col-md-4 control-label">Relasi</label>
+                            <div class="col-md-6">
+                                <input id="isbn" type="text" class="form-control" name="relasi" required>
+                            </div>
 
                         <div class="form-group">
                             <label for="judul" class="col-md-4 control-label">Progres Stasiun</label>

@@ -1,4 +1,5 @@
 
+@section('title','Edit Kontak')
 @extends('layouts.app')
 
 @section('content')

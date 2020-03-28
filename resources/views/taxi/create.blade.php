@@ -1,5 +1,5 @@
 
-
+@section('title','Create Taxi')
 @extends('layouts.app')
 
 @section('content')

@@ -27,6 +27,7 @@ $('#form-delete').on('submit', function(e){
 });
 </script>
 @stop
+@section('title','Info Kereta')
 @extends('layouts.app')
 
 @section('content')
@@ -46,6 +47,8 @@ $('#form-delete').on('submit', function(e){
                 <th>Nama Kereta</th>
                 <th>Jam Keberangkatan</th>
                 <th>Letak Kereta <i>(jalur)</i> </th>
+                <th>Kelas Kereta</th>
+                <th>Relasi</th>
                 <th>Progres Stasiun</th>
                 <th>Keterangan</th>
                 <th>Action</th>
@@ -59,7 +62,13 @@ $('#form-delete').on('submit', function(e){
                                 <td>{{$data->no_ka}}</td>
                                 <td>{{$data->nama_kereta}}</td>
                                 <td>{{$data->jam}}</td>
-                                <td>{{$data->jalur}}</td>
+                                <td>
+                                <a href="{{route('keretainfo.show', $data->id)}}"> 
+                                {{$data->jalur->jalur}}
+                                </a>
+                                </td>
+                                <td>{{$data->kelaska}}</td>
+                                <td>{{$data->relasi}}</td>
                                 <td>{{$data->progres_stasiun}}</td>
                                 <td>
                                 @if($data->keterangan == "Normal")

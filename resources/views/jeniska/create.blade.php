@@ -1,4 +1,5 @@
 
+@section('title','Create Kereta Api')
 @extends('layouts.app')
 
 @section('content')

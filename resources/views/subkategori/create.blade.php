@@ -1,23 +1,13 @@
 @section('js')
 
 <script type="text/javascript">
-$("#gambar").change(function(){
-
-$('#image_preview').html("");
-
-var total_file=document.getElementById("uploadFile").files.length;
-
-for(var i=0;i<total_file;i++)
-
-{
-
- $('#image_preview').append("<img src='"+URL.createObjectURL(event.target.files[i])+"'>");
-
-}
-
+  $("#gambar").change(function(){
+  $('#image_preview').html("");
+  var total_file=document.getElementById("uploadFile").files.length;
+  for(var i=0;i<total_file;i++){
+  $('#image_preview').append("<img src='"+URL.createObjectURL(event.target.files[i])+"'>");
+  }
 });
-
-
 
 $('form').ajaxForm(function() 
 
@@ -30,7 +20,23 @@ alert("Uploaded SuccessFully");
 
  
 </script>
+<script type="text/javascript">
 
+
+    $(document).ready(function() {
+
+      $(".btn-success").click(function(){ 
+          var html = $(".clone").html();
+          $(".increment").after(html);
+      });
+
+      $("body").on("click",".btn-danger",function(){ 
+          $(this).parents(".control-group").remove();
+      });
+
+    });
+
+</script>
       
 @stop 
 
@@ -56,7 +62,7 @@ alert("Uploaded SuccessFully");
 
   </style>
 @stop
-
+@section('title','Create Destinasi')
 @extends('layouts.app')
 @section('content')
 
@@ -71,11 +77,11 @@ alert("Uploaded SuccessFully");
                     {{ csrf_field() }}
                       <div class="form-group">
                         <label for="nama_subkat">Nama Destinasi</label>
-                        <input name='nama_subkat' type="text" class="form-control" placeholder="Nama Destinasi">
+                        <input name='nama_subkategori' type="text" class="form-control" placeholder="Nama Destinasi">
                       </div>
                       <div class="form-group">
                         <label for="Deskrip">Deskriptif</label>
-                        <input name='Deskrip' type="text" class="form-control" placeholder="Keterangan">
+                        <input name='deskripsi' type="text" class="form-control" placeholder="Keterangan">
                       </div>
                       
                       <div class="form-group">
@@ -109,13 +115,29 @@ alert("Uploaded SuccessFully");
                         </div>
                       
                       <div class="form-group">
-                            <label for="gambar" class="col-md-4 control-label gambar">Gambar</label>
-                            <div class="col-md-6">                                                       
-                            <input type="file" class="uploads form-control gambar" style="margin-top: 20px;" name="gambar[]" multiple/>
-                                <div id="image_preview"></div>   
-                            </div>
-                             
-                        </div>
+                            <label id="gambar" for="gambar" class="col-md-4 control-label gambar">Gambar</label>
+                            <div class="col-md-8">                                                       
+                            <div class="input-group control-group increment" >
+          <input type="file" name="gambar[]" class="form-control">
+          <div class="input-group-btn"> 
+            <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
+          </div>
+        </div>
+        <div class="clone hide">
+          <div class="control-group input-group" style="margin-top:10px">
+            <input type="file" name="gambar[]" class="form-control">
+            <div class="input-group-btn"> 
+              <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
+            </div>
+          </div>
+        </div>
+                  </div>         
+                      </div>
+
+                      
+                      
+
+                        
 
                       <button type="submit" class="btn btn-success mr-2">Submit</button>
                       <button class="btn btn-light">Cancel</button>
