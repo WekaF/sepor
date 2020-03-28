@@ -124,6 +124,8 @@
 </div>
 </div>
 </div>
+</div>
+</div>
 </form>              
 {!! Form::close() !!}
 @endsection
