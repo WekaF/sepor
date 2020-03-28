@@ -95,7 +95,11 @@
                                 <td>{{$data->jenis->jenis_kereta}}</td>
                                 <td>{{$data->nama_kereta}}</td>
                                
-                                <td>{{$data->jalur}}</td>
+                                <td>
+                                <a href="{{route('keretainfo.show', $data->id)}}"> 
+                                {{$data->jalur->jalur}}
+                                </a>
+                                </td>
                                 <td>{{$data->kelaska}}</td> 
                                 <td>{{$data->relasi}}</td> 
                                 <td>{{$data->jam}}</td>
