@@ -13,17 +13,17 @@
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="taxi_name">Nama Taxi</label>
-                        <input name='taxi_name' type="text" class="form-control" placeholder="nama taxi">
+                        <input name='taxi_name' type="text" class="form-control" placeholder="nama taxi" required>
                        
                       </div>
                       <div class="form-group">
                         <label for="taxi_price">Harga</label>
-                        <input name='taxi_price' type="text" class="form-control" placeholder="harga">
+                        <input name='taxi_price' type="text" class="form-control" placeholder="harga" required>
                       </div>
 
                       <div class="form-group">
                         <label for="exampleTextarea1">Deskripsi</label>
-                        <textarea name="taxi_desc" class="form-control" id="exampleTextarea1" rows="4"></textarea>
+                        <textarea name="taxi_desc" class="form-control" id="exampleTextarea1" rows="4" required></textarea>
                       </div>
 
                       <button type="submit" class="btn btn-success mr-2">Submit</button>

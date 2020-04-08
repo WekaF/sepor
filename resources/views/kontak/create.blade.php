@@ -24,11 +24,11 @@
                         </div>
                       <div class="form-group">
                         <label for="nama">Nama Kontak</label>
-                        <input name='nama' type="text" class="form-control" placeholder="nama kontak">
+                        <input name='nama' type="text" class="form-control" placeholder="nama kontak" required>
                       </div>
                       <div class="form-group">
                         <label for="nomor">Nomor</label>
-                        <input name='nomor' type="text" class="form-control" placeholder="nomor">
+                        <input name='nomor' type="text" class="form-control" placeholder="nomor" required>
                       </div>
                     
                       <button type="submit" class="btn btn-success mr-2">Submit</button>

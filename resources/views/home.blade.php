@@ -73,18 +73,19 @@
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">info KA</h4>
-                    <table id="" class="table table-striped">
-                        <thead>
+                    <h3 class="text-center font-weight-bold">INFORMASI KERETA API</h3>
+                   
+                    <table id="" class="table table-striped table-bordered" width="100%">
+                        <thead class="table-dark">
                           <tr>
-                                <th>No</th>
-                                  <th>Kategori</th>
-                                  <th>Nama Kereta</th>
-                                  <th>jalur</th>
-                                  <th>Kelas Kereta</th>
-                                  <th>Relasi</th>
-                                  <th>Jam Keberangkatan</th>
-                                  <th>Keterangan</th>
+                                  <th width="5px">No</th>
+                                  <th width="50px">Kategori</th>
+                                  <th width="100px">Nama Kereta</th>
+                                  <th width="10px">jalur</th>
+                                  <th width="100px">Kelas Kereta</th>
+                                  <th width="100px">Relasi</th>
+                                  <th width="10px">Jam</th>
+                                  <th width="10px">Keterangan</th>
                                  
                           </tr>
                         </thead>
@@ -123,7 +124,7 @@
               <div class="col-lg-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Kontak</h4>
+                    <h4 class="text-center font-weight-bold">Kontak</h4>
                     <table id="" class="table table-striped">
                       <thead>
                         <tr>
@@ -150,7 +151,7 @@
               <div class="col-lg-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Data Destinasi</h4>
+                    <h4 class="text-center font-weight-bold">Data Destinasi</h4>
                     <table id="" class="table table-striped">
                       <thead>
                         <tr>

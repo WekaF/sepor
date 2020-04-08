@@ -49,7 +49,7 @@
                         <div class="form-group">
                         <label for="exampleTextarea1" class="col-md-4 control-label">Intruksi</label>
                         <div class="col-md-6">
-                        <textarea name="deskripsi" class="form-control" id="exampleTextarea1" rows="4"></textarea>
+                        <textarea name="deskripsi" class="form-control" id="exampleTextarea1" rows="4" required></textarea>
                         </div>
                       </div>
 

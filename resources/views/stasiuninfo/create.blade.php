@@ -43,7 +43,7 @@
                             <label for="email" class="col-md-4 control-label">Denah Stasiun</label>
                             <div class="col-md-6">
                                 <img width="200" height="200" />
-                                <input type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar1">
+                                <input required type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar1">
                             </div>
                         </div>
 
@@ -51,7 +51,7 @@
                             <label for="email" class="col-md-4 control-label">Denah Evakuasi</label>
                             <div class="col-md-6">
                                 <img width="200" height="200" />
-                                <input type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar2">
+                                <input required type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar2">
                             </div>
                         </div>
 
@@ -59,7 +59,7 @@
                             <label for="email" class="col-md-4 control-label">Peta Jaringan Stasiun</label>
                             <div class="col-md-6">
                                 <img width="200" height="200" />
-                                <input type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar3">
+                                <input required type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar3">
                             </div>
                         </div>
 

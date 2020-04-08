@@ -32,6 +32,7 @@ $('#form-delete').on('submit', function(e){
 
 @section('content')
       <div class="card">
+      <div class="col-md-12">
           <h4 class="card-title"><strong>Data</strong> Kereta</h4>
           <div class="col-lg-2">
             <a href="{{route('keretainfo.create')}}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Tambah Data</a>
@@ -39,17 +40,17 @@ $('#form-delete').on('submit', function(e){
 
           <div class="card-body">
 
-            <table class="table table-striped table-bordered" cellspacing="0" data-provide="datatables">
+            <table width="100%" class="table table-striped table-bordered" cellspacing="0" data-provide="datatables">
               <thead>
                 <tr>
-                <th>Jenis Kereta</th>
-                <th>No KA</th>
-                <th>Nama Kereta</th>
-                <th>Jam Keberangkatan</th>
-                <th>Letak Kereta <i>(jalur)</i> </th>
-                <th>Kelas Kereta</th>
-                <th>Relasi</th>
-                <th>Progres Stasiun</th>
+                <th >Jenis KA</th>
+                <th >No KA</th>
+                <th >Nama Kereta</th>
+                <th >Jam</th>
+                <th >(jalur) </th>
+                <th >Kelas Kereta</th>
+                <th >Relasi</th>
+                <th >Progres Stasiun</th>
                 <th>Keterangan</th>
                 <th>Action</th>
                 </tr>
@@ -100,6 +101,7 @@ $('#form-delete').on('submit', function(e){
                           @endforeach
               </tbody>
             </table>
+          </div>
           </div>
         </div>
 

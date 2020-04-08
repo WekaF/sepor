@@ -14,7 +14,7 @@
 @section('content')
 
               <div class="card">
-          <h4 class="card-title"><strong>Tambah</strong> Destinasi</h4>
+          <h4 class="card-title"><strong>Tambah</strong> Angkutan</h4>
           <div class="col-lg-2">
             <a href="{{route('trayek.create')}}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Tambah Data</a>
           </div>

@@ -65,7 +65,7 @@ $(document).ready(function() {
                         <div class="form-group{{ $errors->has('npm') ? ' has-error' : '' }}">
                             <label for="isbn" class="col-md-4 control-label">Intruksi</label>
                             <div class="col-md-6">
-                                <input id="isbn" type="text" class="form-control" name="intruksi" value="{{ $data->jalur->intruksi }}" readonly>
+                                <input id="isbn" type="text" class="form-control" name="intruksi" value="{{ $data->jalur->deskripsi }}" readonly>
                                 @if ($errors->has('isbn'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('isbn') }}</strong>

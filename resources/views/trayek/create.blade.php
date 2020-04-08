@@ -36,29 +36,29 @@
                     {{ csrf_field() }}
                       <div class="form-group">
                         <label for="trayek_name">Nama Angkutan</label>
-                        <input name='trayek_name' type="text" class="form-control" placeholder="nama Angkutan">
+                        <input name='trayek_name' type="text" class="form-control" placeholder="nama Angkutan" required>
                        
                       </div>
                       <div class="form-group">
                         <label for="trayek_price">Harga</label>
-                        <input name='trayek_price' type="text" class="form-control" placeholder="harga">
+                        <input name='trayek_price' type="text" class="form-control" placeholder="harga" required>
                       </div>
                      
                       <div class="form-group">
                         <label for="trayek_slug">slug</label>
-                        <input name='trayek_slug' type="text" class="form-control" placeholder="slug">
+                        <input name='trayek_slug' type="text" class="form-control" placeholder="slug" required>
                       </div>
 
                       <div class="form-group">
                         <label for="exampleTextarea1">Deskripsi</label>
-                        <textarea name="trayek_desc" class="form-control" id="exampleTextarea1" rows="4"></textarea>
+                        <textarea name="trayek_desc" class="form-control" id="exampleTextarea1" rows="4" required></textarea>
                       </div>
 
                       <div class="form-group">
                             <label for="email" class="col-md-4 control-label">Gambar</label>
                             <div class="col-md-6">
                                 <img width="200" height="200" />
-                                <input type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar" multipart>
+                                <input required type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar" multipart>
                             </div>
                         </div>
 

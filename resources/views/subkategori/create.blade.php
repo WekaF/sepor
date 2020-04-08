@@ -77,26 +77,26 @@ alert("Uploaded SuccessFully");
                     {{ csrf_field() }}
                       <div class="form-group">
                         <label for="nama_subkat">Nama Destinasi</label>
-                        <input name='nama_subkategori' type="text" class="form-control" placeholder="Nama Destinasi">
+                        <input name='nama_subkategori' type="text" class="form-control" placeholder="Nama Destinasi" required>
                       </div>
                       <div class="form-group">
                         <label for="Deskrip">Deskriptif</label>
-                        <input name='deskripsi' type="text" class="form-control" placeholder="Keterangan">
+                        <input name='deskripsi' type="text" class="form-control" placeholder="Keterangan" required>
                       </div>
                       
                       <div class="form-group">
                         <label for="long">Long</label>
-                        <input name='long' type="text" class="form-control" placeholder="long">
+                        <input name='long' type="text" class="form-control" placeholder="long" required>
                       </div>
                       
                       <div class="form-group">
                         <label for="lat">Lat</label>
-                        <input name='lat' type="text" class="form-control" placeholder="Lat">
+                        <input name='lat' type="text" class="form-control" placeholder="Lat" required>
                       </div>
 
                       <div class="form-group">
                         <label for="no">No Telpon</label>
-                        <input name='no_telp' type="text" class="form-control" placeholder="no_telp">
+                        <input name='no_telp' type="text" class="form-control" placeholder="no_telp" required>
                       </div>
 
                         <div class="col-md-6">
