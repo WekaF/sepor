@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
  Route::get('trayek','TrayekController@trayek');
  Route::get('taxi','TaxiController@taxi');
  Route::get('home','HomeController@homej');
- Route::get('keretainfo','KeretaInfoController@infokereta');
+ Route::get('keretainfo','KeretainfoController@infokereta');
  Route::get('kontak','KontakController@kontak');
  Route::get('stasiuninfo','StasiunInfoController@infostat');
  
