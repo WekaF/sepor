@@ -12,6 +12,15 @@ class JalurController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function jalur(){
+        
+        $jalur = Jalur::all();
+      
+        return response()->json($jalur,200);
+
+
+    }
     public function index()
     {
         $data = Jalur::all();

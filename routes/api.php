@@ -12,4 +12,5 @@ use Illuminate\Http\Request;
  Route::get('keretainfo','KeretainfoController@infokereta');
  Route::get('kontak','KontakController@kontak');
  Route::get('stasiuninfo','StasiunInfoController@infostat');
+ Route::get('jalur','JalurController@jalur');
  
