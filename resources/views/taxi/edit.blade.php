@@ -23,7 +23,7 @@
                                     
 
                       <div class="form-group">
-                        <label for="exampleTextarea1">Textarea</label>
+                        <label for="exampleTextarea1">Deskripsi</label>
                         <textarea name="taxi_desc" class="form-control" id="exampleTextarea1" rows="4">{{$data->taxi_desc}}</textarea>
                       </div>
 

@@ -32,7 +32,7 @@
                   <div class="card-body">
                     <h4 class="card-title">Tambah Data</h4>
                     
-                    <form class="forms-sample" method="POST" action="{{ route('kategori.update', $data->id)}}">
+                    <form class="forms-sample" method="POST" action="{{ route('trayek.update', $data->id)}}">
                     {{ csrf_field() }}
                     {{ method_field('put') }}
                     <div class="form-group">
@@ -50,7 +50,7 @@
                       </div>
 
                       <div class="form-group">
-                        <label for="exampleTextarea1">Textarea</label>
+                        <label for="exampleTextarea1">Deskripsi</label>
                         <textarea name="trayek_desc" class="form-control" id="exampleTextarea1" rows="4">{{ $data->trayek_desc}}</textarea>
                       </div>
 
