@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Jalur;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Response;
 
 class JalurController extends Controller
 {
@@ -15,8 +16,7 @@ class JalurController extends Controller
 
     public function jalur(){
         
-        $jalur = Jalur::all();
-      
+        $jalur = Jalur::all();     
         return response()->json($jalur,200);
 
 
@@ -75,7 +75,17 @@ class JalurController extends Controller
      */
     public function show($id)
     {
-        //
+    $jalur = Jalur::find($id);
+
+        if ($jalur) {
+         $response['status'] = 'OK';
+         $response['result'] = $jalur;
+        } else {
+         $response['status'] = 'ERROR';
+         $response['message'] = 'User not found';
+        }
+      
+        return Response::json($response);
     }
 
     /**

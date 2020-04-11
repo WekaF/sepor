@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
 use Carbon\Carbon;
 use Datatables;
+use Response;
 
 use Illuminate\Http\Request;
 
@@ -16,19 +17,19 @@ class SubKatController extends Controller
 {
     private $subkate;
 
-    public function __construct()
-    {
-        // $this->middleware('auth');
-    }
 
-    public function subkat($id){
+    public function subkat(){
 
-        // $subkat = SubKategori::all();
+        $subkat = SubKategori::get();
 
-
-        $data = SubKategori::where('kategori_id',$id)->get();
+        $response['status'] = 'OK';
+        $response['result'] = $subkat;
       
-        return response()->json($data,200);
+        return Response::json($response);
+
+        // $data = SubKategori::all();
+      
+        // return response()->json($data,200);
 
     }
     
@@ -114,9 +115,21 @@ class SubKatController extends Controller
     public function show($id)
     {
 
-        $data = SubKategori::findOrFail($id);
+        // $data = SubKategori::findOrFail($id);
 
-        return view('subkategori.show', compact('data'));
+        // return view('subkategori.show', compact('data'));
+        $subkat = SubKategori::find($id);
+
+        if ($subkat) {
+         $response['status'] = 'OK';
+         $response['result'] = $subkat;
+        } else {
+         $response['status'] = 'ERROR';
+         $response['message'] = 'User not found';
+        }
+      
+        return Response::json($response);
+       
     }
     public function update(Request $request, $id)
     {

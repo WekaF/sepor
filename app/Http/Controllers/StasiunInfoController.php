@@ -6,6 +6,8 @@ use App\StasiunInfo;
 use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
 use Carbon\Carbon;
+use Response;
+
 use Illuminate\Http\Request;
 
 class StasiunInfoController extends Controller
@@ -14,7 +16,7 @@ class StasiunInfoController extends Controller
 
         $data = StasiunInfo::all();
     
-        return response()->json($data,200);
+        return Response::json($data);
     
     }
     public function index()
@@ -95,7 +97,17 @@ class StasiunInfoController extends Controller
      */
     public function show($id)
     {
-        //
+        $stas = StasiunInfo::find($id);
+
+        if ($stas) {
+         $response['status'] = 'OK';
+         $response['result'] = $stas;
+        } else {
+         $response['status'] = 'ERROR';
+         $response['message'] = 'User not found';
+        }
+      
+        return Response::json($response);
     }
 
     /**

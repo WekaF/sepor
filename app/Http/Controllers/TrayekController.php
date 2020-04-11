@@ -7,17 +7,13 @@ use App\Trayek;
 use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
 use Carbon\Carbon;
+use Response;
 
 use Illuminate\Http\Request;
 
 class TrayekController extends Controller
 {
    private $trayek;
-
-   public function __construct()
-    {
-        // $this->middleware('auth');
-    }
     
    public function trayek(){
 
@@ -82,9 +78,17 @@ class TrayekController extends Controller
      */
     public function show($id)
     {
-        $data = Trayek::findOrFail($id);
+        $trayek = Trayek::find($id);
 
-        return view('trayek.show', compact('data'));
+        if ($trayek) {
+         $response['status'] = 'OK';
+         $response['result'] = $trayek;
+        } else {
+         $response['status'] = 'ERROR';
+         $response['message'] = 'User not found';
+        }
+      
+        return Response::json($response);
     }
 
   

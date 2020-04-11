@@ -8,6 +8,7 @@ use App\Jalur;
 use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
 use Carbon\Carbon;
+use Response;
 
 use Illuminate\Http\Request;
 
@@ -16,9 +17,12 @@ class KeretainfoController extends Controller
    
     public function infokereta(){
 
-        $data = DetailKA::all();
-    
-        return response()->json($data,200);
+        $detail = DetailKA::get();
+
+        $response['status'] = 'OK';
+        $response['result'] = $detail;
+      
+        return Response::json($response);
     
     }
     public function index()
@@ -131,5 +135,20 @@ class KeretainfoController extends Controller
         $detail->delete();
         alert()->success('Berhasil.','Data telah dihapus!');
         return redirect()->route('keretainfo.index');
+    }
+
+    public function keretashow($id)
+    {
+        $detail = DetailKA::find($id);
+
+        if ($detail) {
+         $response['status'] = 'OK';
+         $response['result'] = $detail;
+        } else {
+         $response['status'] = 'ERROR';
+         $response['message'] = 'User not found';
+        }
+      
+        return Response::json($response);
     }
 }

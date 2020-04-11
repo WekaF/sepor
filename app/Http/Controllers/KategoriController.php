@@ -6,22 +6,22 @@ use App\User;
 use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
 use Carbon\Carbon;
+use Response;
 
 use Illuminate\Http\Request;
 
 class KategoriController extends Controller
 {
 
-    public function __construct()
-    {
-        // $this->middleware('auth');
-    }
     
     public function kate(){
         
-        $subkat = Kategori::all();
+        $kate = Kategori::get();
+
+        $response['status'] = 'OK';
+        $response['result'] = $kate;
       
-        return response()->json($subkat,200);
+        return Response::json($response);
 
 
     }
@@ -62,9 +62,17 @@ class KategoriController extends Controller
     public function show($id)
     {
 
-        $data = Kategori::findOrFail($id);
+        $kate = Kategori::find($id);
 
-        return view('kategori.show', compact('data'));
+        if ($kate) {
+         $response['status'] = 'OK';
+         $response['result'] = $kate;
+        } else {
+         $response['status'] = 'ERROR';
+         $response['message'] = 'User not found';
+        }
+      
+        return Response::json($response);
     }
     public function update(Request $request, $id)
     {

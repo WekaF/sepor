@@ -6,12 +6,14 @@ use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
 use Carbon\Carbon;
 use App\Taxi;
+use Response;
 use Illuminate\Http\Request;
 
 class TaxiController extends Controller
 {
 
     public function taxi(){
+
         $subkat = Taxi::all();
       
         return response()->json($subkat,200);
@@ -64,9 +66,17 @@ class TaxiController extends Controller
      */
     public function show($id)
     {
-        $data = Taxi::findOrFail($id);
+        $taxi = Taxi::find($id);
 
-        return view('taxi.show', compact('data'));
+        if ($taxi) {
+         $response['status'] = 'OK';
+         $response['result'] = $taxi;
+        } else {
+         $response['status'] = 'ERROR';
+         $response['message'] = 'User not found';
+        }
+      
+        return Response::json($response);
     }
 
     /**

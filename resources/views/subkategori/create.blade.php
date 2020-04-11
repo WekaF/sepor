@@ -79,9 +79,10 @@ alert("Uploaded SuccessFully");
                         <label for="nama_subkat">Nama Destinasi</label>
                         <input name='nama_subkategori' type="text" class="form-control" placeholder="Nama Destinasi" required>
                       </div>
+
                       <div class="form-group">
-                        <label for="Deskrip">Deskriptif</label>
-                        <input name='deskripsi' type="text" class="form-control" placeholder="Keterangan" required>
+                        <label for="exampleTextarea1">Deskripsi</label>
+                        <textarea name="deskripsi" class="form-control" id="exampleTextarea1" rows="4"></textarea>
                       </div>
                       
                       <div class="form-group">
