@@ -16,4 +16,7 @@ class Kategori extends Model
     public function index(){
         return Kategori::all();
     }
+    public function subkategori(){
+        return $this->hasMany(SubKategori::class);
+    }
 }

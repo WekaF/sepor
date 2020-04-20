@@ -114,21 +114,10 @@ class SubKatController extends Controller
 
     public function show($id)
     {
-
-        // $data = SubKategori::findOrFail($id);
-
-        // return view('subkategori.show', compact('data'));
-        $subkat = SubKategori::find($id);
-
-        if ($subkat) {
-         $response['status'] = 'OK';
-         $response['result'] = $subkat;
-        } else {
-         $response['status'] = 'ERROR';
-         $response['message'] = 'User not found';
-        }
+        // $subkat = SubKategori::find($id);
+        $subkat = SubKategori::with('kategori')->where('id',$id)->get();
       
-        return Response::json($response);
+        return Response::json($subkat,200);
        
     }
     public function update(Request $request, $id)
@@ -149,6 +138,24 @@ class SubKatController extends Controller
         alert()->success('Berhasil.','Data telah dihapus!');
         return redirect()->route('subkategori.index');
         
+       }
+
+       public function listkategori($list){
+
+        $data = SubKategori::get();   
+        $list = SubKategori::pluck('kategori_id','id');
+
+        // if ($list) {
+        //  $response['status'] = 'OK';
+        //  $response['result'] = $list;
+        // } else {
+        //  $response['status'] = 'ERROR';
+        //  $response['message'] = 'User not found';
+        // }
+      
+        return Response::json($list,200)->with('data',$data);
+
+
        }
 
       

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Kategori;
 use App\User;
+use App\SubKategori;
 use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
 use Carbon\Carbon;
@@ -27,7 +28,7 @@ class KategoriController extends Controller
     }
     public function index()
     {
-        $data = Kategori::all();
+        $data = Kategori::with('subkategori')->get();
       
         return view('/kategori.index')->with('Kategori', $data);
         
@@ -62,17 +63,9 @@ class KategoriController extends Controller
     public function show($id)
     {
 
-        $kate = Kategori::find($id);
+        $kate = Kategori::with('subkategori')->where('id',$id)->get();
 
-        if ($kate) {
-         $response['status'] = 'OK';
-         $response['result'] = $kate;
-        } else {
-         $response['status'] = 'ERROR';
-         $response['message'] = 'User not found';
-        }
-      
-        return Response::json($response);
+        return Response::json($kate,200);
     }
     public function update(Request $request, $id)
     {
@@ -96,4 +89,19 @@ class KategoriController extends Controller
         return redirect()->route('kategori.index');
         
        }
+
+
+       public function list($nama_kategori,$kategori_id){
+         
+        $list = Kategori::find('nama_kategori',$nama_kategori);
+        
+        // $list = Kategori::with(['nama_kategori' => function ($query) use ($id){
+        //     $query->where('id',$id); }])->where('nama_kategori',$nama_kategori)->first();
+
+       
+      
+        return Response::json($list,200);
+
+       }
+
 }
