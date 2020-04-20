@@ -115,7 +115,7 @@ class SubKatController extends Controller
     public function show($id)
     {
         // $subkat = SubKategori::find($id);
-        $subkat = SubKategori::with('kategori')->where('id',$id)->get();
+        $subkat = SubKategori::with('kat')->where('kategori_id',$id)->get();
       
         return Response::json($subkat,200);
        
@@ -140,20 +140,15 @@ class SubKatController extends Controller
         
        }
 
-       public function listkategori($list){
+       public function list($id,$detail){
 
-        $data = SubKategori::get();   
-        $list = SubKategori::pluck('kategori_id','id');
-
-        // if ($list) {
-        //  $response['status'] = 'OK';
-        //  $response['result'] = $list;
-        // } else {
-        //  $response['status'] = 'ERROR';
-        //  $response['message'] = 'User not found';
-        // }
-      
-        return Response::json($list,200)->with('data',$data);
+       
+        $subkat = SubKategori::with('kat')
+                             ->where('kategori_id',$id)
+                             ->where('id',$detail)
+                             ->get();
+        
+        return Response::json($subkat,200);
 
 
        }

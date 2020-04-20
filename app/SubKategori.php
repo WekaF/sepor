@@ -25,6 +25,9 @@ class SubKategori extends Model
     public function kategori(){
         return $this->belongsTo('App\Kategori');
     }
+    public function kat(){
+        return $this->belongsTo(Kategori::class,'kategori_id');
+    }
     public function index(){
         return SubKategori::all();
     }

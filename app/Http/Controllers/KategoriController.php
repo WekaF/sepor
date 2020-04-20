@@ -91,16 +91,14 @@ class KategoriController extends Controller
        }
 
 
-       public function list($nama_kategori,$kategori_id){
+       public function list($id,$detail){
          
-        $list = Kategori::find('nama_kategori',$nama_kategori);
-        
-        // $list = Kategori::with(['nama_kategori' => function ($query) use ($id){
-        //     $query->where('id',$id); }])->where('nama_kategori',$nama_kategori)->first();
+        $kate = Kategori::with('subkategori')
+                        ->where('id',$id)
+                        ->where('id',$detail)
+                        ->get();
 
-       
-      
-        return Response::json($list,200);
+        return Response::json($kate,200);
 
        }
 

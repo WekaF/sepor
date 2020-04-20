@@ -9,11 +9,13 @@ Route::get('home','HomeController@homej');
 Route::group(array('prefix' => 'subkategori'), function(){
     Route::get('', 'SubKatController@subkat');
     Route::get('/{id}', 'SubKatController@show');
+    Route::get('/{id}/{detail}','SubKatController@list');
    });
 
 Route::group(array('prefix' => 'kategori'), function(){
     Route::get('', 'KategoriController@kate');
     Route::get('/{id}', 'KategoriController@show');
+   //  Route::get('/{id}/{detail}', 'KategoriController@list');
    });   
 
 Route::group(array('prefix' => 'trayek'), function(){
