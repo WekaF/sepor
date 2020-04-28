@@ -15,7 +15,7 @@ Route::group(array('prefix' => 'subkategori'), function(){
 Route::group(array('prefix' => 'kategori'), function(){
     Route::get('', 'KategoriController@kate');
     Route::get('/{id}', 'KategoriController@show');
-   //  Route::get('/{id}/{detail}', 'KategoriController@list');
+     Route::get('/{id}/{detail}', 'KategoriController@list');
    });   
 
 Route::group(array('prefix' => 'trayek'), function(){
