@@ -11,14 +11,16 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcom');
-// });
 
+
+Route::group(['prefix' => '','as'=>'web.'], function() {
+    Route::get('', ['as' => 'home', 'uses' => 'BerandaController@index']);
+    Route::get('news/{id}', ['as' => 'show', 'uses' => 'BerandaController@show']);
+    Route::get('search/', ['as' => 'search', 'uses' => 'BerandaController@search']);
+});
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 Route::resource('kategori', 'KategoriController');
 Route::resource('subkategori', 'SubKatController');
@@ -28,4 +30,4 @@ Route::resource('keretainfo','KeretainfoController');
 Route::resource('jeniska','JeniskeretaController');
 Route::resource('stasiuninfo','StasiunInfoController');
 Route::resource('kontak','KontakController');
-Route::resource('jalur','JalurController');
+Route::resource('berita','BeritaController');

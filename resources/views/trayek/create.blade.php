@@ -27,7 +27,7 @@
 
 @section('content')
 
-<div class="col-md-6 grid-margin stretch-card">
+<div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Tambah Data</h4>
@@ -36,28 +36,30 @@
                     {{ csrf_field() }}
                       <div class="form-group">
                         <label for="trayek_name">Nama Angkutan</label>
+                        <div class="col-md-6">
                         <input name='trayek_name' type="text" class="form-control" placeholder="nama Angkutan" required>
-                       
-                      </div>
-                      <div class="form-group">
-                        <label for="trayek_price">Harga</label>
-                        <input name='trayek_price' type="text" class="form-control" placeholder="harga" required>
-                      </div>
-                     
-                      <div class="form-group">
-                        <label for="trayek_slug">slug</label>
-                        <input name='trayek_slug' type="text" class="form-control" placeholder="slug" required>
+                        </div>
                       </div>
 
                       <div class="form-group">
+                        <label for="trayek_price">Harga</label>
+                        <div class="col-md-6">
+                        <input name='trayek_price' type="text" class="form-control" placeholder="harga" required>
+                        </div>
+                       </div>
+
+
+                      <div class="form-group">
                         <label for="exampleTextarea1">Deskripsi</label>
+                        <div class="col-md-6">
                         <textarea name="trayek_desc" class="form-control" id="exampleTextarea1" rows="4" required></textarea>
+                        </div>
                       </div>
 
                       <div class="form-group">
                             <label for="email" class="col-md-4 control-label">Gambar</label>
                             <div class="col-md-6">
-                                <img width="200" height="200" />
+                                <img width="400" height="300" />
                                 <input required type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar" multipart>
                             </div>
                         </div>

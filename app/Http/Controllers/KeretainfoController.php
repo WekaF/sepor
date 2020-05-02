@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\DetailKA;
 use App\JenisKA;
-use App\Jalur;
 use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
 use Carbon\Carbon;
@@ -29,9 +28,11 @@ class KeretainfoController extends Controller
     {
         $data = DetailKA::all();
         $jenis = JenisKA::pluck('jenis_kereta','id');
-        $jalur = Jalur::where('jalur');
+        // $jalur = Jalur::where('jalur');
+
+        // dd($data->all());
         
-        return view('keretainfo.index',compact('data','jalur'))->with('jenis',$jenis);
+        return view('keretainfo.index',compact('data'))->with('jenis',$jenis);
     }
 
     /**
@@ -41,10 +42,8 @@ class KeretainfoController extends Controller
      */
     public function create()
     {
-        $jenis = JenisKA::pluck('jenis_kereta','id');
-        $jalur = Jalur::pluck('jalur','id');
-        return view('keretainfo.create')
-        ->with('jenis',$jenis)->with('jalur',$jalur);
+         $jenis = JenisKA::get();
+        return view('keretainfo.create',compact('jenis'));
     }
 
     /**
@@ -55,19 +54,44 @@ class KeretainfoController extends Controller
      */
     public function store(Request $request)
     {
+
+        // dd($request->all());
+
+        if($request->file('gambar1')) {
+            $file = $request->file('gambar1');
+            $dt = Carbon::now();
+            $acak  = $file->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $request->file('gambar1')->move("images/keretainfo", $fileName);
+            $gambar1 = $fileName;
+        } else {
+            $gambar1 = NULL;
+        }
+
+        if($request->file('gambar2')) {
+            $file = $request->file('gambar2');
+            $dt = Carbon::now();
+            $acak  = $file->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $request->file('gambar2')->move("images/keretainfo", $fileName);
+            $gambar2 = $fileName;
+        } else {
+            $gambar2 = NULL;
+        }
+
         DetailKA::create([  
             'nama_kereta'        => $request->get('nama_kereta'),
             'no_ka'              => $request->get('no_ka'),
             'jam'                => $request->get('jam'),
-            'jalur_id'           => $request->get('jalur_id'),
             'kelaska'            => $request->get('kelaska'),
             'relasi'             => $request->get('relasi'),
-            'progres_stasiun'    => $request->get('progres_stasiun'),
             'jenis_id'           => $request->input('jenis_id'),
             'keterangan'         => $request->get('keterangan'),
+            'progres_stasiun'    => $gambar1,
+            'gambar_jalur'       => $gambar2,
            
         ]);
-    alert()->success('Berhasil.','Data telah ditambahkan!');       
+       
     return redirect()->route('keretainfo.index');   
     }
 
@@ -80,9 +104,8 @@ class KeretainfoController extends Controller
     public function show($id)
     {
         $data = DetailKA::findOrFail($id);
-        $jalur = Jalur::get();
-        
-        return view('keretainfo.show', compact('data','jalur'));
+       
+        return view('keretainfo.show', compact('data'));
     }
 
     /**
@@ -95,15 +118,15 @@ class KeretainfoController extends Controller
     {
         $data = DetailKA::findOrFail($id);
       
-        $jenis = JenisKA::pluck('jenis_kereta','id');
-        $jalur = Jalur::pluck('jalur','id');
+        $jenis = JenisKA::get();
+        
         if (empty($data)) {
             Flash::error('Barang not found');
 
             return redirect(route('keretainfo.index'));
         }
 
-        return view('keretainfo.edit',compact('data'))->with('jenis',$jenis)->with('jalur',$jalur);
+        return view('keretainfo.edit',compact('data'))->with('jenis',$jenis);
     }
 
     /**
@@ -115,9 +138,45 @@ class KeretainfoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request->all());
+
         $data = DetailKA::findOrFail($id);
 
-        DetailKA::find($id)->update($request->all());
+        if($request->file('gambar1')) {
+            $file = $request->file('gambar1');
+            $dt = Carbon::now();
+            $acak  = $file->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $request->file('gambar1')->move("images/keretainfo", $fileName);
+            $gambar1 = $fileName;
+        } else {
+            $gambar1 = NULL;
+        }
+
+        if($request->file('gambar2')) {
+            $file = $request->file('gambar2');
+            $dt = Carbon::now();
+            $acak  = $file->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $request->file('gambar2')->move("images/keretainfo", $fileName);
+            $gambar2 = $fileName;
+        } else {
+            $gambar2 = NULL;
+        }
+        DetailKA::find($id)->update([  
+            'nama_kereta'        => $request->get('nama_kereta'),
+            'no_ka'              => $request->get('no_ka'),
+            'jam'                => $request->get('jam'),
+            'kelaska'            => $request->get('kelaska'),
+            'relasi'             => $request->get('relasi'),
+            'jenis_id'           => $request->input('jenis_id'),
+            'keterangan'         => $request->get('keterangan'),
+            'progres_stasiun'    => $gambar1,
+            'gambar_jalur'       => $gambar2,
+           
+        ]);
+
+
                 
          alert()->success('Berhasil.','Data telah diubah!');
         return redirect()->route('keretainfo.index',compact('data'));

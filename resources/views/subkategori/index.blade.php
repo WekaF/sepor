@@ -30,7 +30,7 @@
                 <th>Kategori</th>
                 <th>Deskriptif</th>
                 <th>Gambar</th>
-                <th>No Telpon</th>
+                <th>Kontak</th>
                 <th>Action</th>
                 </tr>
               </thead>
@@ -43,12 +43,18 @@
                                   <td>{{$datang->lat}}</td>
                                   <td>{{$datang->kategori->nama_kategori}}</td>
                                   <td>{{$datang->deskripsi}}</td>
+                                  
                                   <td>
-                                     <?php foreach (json_decode($datang->gambar)as $picture) { ?>
-                                         <img src="{{url('images/destinasi/'. $picture)}}" style="height:100px; width:100px"/>
-                                        <?php } ?>
-                                        
-                                   </td>
+                                  @if($datang->gambar)
+                                      @foreach (json_decode($datang->gambar,true) as $p) 
+                                         <img src="{{url('images/destinasi/'. $p)}}" style="height:100px; width:100px"/>
+                                      @endforeach
+                                  @endif
+                                  </td>
+                                  
+                                 
+
+
                                       <td>{{$datang->no_telp}}</td>
                                   
                                   <td>

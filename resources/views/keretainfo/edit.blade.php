@@ -1,8 +1,35 @@
+
+@section('js')
+
+
+
+<script type="text/javascript">
+        function readURL() {
+            var input = this;
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $(input).prev().attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $(function () {
+            $(".uploads").change(readURL)
+            $("#f").submit(function(){
+                // do ajax submit or just classic form submit
+              //  alert("fake subminting")
+                return false
+            })
+        })
+        </script>
+
+@stop
 @section('title','Edit Info Kereta')
 @extends('layouts.app')
 
 @section('content')
-{!! Form::model($data, ['route' => ['keretainfo.update', $data->id], 'method' => 'patch']) !!} 
 <form action="{{ route('keretainfo.update', $data->id)}}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
         {{ method_field('put') }}
@@ -35,12 +62,7 @@
                             </div>
 
 
-                            <div class="form-group">
-                            <label for="judul" class="col-md-4 control-label">Jalur</label>
-                            <div class="col-md-6">
-                            {!! Form::select('jalur_id' ,$jalur,null,['class'=>'form-control']) !!}
-                            </div>
-                           </div>
+                         
 
                         
                         
@@ -56,20 +78,34 @@
                                 <input id="isbn" type="text" class="form-control" name="relasi" value="{{$data->relasi}}"required>
                             </div>
 
-                        <div class="form-group">
-                            <label for="judul" class="col-md-4 control-label">Progres Stasiun</label>
-                            <div class="col-md-6">
-                                <input id="isbn" type="text" class="form-control" name="progres_stasiun" value="{{$data->progres_stasiun}}"required>
-                            </div>
-
                             <div class="form-group">
+                            <label for="email" class="col-md-4 control-label">Proges Stasiun</label>
+                            <div class="col-md-6">
+                            <img src="{{ url('images/keretainfo/'.$data->progres_stasiun) }}" style="width:400px; height:300px">
+                                <input required type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar1" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-md-4 control-label">Gambar Jalur</label>
+                            <div class="col-md-6">
+                            <img src="{{ url('images/keretainfo/'.$data->gambar_jalur) }}" style="width:400px; heig ht:300px">
+                                <input required type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar2" >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label for="judul" class="col-md-4 control-label">Jenis Kereta</label>
                             <div class="col-md-6">
-                            {!! Form::select('jenis_id' ,$jenis ,null,['class'=>'form-control']) !!}
+                                        <select name="jenis_id" class="form-control">
+                                                @foreach($jenis as $data)
+                                                <option value="{{$data->id}}">{{$data->jenis_kereta}}</option>
+                                                @endforeach
+                                        </select>
                             </div>
+                        </div>
 
                             <div class="form-group">
-                            <label for="deskripsi" class="col-md-4 control-label">Jalur</label>
+                            <label for="deskripsi" class="col-md-4 control-label">Keterangan</label>
                             <div class="col-md-12">
                                  <select name="keterangan" class="form-control" >
                                     <option value="">-- Pilih keterangan --</option>

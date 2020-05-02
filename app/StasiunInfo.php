@@ -11,6 +11,7 @@ class StasiunInfo extends Model
         'denah_stasiun',
         'denah_evakuasi',
         'peta_jaringan',
+        'stand_komersil'
     ];
 
     public function index(){

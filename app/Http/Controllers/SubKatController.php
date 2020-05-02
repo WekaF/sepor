@@ -10,6 +10,9 @@ use RealRashid\SweetAlert\Facades\Alert;
 use Carbon\Carbon;
 use Datatables;
 use Response;
+use DB;
+use File;
+
 
 use Illuminate\Http\Request;
 
@@ -37,12 +40,18 @@ class SubKatController extends Controller
 
     {
 
-        // $data = SubKategori::all();
-        $subkategori = SubKategori::get();
-        $count = SubKategori::count();
-      
-        return view('subkategori.index',compact('subkategori'))->with('count',$count);
         
+        
+
+        // $data = SubKategori::all();
+        $subkategori = SubKategori::all();
+        $count = SubKategori::count();
+        $gambar = SubKategori::pluck('gambar','id');
+        //  dd($subkategori->all());
+      
+         return view('subkategori.index',compact('subkategori'))->with('count',$count)->with(json_encode($gambar,true));
+       
+            
         
     }
     public function create(Request $request)
@@ -60,7 +69,7 @@ class SubKatController extends Controller
          
         $data = SubKategori::findOrFail($id);
       
-        $kategori = Kategori::pluck('nama_kategori','id');
+        $kategori = Kategori::get();
        
         if (empty($data)) {
             Flash::error('Barang not found');
@@ -73,38 +82,71 @@ class SubKatController extends Controller
     public function store(Request $request)
     {
     
-       
-        // if(count($request->gambar) != null){
-        //     $file = $request->file('gambar');
-        //     $gambar = $file[0]->getClientOriginalName();
-        //     $gambar->move("/images/destinasi", $file[0]);
-        // }else{
-        //     dd('gagal');
-        //     $gambar = NULL;
+      
+        
+        // if($request->file('gambar1')) {
+        //     $file = $request->file('gambar1');
+        //     $dt = Carbon::now();
+        //     $acak  = $file->getClientOriginalExtension();
+        //     $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+        //     $request->file('gambar1')->move("images/destinasi", $fileName);
+        //     $gambar1 = $fileName;
+        // } else {
+        //     $gambar1 = NULL;
         // }
 
-        $input=$request->all();
-        $gambar=array();
-        if($files=$request->file('gambar')){
-            foreach($files as $file){
-                $acak=$file->getClientOriginalExtension();
-                $dt = Carbon::now();
-                $name = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
-                $file->move('images/destinasi',$name);
-                $gambar[]=$name;
-            }
-        }
- 
+        // if($request->file('gambar2')) {
+        //     $file = $request->file('gambar2');
+        //     $dt = Carbon::now();
+        //     $acak  = $file->getClientOriginalExtension();
+        //     $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+        //     $request->file('gambar2')->move("images/destinasi", $fileName);
+        //     $gambar2 = $fileName;
+        // } else {
+        //     $gambar2 = NULL;
+        // }
+        // if($request->file('gambar3')) {
+        //     $file = $request->file('gambar3');
+        //     $dt = Carbon::now();
+        //     $acak  = $file->getClientOriginalExtension();
+        //     $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+        //     $request->file('gambar3')->move("images/destinasi", $fileName);
+        //     $gambar3 = $fileName;
+        // } else {
+        //     $gambar3 = NULL;
+        // }
+       
     
+         $input=$request->all();
+       
+ 
+        //  dd($request->all());
+    
+
+        if($request->hasfile('gambar'))
+        {
+
+           foreach($request->file('gambar') as $image)
+           {
+               $name=$image->getClientOriginalName();
+               $image->move(public_path().'/images/destinasi', $name);  
+               $gambar[] = $name;  
+           }
+        }
+
         SubKategori::Create( [
             'nama_subkategori' => $input['nama_subkategori'],
-            'deskripsi'     => $input['deskripsi'],
-            'long'        => $input['long'],
-            'lat'         => $input['lat'],
-            'no_telp'     => $input['no_telp'],
-            'kategori_id' => $input['kategori_id'],
-            'gambar'      => json_encode($gambar),
+            'deskripsi'        => $input['deskripsi'],
+            'long'             => $input['long'],
+            'lat'              => $input['lat'],
+            'no_telp'          => $input['no_telp'],
+            'kategori_id'      => $input['kategori_id'],
+            'gambar'           => json_encode($gambar),
         ]);
+
+        
+
+      
 
        
     alert()->success('Berhasil.','Data telah ditambahkan!');       
@@ -123,10 +165,35 @@ class SubKatController extends Controller
     public function update(Request $request, $id)
     {
         $data = SubKategori::findOrFail($id);
+        $input=$request->all();
 
-        SubKategori::find($id)->update($request->all());
+          if($request->hasfile('gambar'))
+        {
+            $foto = public_path("/images/destinasi/".$data->gambar);
+            if (File::exists($foto)) {
+                File::delete($foto);
+            }
+           foreach($request->file('gambar') as $image)
+           {
+               $name=$image->getClientOriginalName();
+               $image->move(public_path().'/images/destinasi', $name);  
+               $gambar[] = $name;  
+           }
+
+        }else{
+            $name = $data->nama_subkategori;
+        }
+
+          $data->nama_subkategori = $request->nama_subkategori;
+          $data->deskripsi = $request->deskripsi;
+          $data->long = $request->long;
+          $data->lat = $request->lat;
+          $data->no_telp = $request->no_telp;
+          $data->kategori_id = $request->kategori_id;
+          $data->gambar = json_encode($gambar);
+          $data->save();
+       
                 
-         alert()->success('Berhasil.','Data telah diubah!');
         return redirect()->route('subkategori.index',compact('data'));
     }
 
@@ -151,6 +218,8 @@ class SubKatController extends Controller
         return Response::json($subkat,200);
 
 
+
+        
        }
 
       

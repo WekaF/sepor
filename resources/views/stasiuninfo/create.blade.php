@@ -48,7 +48,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="email" class="col-md-4 control-label">Denah Evakuasi</label>
+                            <label for="email" class="col-md-4 control-label">Prosedur Evakuasi</label>
                             <div class="col-md-6">
                                 <img width="200" height="200" />
                                 <input required type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar2">
@@ -56,10 +56,18 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="email" class="col-md-4 control-label">Peta Jaringan Stasiun</label>
+                            <label for="email" class="col-md-4 control-label">Peta Jaringan Kereta Api</label>
                             <div class="col-md-6">
                                 <img width="200" height="200" />
                                 <input required type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar3">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="col-md-4 control-label">Stand Komersil</label>
+                            <div class="col-md-6">
+                                <img width="200" height="200" />
+                                <input required type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar4">
                             </div>
                         </div>
 

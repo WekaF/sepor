@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Requests;
 use App\User;
 use App\Trayek;
@@ -8,6 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
 use Carbon\Carbon;
 use Response;
+use File;
 
 use Illuminate\Http\Request;
 
@@ -24,7 +26,7 @@ class TrayekController extends Controller
 }
     public function index()
     {
-        $data = Trayek::get();
+        $data = Trayek::all();
 
         $count = Trayek::count();
 
@@ -56,11 +58,12 @@ class TrayekController extends Controller
             $gambar = NULL;
         }
 
+        $input=$request->all();
+
              Trayek::create([  
             'trayek_name'      => $request->get('trayek_name'),
             'trayek_price'     => $request->get('trayek_price'),
             'trayek_desc'      => $request->get('trayek_desc'),
-            'trayek_slug'      => $request->get('trayek_slug'),
             'gambar'           => $gambar
             
            
@@ -101,17 +104,53 @@ class TrayekController extends Controller
    
     public function update(Request $request, $id)
     {
-        Trayek::find($id)->update([
-            'trayek_name'      => $request->get('trayek_name'),
-            'trayek_price'     => $request->get('trayek_price'),
-            'trayek_slug'      => $request->get('trayek_slug'),
-            'trayek_desc'      => $request->get('trayek_desc'),
+
+        $data = Trayek::find($id);
+
+        $input=$request->all();
+
+        if ($request->hasFile('gambar')){
+            $gambar = public_path("/images/trayek/".$data->gambar);
+            if (File::exists($gambar)) {
+                File::delete($gambar);
+            }
+            $gambar = $request->file('gambar');
+            $imgName = $gambar->getClientOriginalName();
+            $lok = public_path('/images/trayek/');
+            $gambar->move($lok, $imgName);
+          } else {
+            $imgName = $data->trayek_name;
+          }
+
+          $data->trayek_name = $request->trayek_name;
+          $data->trayek_price = $request->trayek_price;
+          $data->trayek_desc = $request->trayek_desc;
+          $data->gambar = $imgName;
+          $data->save();
+
+        // if($request->file('gambar')) {
+        //     $file = $request->file('gambar');
+        //     $dt = Carbon::now();
+        //     $acak  = $file->getClientOriginalExtension();
+        //     $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+        //     $request->file('gambar')->move("images/trayek", $fileName);
+        //     $gambar = $fileName;
+        // } else {
+        //     $gambar = NULL;
+        // }
+    
+
+        // Trayek::find($id)->update([
+        //     'trayek_name'      => $input['trayek_name'],
+        //     'trayek_price'     => $input['trayek_price'],
+        //     'trayek_desc'      => $input['trayek_desc'],
+        //     'gambar'           => $gambar,
             
            
-        ]);
+        // ]);
                 
 
-         alert()->success('Berhasil.','Data telah diubah!');
+         
         return redirect()->route('trayek.index');
     }
 

@@ -46,11 +46,11 @@ $('#form-delete').on('submit', function(e){
                 <th >Jenis KA</th>
                 <th >No KA</th>
                 <th >Nama Kereta</th>
-                <th >Jam</th>
-                <th >(jalur) </th>
+                <th >Jam</th> 
                 <th >Kelas Kereta</th>
                 <th >Relasi</th>
                 <th >Progres Stasiun</th>
+                <th >Gambar Jalur</th>
                 <th>Keterangan</th>
                 <th>Action</th>
                 </tr>
@@ -63,14 +63,24 @@ $('#form-delete').on('submit', function(e){
                                 <td>{{$data->no_ka}}</td>
                                 <td>{{$data->nama_kereta}}</td>
                                 <td>{{$data->jam}}</td>
-                                <td>
-                                <a href="{{route('keretainfo.show', $data->id)}}"> 
-                                {{$data->jalur->jalur}}
-                                </a>
-                                </td>
                                 <td>{{$data->kelaska}}</td>
                                 <td>{{$data->relasi}}</td>
-                                <td>{{$data->progres_stasiun}}</td>
+                                <td class="py-1">
+                                      @if($data->progres_stasiun)
+                                        <img src="{{url('images/keretainfo/'. $data->progres_stasiun)}}" alt="image" style="width: 100px; height:100px " />
+                                      @else
+                                        <img src="{{url('images/keretainfo/default.jpg')}}" alt="image" style="width: 100px; height:100px" />
+                                      @endif
+                                  
+                                      </td>
+                                      <td class="py-1">
+                                      @if($data->gambar_jalur)
+                                        <img src="{{url('images/keretainfo/'. $data->gambar_jalur)}}" alt="image" style="width: 100px; height:100px " />
+                                      @else
+                                        <img src="{{url('images/keretainfo/default.jpg')}}" alt="image" style="width: 100px; height:100px" />
+                                      @endif
+                                  
+                                      </td>
                                 <td>
                                 @if($data->keterangan == "Normal")
                                 <span class="badge badge-success">{{$data->keterangan}}</span>

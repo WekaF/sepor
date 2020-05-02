@@ -17,13 +17,13 @@ class CreateDetkeretasTable extends Migration
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->string('nama_kereta')->nullable();  
-            $table->string('no_ka');   
-            $table->string('jam');
-            $table->unsignedBigInteger('jalur_id');
-            $table->string('kelaska');
-            $table->string('relasi');
+            $table->string('no_ka')->nullable();   
+            $table->string('jam')->nullable();
+            $table->string('kelaska')->nullable();
+            $table->string('relasi')->nullable();
             $table->string('progres_stasiun')->nullable();
-            $table->unsignedBigInteger('jenis_id');
+            $table->string('gambar_jalur')->nullable();
+            $table->unsignedBigInteger('jenis_id')->nullable();
             $table->enum('keterangan',['Normal','Bermasalah'])->nullable();
             $table->timestamps();
             
@@ -36,12 +36,7 @@ class CreateDetkeretasTable extends Migration
                   ->references('id')
                   ->on('jeniskeretas')
                   ->onDelete('cascade');  
-                  
-                  
-            $table->foreign('jalur_id')
-                  ->references('id')
-                  ->on('jalurs')
-                  ->onDelete('cascade');    
+                   
         });
     }
 

@@ -12,6 +12,9 @@
 @extends('layouts.app')
 
 @section('content')
+
+<div class="row">
+<div class="col-lg-8 grid-margin stretch-card">      
           <div class="card">
           <h4 class="card-title"><strong>Tambah</strong> Kategori Destinasi</h4>
           <div class="col-lg-2">
@@ -20,7 +23,7 @@
 
           <div class="card-body">
 
-            <table class="table table-striped table-bordered" cellspacing="0" data-provide="datatables">
+            <table class="table table-striped table" cellspacing="0" data-provide="datatables">
               <thead>
                 <tr>
                 <th>Nama kategori</th>
@@ -54,5 +57,7 @@
               </tbody>
             </table>
           </div>
+        </div>
+        </div>
         </div>
 @endsection

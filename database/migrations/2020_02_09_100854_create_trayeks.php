@@ -15,11 +15,10 @@ class CreateTrayeks extends Migration
     {
         Schema::create('trayeks', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('trayek_name');
-            $table->string('trayek_price');
-            $table->text('trayek_desc');
-            $table->string('trayek_slug')->unique();
-            $table ->String('gambar');
+            $table->string('trayek_name')->nullable();
+            $table->string('trayek_price')->nullable();
+            $table->text('trayek_desc')->nullable();
+            $table ->String('gambar')->nullable();
             $table->timestamps();
             $table->softDeletes();
             

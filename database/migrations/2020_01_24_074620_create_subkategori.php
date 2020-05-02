@@ -16,10 +16,10 @@ class CreateSubkategori extends Migration
         Schema::create('subkategori', function (Blueprint $table) {
             $table->Increments('id');
             $table->String('nama_subkategori');
-            $table->String('deskripsi');
-            $table->string('long');
-            $table->string('lat');
-            $table->string('gambar');
+            $table->String('deskripsi')->nullable();
+            $table->string('long')->nullable();
+            $table->string('lat')->nullable();
+            $table->string('gambar')->nullable();
             $table->string('no_telp')->nullable();
             $table->Integer('kategori_id')->unsigned();
             $table->timestamps();

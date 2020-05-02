@@ -11,8 +11,7 @@ class Trayek extends Model
         'trayek_name',
         'trayek_price',
         'trayek_desc',
-        'trayek_slug',
-        'gambar',
+        'gambar',   
     ];
 
     

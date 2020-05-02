@@ -47,7 +47,7 @@
     <aside class="sidebar sidebar-icons-right sidebar-icons-boxed sidebar-expand-lg">
       <header class="sidebar-header">
         <span class="logo">
-          <a href="{{ url('/') }}">
+          <a href="{{ url('/dashboard') }}">
           {{Auth::user()->name}}
           </a>
         </span>

@@ -42,19 +42,26 @@ $(document).ready(function() {
                 <div class="col-12">
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title">Detail <b>{{$data->jalur->jalur}}</b> </h4>
+                      <h4 class="card-title">Detail <b>{{$data->no_ka}}</b> </h4>
                       <form class="forms-sample">
 
                         <div class="form-group">
                             <div class="col-md-6">
-                                <img width="200" height="200" @if($data->jalur->gambar) src="{{ asset('images/jalur/'.$data->jalur->gambar) }}" @endif />
+                                <img width="200" height="200" @if($data->gambar_jalur) src="{{ asset('images/jalur/'.$data->gambar_jalur) }}" @endif />
                             </div>
+
+                            <br>
+                            <label for="judul" class="col-md-4 control-label">Progres Stasiun</label>
+                            <div class="col-md-6">
+                                <img width="200" height="200" @if($data->progres_stasiun) src="{{ asset('images/jalur/'.$data->progres_stasiun) }}" @endif />
+                            </div>
+                            
                         </div>
 
                         <div class="form-group{{ $errors->has('judul') ? ' has-error' : '' }}">
-                            <label for="judul" class="col-md-4 control-label">Jalur</label>
+                            <label for="judul" class="col-md-4 control-label">Nama Kereta Api</label>
                             <div class="col-md-6">
-                                <input id="judul" type="text" class="form-control" name="jalur" value="{{ $data->jalur->jalur }}" readonly="">
+                                <input id="judul" type="text" class="form-control" name="nama_kereta" value="{{ $data->nama_kereta }}" readonly="">
                                 @if ($errors->has('judul'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('judul') }}</strong>
@@ -63,9 +70,44 @@ $(document).ready(function() {
                             </div>
                         </div>
                         <div class="form-group{{ $errors->has('npm') ? ' has-error' : '' }}">
-                            <label for="isbn" class="col-md-4 control-label">Intruksi</label>
+                            <label for="isbn" class="col-md-4 control-label">Jam Keberangkatan</label>
                             <div class="col-md-6">
-                                <input id="isbn" type="text" class="form-control" name="intruksi" value="{{ $data->jalur->deskripsi }}" readonly>
+                                <input id="isbn" type="text" class="form-control" name="jam" value="{{ $data->jam }}" readonly>
+                                @if ($errors->has('isbn'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('isbn') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('npm') ? ' has-error' : '' }}">
+                            <label for="isbn" class="col-md-4 control-label">Kelas Kereta</label>
+                            <div class="col-md-6">
+                                <input id="isbn" type="text" class="form-control" name="kelaska" value="{{ $data->kelaska }}" readonly>
+                                @if ($errors->has('isbn'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('isbn') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('npm') ? ' has-error' : '' }}">
+                            <label for="isbn" class="col-md-4 control-label">Relasi</label>
+                            <div class="col-md-6">
+                                <input id="isbn" type="text" class="form-control" name="jam" value="{{ $data->relasi }}" readonly>
+                                @if ($errors->has('isbn'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('isbn') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('npm') ? ' has-error' : '' }}">
+                            <label for="isbn" class="col-md-4 control-label">Keterangan</label>
+                            <div class="col-md-6">
+                                <input id="isbn" type="text" class="form-control" name="jam" value="{{ $data->keterangan }}" readonly>
                                 @if ($errors->has('isbn'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('isbn') }}</strong>

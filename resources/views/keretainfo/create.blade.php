@@ -27,16 +27,14 @@
 @stop
 @section('title','Create Info Kereta')
 @extends('layouts.app')
-
 @section('content')
-{!! Form::open(['route' => 'keretainfo.store']) !!}
 
               <form method="POST" action="{{ route('keretainfo.store') }}" enctype="multipart/form-data">
     {{ csrf_field() }}
 <div class="row">
             <div class="col-md-12 d-flex align-items-stretch grid-margin">
               <div class="row flex-grow">
-                <div class="col-12">
+                <div class="col-md-12">
                   <div class="card">
                     <div class="card-body">
                       <h4 class="card-title">Tambah Data baru</h4>
@@ -62,12 +60,7 @@
                             </div>
 
 
-                            <div class="form-group">
-                            <label for="judul" class="col-md-4 control-label">Jalur</label>
-                            <div class="col-md-6">
-                            {!! Form::select('jalur_id' ,$jalur,null,['class'=>'form-control']) !!}
-                            </div>
-                           </div>
+                            
 
                            
 
@@ -83,21 +76,36 @@
                                 <input id="isbn" type="text" class="form-control" name="relasi" required>
                             </div>
 
-                        <div class="form-group">
-                            <label for="judul" class="col-md-4 control-label">Progres Stasiun</label>
-                            <div class="col-md-6">
-                                <input id="isbn" type="text" class="form-control" name="progres_stasiun" required>
-                            </div>
-
                             <div class="form-group">
+                            <label for="email" class="col-md-4 control-label">Proges Stasiun</label>
+                            <div class="col-md-6">
+                                <img width="200" height="200" />
+                                <input type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar1" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="col-md-4 control-label">Gambar Jalur</label>
+                            <div class="col-md-6">
+                                <img width="200" height="200" />
+                                <input type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar2" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label for="judul" class="col-md-4 control-label">Jenis Kereta</label>
                             <div class="col-md-6">
-                            {!! Form::select('jenis_id' ,$jenis ,null,['class'=>'form-control']) !!}
+                                        <select name="jenis_id" class="form-control">
+                                                @foreach($jenis as $data)
+                                                <option value="{{$data->id}}">{{$data->jenis_kereta}}</option>
+                                                @endforeach
+                                        </select>
                             </div>
+                        </div>
 
                             <div class="form-group">
-                            <label for="deskripsi" class="col-md-4 control-label">Jalur</label>
-                            <div class="col-md-12">
+                            <label for="deskripsi" class="col-md-4 control-label">Keterangan</label>
+                            <div class="col-md-6">
                                  <select name="keterangan" class="form-control">
                                     <option value="">-- Pilih keterangan --</option>
                                     <option value="Normal">Normal </option>
@@ -124,8 +132,6 @@
 </div>
 </div>
 </div>
-</div>
-</div>
 </form>              
-{!! Form::close() !!}
+
 @endsection

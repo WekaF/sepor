@@ -18,6 +18,7 @@ class CreateStasiunInfos extends Migration
             $table->string('denah_stasiun');
             $table->string('denah_evakuasi');
             $table->string('peta_jaringan');
+            $table->string('stand_komersil');
             $table->timestamps();
         });
     }

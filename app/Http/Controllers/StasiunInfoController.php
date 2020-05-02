@@ -43,6 +43,9 @@ class StasiunInfoController extends Controller
      */
     public function store(Request $request)
     {
+
+        dd($request->all());
+
         if($request->file('gambar1')) {
             $file = $request->file('gambar1');
             $dt = Carbon::now();
@@ -77,11 +80,24 @@ class StasiunInfoController extends Controller
             $gambar3 = NULL;
         }
 
+        if($request->file('gambar4')) {
+            $file = $request->file('gambar4');
+            $dt = Carbon::now();
+            $acak  = $file->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $request->file('gambar4')->move("images/denah", $fileName);
+            $gambar4 = $fileName;
+        } else {
+            $gambar4 = NULL;
+        }
+
         StasiunInfo::create([
 
             'denah_stasiun' => $gambar1,
             'denah_evakuasi' => $gambar2,
-            'peta_jaringan' => $gambar3
+            'peta_jaringan' => $gambar3,
+            'stand_komersil' =>$gambar4
+
 
         ]);
 
@@ -141,6 +157,9 @@ class StasiunInfoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = StasiunInfo::FindOrFail($id);
+        $data->delete();
+
+        return redirect()->route('stasiuninfo.index');
     }
 }

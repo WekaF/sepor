@@ -32,13 +32,13 @@ class KategorisTableSeeder extends Seeder
               ],
               [
                 'id'  			=> 4,
-                'nama_kategori'    => 'Hotel',
+                'nama_kategori'    => 'Tempat Wisata',
                 'created_at'      => \Carbon\Carbon::now(),
                 'updated_at'      => \Carbon\Carbon::now()
               ],
               [
                 'id'  			=> 5,
-                'nama_kategori'    => 'Restaurant',
+                'nama_kategori'    => 'Hotel',
                 'created_at'      => \Carbon\Carbon::now(),
                 'updated_at'      => \Carbon\Carbon::now()
               ],

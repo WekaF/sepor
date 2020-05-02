@@ -6,6 +6,7 @@ use App\Trayek;
 use App\Taxi;
 use App\DetailKA;
 use App\Kontak;
+use App\berita;
 use DataTables;
 use Illuminate\Http\Request;
 use DB;
@@ -33,10 +34,11 @@ class HomeController extends Controller
        $taxi   = Taxi::get();
        $detail  = DetailKA::get();
        $kontak = Kontak::get();
+       $berita = berita::get();
       
 
 
-        return view('home',compact('subkategori','trayek','taxi','detail','kontak'));
+        return view('dashboard',compact('subkategori','trayek','taxi','detail','kontak','berita'));
       
     }
     

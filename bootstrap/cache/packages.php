@@ -1,4 +1,11 @@
 <?php return array (
+  'binarytorch/blogged' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'BinaryTorch\\Blogged\\BloggedServiceProvider',
+    ),
+  ),
   'facade/ignition' => 
   array (
     'providers' => 
@@ -54,6 +61,17 @@
       'Excel' => 'Maatwebsite\\Excel\\Facades\\Excel',
     ),
   ),
+  'mews/purifier' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Mews\\Purifier\\PurifierServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Purifier' => 'Mews\\Purifier\\Facades\\Purifier',
+    ),
+  ),
   'nesbot/carbon' => 
   array (
     'providers' => 
@@ -77,6 +95,17 @@
     'aliases' => 
     array (
       'Alert' => 'RealRashid\\SweetAlert\\Facades\\Alert',
+    ),
+  ),
+  'uxweb/sweet-alert' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'UxWeb\\SweetAlert\\SweetAlertServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Alert' => 'UxWeb\\SweetAlert\\SweetAlert',
     ),
   ),
   'yajra/laravel-datatables-buttons' => 

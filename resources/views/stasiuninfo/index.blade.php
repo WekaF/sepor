@@ -25,8 +25,9 @@
               <thead>
                 <tr>
                 <th>Denah Stasiun</th>
-                <th>Denah Evakuasi</th>
-                <th>Peta Jaringan</th>  
+                <th>Prosedur Evakuasi</th>
+                <th>Peta Jaringan Kereta Api</th>  
+                <th>Stand Komersil</th>
                 <th>Action</th>
                 </tr>
               </thead>
@@ -57,6 +58,15 @@
                                       <td class="">
                                       @if($data->peta_jaringan)
                                         <img src="{{url('images/denah/'. $data->peta_jaringan)}}" alt="image" style="width: 200px; height:200px " />
+                                      @else
+                                        <img src="{{url('images/denah/default.jpg')}}" alt="image" style="width: 100px; height:100px" />
+                                      @endif
+                                  
+                                      </td>       
+                                      </td>
+                                      <td class="">
+                                      @if($data->stand_komersil)
+                                        <img src="{{url('images/denah/'. $data->stand_komersil)}}" alt="image" style="width: 200px; height:200px " />
                                       @else
                                         <img src="{{url('images/denah/default.jpg')}}" alt="image" style="width: 100px; height:100px" />
                                       @endif

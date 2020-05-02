@@ -5,7 +5,7 @@
 <li class="menu-category">Preview</li>
 
 <li class="menu-item">
-  <a class="menu-link" href="/home">
+  <a class="menu-link" href="/dashboard">
     <span class="icon fa fa-home"></span>
     <span class="title">Dashboard</span>
   </a>
@@ -91,15 +91,15 @@
                 </a>
               </li>
               <li class="menu-item ">
-                <a class="menu-link" href="/jalur">
-                  <span class="dot"></span>
-                  <span class="title">Jalur </span>
-                </a>
-              </li>
-              <li class="menu-item ">
                 <a class="menu-link" href="/kontak">
                   <span class="dot"></span>
                   <span class="title">Kontak</span>
+                </a>
+              </li>
+              <li class="menu-item ">
+                <a class="menu-link" href="/berita">
+                  <span class="dot"></span>
+                  <span class="title">Berita </span>
                 </a>
               </li>
             </ul>
