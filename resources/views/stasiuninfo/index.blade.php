@@ -27,6 +27,7 @@
                 <th>Denah Stasiun</th>
                 <th>Prosedur Evakuasi</th>
                 <th>Peta Jaringan Kereta Api</th>  
+                <th>Denah Evakuasi</th>
                 <th>Stand Komersil</th>
                 <th>Action</th>
                 </tr>
@@ -41,7 +42,7 @@
 
                                   <td class="">
                                       @if($data->denah_stasiun)
-                                        <img src="{{url('images/denah/'. $data->denah_stasiun)}}" alt="image" style="width: 200px; height:200px " />
+                                        <img src="{{url('images/denah/'. $data->denah_stasiun)}}" alt="image" style="width: 100px; height:100px" class="rounded-circle"/>
                                       @else
                                         <img src="{{url('images/denah/default.jpg')}}" alt="image" style="width: 100px; height:100px" />
                                       @endif
@@ -49,7 +50,7 @@
                                       </td>
                                   <td class="">
                                       @if($data->denah_evakuasi)
-                                        <img src="{{url('images/denah/'. $data->denah_evakuasi)}}" alt="image" style="width: 200px; height:200px " />
+                                        <img src="{{url('images/denah/'. $data->denah_evakuasi)}}" alt="image" style="width: 100px; height:100px " class="rounded-circle"/>
                                       @else
                                         <img src="{{url('images/denah/default.jpg')}}" alt="image" style="width: 100px; height:100px" />
                                       @endif
@@ -57,7 +58,7 @@
                                       </td>
                                       <td class="">
                                       @if($data->peta_jaringan)
-                                        <img src="{{url('images/denah/'. $data->peta_jaringan)}}" alt="image" style="width: 200px; height:200px " />
+                                        <img src="{{url('images/denah/'. $data->peta_jaringan)}}" alt="image" style="width: 100px; height:100px" class="rounded-circle"/>
                                       @else
                                         <img src="{{url('images/denah/default.jpg')}}" alt="image" style="width: 100px; height:100px" />
                                       @endif
@@ -65,13 +66,14 @@
                                       </td>       
                                       </td>
                                       <td class="">
-                                      @if($data->stand_komersil)
-                                        <img src="{{url('images/denah/'. $data->stand_komersil)}}" alt="image" style="width: 200px; height:200px " />
+                                      @if($data->denah_evakuasi)
+                                        <img src="{{url('images/denah/'. $data->denah_evakuasi)}}" alt="image" style="width:100px; height:100px " class="rounded-circle"/>
                                       @else
                                         <img src="{{url('images/denah/default.jpg')}}" alt="image" style="width: 100px; height:100px" />
                                       @endif
                                   
                                       </td>        
+                                      <td>{{$data->stand_komersil}}</td>
                                       
                                   
                                   <td>
@@ -80,6 +82,7 @@
                               Action
                             </button>
                             <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
+                            <a class="dropdown-item" href="{{route('stasiuninfo.edit', $data->id)}}"> Edit </a>
                               <form action="{{route('stasiuninfo.destroy',$data->id)}}" class="pull-left"  method="POST">
                               {{ csrf_field() }}
                               {{ method_field('DELETE') }}

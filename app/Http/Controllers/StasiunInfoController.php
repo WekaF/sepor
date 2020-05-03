@@ -44,7 +44,7 @@ class StasiunInfoController extends Controller
     public function store(Request $request)
     {
 
-        dd($request->all());
+        // dd($request->all());
 
         if($request->file('gambar1')) {
             $file = $request->file('gambar1');
@@ -91,12 +91,15 @@ class StasiunInfoController extends Controller
             $gambar4 = NULL;
         }
 
+        
+
         StasiunInfo::create([
 
             'denah_stasiun' => $gambar1,
-            'denah_evakuasi' => $gambar2,
+            'prosedur_evakuasi' => $gambar2,
             'peta_jaringan' => $gambar3,
-            'stand_komersil' =>$gambar4
+            'denah_evakuasi' => $gambar4,
+            'stand_komersil' =>$request->get('stand_komersil'),
 
 
         ]);
@@ -134,7 +137,7 @@ class StasiunInfoController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('stasiuninfo.edit');
     }
 
     /**
@@ -146,7 +149,60 @@ class StasiunInfoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = stasiuninfo::findOrFail($id);
+
+        if($request->file('gambar1')) {
+            $file = $request->file('gambar1');
+            $dt = Carbon::now();
+            $acak  = $file->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $request->file('gambar1')->move("images/denah", $fileName);
+            $gambar1 = $fileName;
+        } else {
+            $gambar1 = NULL;
+        }
+
+        if($request->file('gambar2')) {
+            $file = $request->file('gambar2');
+            $dt = Carbon::now();
+            $acak  = $file->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $request->file('gambar2')->move("images/denah", $fileName);
+            $gambar2 = $fileName;
+        } else {
+            $gambar2 = NULL;
+        }
+
+        
+        if($request->file('gambar3')) {
+            $file = $request->file('gambar3');
+            $dt = Carbon::now();
+            $acak  = $file->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $request->file('gambar3')->move("images/denah", $fileName);
+            $gambar3 = $fileName;
+        } else {
+            $gambar3 = NULL;
+        }
+
+        if($request->file('gambar4')) {
+            $file = $request->file('gambar4');
+            $dt = Carbon::now();
+            $acak  = $file->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $request->file('gambar4')->move("images/denah", $fileName);
+            $gambar4 = $fileName;
+        } else {
+            $gambar4 = NULL;
+        }
+
+        stasiuninfo::find($id)->update([
+            'denah_stasiun' => $gambar1,
+            'prosedur_evakuasi' => $gambar2,
+            'peta_jaringan' => $gambar3,
+            'denah_evakuasi' => $gambar4,
+            'stand_komersil' =>$request->get('stand_komersil'),
+        ]);
     }
 
     /**

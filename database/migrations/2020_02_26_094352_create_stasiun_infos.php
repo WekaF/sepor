@@ -16,9 +16,10 @@ class CreateStasiunInfos extends Migration
         Schema::create('stasiun_infos', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('denah_stasiun');
-            $table->string('denah_evakuasi');
+            $table->string('prosedur_evakuasi');
             $table->string('peta_jaringan');
-            $table->string('stand_komersil');
+            $table->string('denah_evakuasi');
+            $table->text('stand_komersil');
             $table->timestamps();
         });
     }

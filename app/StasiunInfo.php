@@ -9,8 +9,9 @@ class StasiunInfo extends Model
     protected $table = 'stasiun_infos';
     protected $fillable = [
         'denah_stasiun',
-        'denah_evakuasi',
+        'prosedur_evakuasi',
         'peta_jaringan',
+        'denah_evakuasi',
         'stand_komersil'
     ];
 
