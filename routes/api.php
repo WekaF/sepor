@@ -37,4 +37,10 @@ Route::group(array('prefix' => 'keretainfo'), function(){
  Route::get('kontak','KontakController@kontak');
 
  Route::get('stasiuninfo','StasiunInfoController@infostat');
+
+
+ Route::group(array('prefix' => 'berita'), function(){
+    Route::get('','BeritaController@berita');
+    Route::get('/detail/{id}','BeritaController@show'); 
+ });
  

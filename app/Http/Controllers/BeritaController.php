@@ -19,6 +19,11 @@ class BeritaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function berita(){
+        $berita = berita::get();
+
+        return Response::json($berita);
+    }
     public function index()
     {
         $data = berita::get();
@@ -74,7 +79,9 @@ class BeritaController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = berita::where('id',$id)->get();
+
+        return Response::json($data);
     }
 
     /**
