@@ -21,6 +21,15 @@ class UserTableSeeder extends Seeder
               'created_at'      => \Carbon\Carbon::now(),
               'updated_at'      => \Carbon\Carbon::now()
             ],
+            [
+                'id'  			=> 2,
+                'name'  			=> 'admin',
+                'email' 			=> 'admin@admin.com',
+                'email_verified_at'=> \Carbon\Carbon::now(),
+                'password'		=> bcrypt('admin123'),
+                'created_at'      => \Carbon\Carbon::now(),
+                'updated_at'      => \Carbon\Carbon::now()
+              ],
         ]);
     }
 }

@@ -79,9 +79,9 @@ class BeritaController extends Controller
      */
     public function show($id)
     {
-        $data = berita::where('id',$id)->get();
+        $detail = berita::where('id',$id)->get();
 
-        return Response::json($data);
+        return Response::json($detail);
     }
 
     /**
