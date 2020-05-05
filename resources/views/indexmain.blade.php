@@ -44,10 +44,28 @@
 
           <div class="topbar-right">
 
-            <form class="lookup lookup-circle lookup-lg lookup-right" method="GET" action="{{ route('web.search') }}">
+          <div>
+
+          @guest
+          <a class="btn btn-sm btn-secondary" href="{{route('login')}}">Login</a>
+          @else
+          <li class="dropdown">
+            <span class="topbar-btn" data-toggle="dropdown">hai, {{ Auth::user()->name }}</span>
+            <div class="dropdown-menu dropdown-menu-right"> 
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();"><i class="ti-power-off"></i> Logout
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                    </form>></a>
+            </div>
+          </li>
+          @endguest
+          </div>
+          <form class="lookup lookup-circle lookup-lg lookup-right" method="GET" action="{{ route('web.search') }}">
               <input name="search" type="text submit " placeholder="Search" aria-label="Search" >
             </form>
-
+            
             <div class="topbar-divider d-none d-md-block"></div>
 
 
