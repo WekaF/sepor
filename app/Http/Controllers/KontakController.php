@@ -6,6 +6,7 @@ use App\Kontak;
 use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
+use DB;
 
 class KontakController extends Controller
 {
@@ -59,7 +60,9 @@ class KontakController extends Controller
      */
     public function show($id)
     {
-        //
+        $kontak = DB::table('kontaks')->get()->groupBy('jenis');
+
+        return response()->json($kontak,200);
     }
 
     /**
@@ -110,5 +113,14 @@ class KontakController extends Controller
         $kontak->delete();
         alert()->success('Berhasil.','Data telah dihapus!');
         return redirect()->route('kontak.index');
+    }
+
+    public function filterkontak($id){
+
+        $kontak = DB::table('kontaks')->WhereIn('jenis',['darurat','pelanggan'])
+        ->where('id',$id)
+        ->get();
+
+return Response::json($kontak,200);
     }
 }

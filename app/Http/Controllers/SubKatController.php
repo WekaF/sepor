@@ -82,41 +82,6 @@ class SubKatController extends Controller
     public function store(Request $request)
     {
     
-      
-        
-        // if($request->file('gambar1')) {
-        //     $file = $request->file('gambar1');
-        //     $dt = Carbon::now();
-        //     $acak  = $file->getClientOriginalExtension();
-        //     $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-        //     $request->file('gambar1')->move("images/destinasi", $fileName);
-        //     $gambar1 = $fileName;
-        // } else {
-        //     $gambar1 = NULL;
-        // }
-
-        // if($request->file('gambar2')) {
-        //     $file = $request->file('gambar2');
-        //     $dt = Carbon::now();
-        //     $acak  = $file->getClientOriginalExtension();
-        //     $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-        //     $request->file('gambar2')->move("images/destinasi", $fileName);
-        //     $gambar2 = $fileName;
-        // } else {
-        //     $gambar2 = NULL;
-        // }
-        // if($request->file('gambar3')) {
-        //     $file = $request->file('gambar3');
-        //     $dt = Carbon::now();
-        //     $acak  = $file->getClientOriginalExtension();
-        //     $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-        //     $request->file('gambar3')->move("images/destinasi", $fileName);
-        //     $gambar3 = $fileName;
-        // } else {
-        //     $gambar3 = NULL;
-        // }
-       
-    
          $input=$request->all();
        
  
@@ -207,12 +172,10 @@ class SubKatController extends Controller
         
        }
 
-       public function list($id,$detail){
+       public function list($id){
 
        
-        $subkat = SubKategori::with('kat')
-                             ->where('kategori_id',$id)
-                             ->where('id',$detail)
+        $subkat = SubKategori::where('id',$id)
                              ->get();
         
         return Response::json($subkat,200);

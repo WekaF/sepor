@@ -175,9 +175,9 @@
      
               
 
-              <div class="col-md-6">
+              <div class="col-md-12">
             <div class="card">
-              <h5 class="card-title">List<strong> Berita</strong></h5>
+              <h5 class="card-title text-center">List<strong> Berita</strong></h5>
 
               <div class="media-list media-list-hover media-list-divided">
 
@@ -195,6 +195,36 @@
 
             </div>
           </div>
+
+
+        <div class="col-md-8">
+            <div class="card">
+              <h5 class="card-title text-center">List<strong> Feedback</strong></h5>
+
+              <div class="media-list media-list-hover media-list-divided">
+
+              @foreach($feedback as $data)
+                <header class="card-header bg-lightest">
+               
+                  <div class="card-title flexbox">
+                    <img class="avatar" src="assets/img/avatar/1.jpg" alt="...">
+                    <div>
+                      <h6 class="mb-0">{{$data->nama}} <small class="sidetitle fs-11">{{$data->email}}</small></h6>
+                      <small>{{ Carbon\Carbon::parse($data->created_at)->diffForHumans()}}</small>
+                    </div>
+                  </div>
+                </header>
+                <div class="card-body">
+                  <p>{{$data->saran}}</p>
+                </div>
+                <div class="divider text-uppercase fw-500"></div>
+                
+                @endforeach  
+              </div>
+
+            </div>
+          </div>
+
 
 
 

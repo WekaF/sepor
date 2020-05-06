@@ -91,11 +91,10 @@ class KategoriController extends Controller
        }
 
 
-       public function list($id,$detail){
+       public function list($id){
          
         $kate = Kategori::with('subkategori')
                         ->where('id',$id)
-                        ->where('id',$detail)
                         ->get();
 
         return Response::json($kate,200);

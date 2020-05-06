@@ -104,8 +104,8 @@ class KeretainfoController extends Controller
     public function show($id)
     {
         $data = DetailKA::findOrFail($id);
-       
         return view('keretainfo.show', compact('data'));
+       
     }
 
     /**
@@ -198,16 +198,14 @@ class KeretainfoController extends Controller
 
     public function keretashow($id)
     {
-        $detail = DetailKA::find($id);
-
-        if ($detail) {
-         $response['status'] = 'OK';
-         $response['result'] = $detail;
-        } else {
-         $response['status'] = 'ERROR';
-         $response['message'] = 'User not found';
-        }
+        $kereta = DetailKA::with('jenis')->where('jenis_id',$id)->get();
       
-        return Response::json($response);
+        return response()->json($kereta,200);
+    }
+    public function detail($id){
+     
+        $detail = DetailKA::where('id',$id)->get();
+
+        return response()->json($detail,200);
     }
 }

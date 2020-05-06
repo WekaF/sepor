@@ -11,7 +11,7 @@ class JenisKA extends Model
 
     public function jenis()
     {
-    	return $this->hasMany(JenisKA::class);
+    	return $this->hasMany(DetailKA::class);
     }
     public function index(){
         return JenisKA::all();

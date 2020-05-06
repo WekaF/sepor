@@ -24,12 +24,10 @@ class DetailKA extends Model
     	return $this->hasMany(DetailKA::class);
     }
     public function jenis(){
-        return $this->belongsTo(JenisKA::class);
+        return $this->belongsTo(JenisKA::class,'jenis_id');
     }
     public function index(){
         return DetailKA::all();
     }
-    public function jalur(){
-        return $this->belongsTo(Jalur::class);
-    }
+
 }

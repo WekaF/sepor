@@ -12,4 +12,8 @@ class Kontak extends Model
         'nama',
         'nomor',
     ];
+
+    public function jeniskon(){
+        return $this->hasone('App/Kontak');
+    }
 }
