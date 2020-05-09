@@ -117,14 +117,23 @@ class SubKatController extends Controller
 
     public function show($id)
     {
-        // $subkat = SubKategori::find($id);
+
+
         $subkat = SubKategori::with('kat')->where('kategori_id',$id)->get();
+<<<<<<< HEAD
       
         $response['status'] = 'OK';
         $response['result'] = $subkat;
 
         return Response::json($response);
         // return Response::json($subkat,200);
+=======
+
+        $response['status'] = 'OK';
+        $response['result'] = $subkat;
+     
+        return Response::json($response,200);
+>>>>>>> b4df4af29b32dd112478e48ca69ffbbd52569b88
        
     }
     public function update(Request $request, $id)
