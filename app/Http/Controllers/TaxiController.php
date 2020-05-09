@@ -14,9 +14,12 @@ class TaxiController extends Controller
 
     public function taxi(){
 
-        $subkat = Taxi::all();
-      
-        return response()->json($subkat,200);
+        $taxi = Taxi::all(); 
+        
+        $response['status'] = 'OK';
+        $response['result'] = $taxi;
+
+        return Response::json($response);
 
     }
     
@@ -67,15 +70,9 @@ class TaxiController extends Controller
     public function show($id)
     {
         $taxi = Taxi::find($id);
+        $response['status'] = 'OK';
+        $response['result'] = $taxi;
 
-        if ($taxi) {
-         $response['status'] = 'OK';
-         $response['result'] = $taxi;
-        } else {
-         $response['status'] = 'ERROR';
-         $response['message'] = 'User not found';
-        }
-      
         return Response::json($response);
     }
 
@@ -125,10 +122,5 @@ class TaxiController extends Controller
         $data->delete();
 
         return redirect()->route('taxi.index');
-    }
-
-    public function datataxi(){
-        
-        return Datatables::of(Taxi::query())->make(true);
     }
 }

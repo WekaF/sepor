@@ -24,15 +24,11 @@ class SubKatController extends Controller
     public function subkat(){
 
         $subkat = SubKategori::get();
-
+      
         $response['status'] = 'OK';
         $response['result'] = $subkat;
-      
-        return Response::json($response);
 
-        // $data = SubKategori::all();
-      
-        // return response()->json($data,200);
+        return Response::json($response);
 
     }
     
@@ -124,7 +120,11 @@ class SubKatController extends Controller
         // $subkat = SubKategori::find($id);
         $subkat = SubKategori::with('kat')->where('kategori_id',$id)->get();
       
-        return Response::json($subkat,200);
+        $response['status'] = 'OK';
+        $response['result'] = $subkat;
+
+        return Response::json($response);
+        // return Response::json($subkat,200);
        
     }
     public function update(Request $request, $id)
@@ -175,10 +175,14 @@ class SubKatController extends Controller
        public function list($id){
 
        
-        $subkat = SubKategori::where('id',$id)
+        $list = SubKategori::where('id',$id)
                              ->get();
         
-        return Response::json($subkat,200);
+        $response['status'] = 'OK';
+        $response['result'] = $list;
+
+        return Response::json($response);
+        
 
 
 

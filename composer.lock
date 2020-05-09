@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9d3775f114d2a2efe529cf6fd3185643",
+    "content-hash": "d97320dd01c5b68b7a981f77dafb4d70",
     "packages": [
         {
             "name": "binarytorch/blogged",
@@ -2529,16 +2529,16 @@
         },
         {
             "name": "realrashid/sweet-alert",
-            "version": "v3.1.2",
+            "version": "v3.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/realrashid/sweet-alert.git",
-                "reference": "05b6726005cfb46dcdea2f1b21d58b9d403c7956"
+                "reference": "d78f0ff7a9e065da2c79fa1c35a5fe243ae9bb02"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/realrashid/sweet-alert/zipball/05b6726005cfb46dcdea2f1b21d58b9d403c7956",
-                "reference": "05b6726005cfb46dcdea2f1b21d58b9d403c7956",
+                "url": "https://api.github.com/repos/realrashid/sweet-alert/zipball/d78f0ff7a9e065da2c79fa1c35a5fe243ae9bb02",
+                "reference": "d78f0ff7a9e065da2c79fa1c35a5fe243ae9bb02",
                 "shasum": ""
             },
             "require": {
@@ -2591,7 +2591,25 @@
                 "sweet-alert2",
                 "toast"
             ],
-            "time": "2020-01-24T18:38:56+00:00"
+            "funding": [
+                {
+                    "url": "https://ko-fi.com/realrashid",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.buymeacoffee.com/realrashid",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://issuehunt.io/r/realrashid",
+                    "type": "issuehunt"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/realrashid/sweet-alert",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-03-31T15:40:35+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

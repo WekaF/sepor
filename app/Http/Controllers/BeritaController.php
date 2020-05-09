@@ -22,7 +22,10 @@ class BeritaController extends Controller
     public function berita(){
         $berita = berita::get();
 
-        return Response::json($berita);
+        $response['status'] = 'OK';
+        $response['result'] = $berita;
+
+        return Response::json($response);
     }
     public function index()
     {
@@ -80,6 +83,11 @@ class BeritaController extends Controller
     public function show($id)
     {
         $detail = berita::where('id',$id)->get();
+
+        $response['status'] = 'OK';
+        $response['result'] = $detail;
+
+        return Response::json($response);
 
         return Response::json($detail);
     }

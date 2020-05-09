@@ -21,7 +21,10 @@ class FeedbackController extends Controller
     {
         $feedback = Feedbacks::all();
 
-        return response()->json($feedback,200);
+        $response['status'] = 'OK';
+        $response['result'] = $feedback;
+
+        return Response::json($response);
         
     }
 
@@ -34,7 +37,7 @@ class FeedbackController extends Controller
     {
         $article = Feedbacks::create($request->all());
         return response()->json($article, 201);
-         return "Data tersimpan";
+        return "Data tersimpan";
         
     }
 
@@ -56,9 +59,13 @@ class FeedbackController extends Controller
     $data->saran = $saran;
     $data->save();
 
-   
-        return response($data);
     
+    $response['status'] = 'OK';
+    $response['result'] = $data;
+
+    return Response::json($response);
+   
+      
 }
 
     /**
@@ -71,7 +78,10 @@ class FeedbackController extends Controller
     {
         $feed = Feedbacks::where('id',$id)->get();
 
-        return response()->json($feed,200);
+        $response['status'] = 'OK';
+        $response['result'] = $feed;
+
+        return Response::json($response);
     }
 
     /**

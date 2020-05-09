@@ -7,6 +7,24 @@
 
 } );
 </script>
+
+<script type="text/javascript">
+$('.delete-confirm').on('click', function (event) {
+    event.preventDefault();
+    const url = $(this).attr('href');
+    swal({
+        title: 'Are you sure?',
+        text: 'This record and it`s details will be permanantly deleted!',
+        icon: 'warning',
+        buttons: ["Cancel", "Yes!"],
+    }).then(function(value) {
+        if (value) {
+            window.location.href = url;
+        }
+    });
+});
+</script>
+
 @stop
 @section('title','Kategori Destinasi')
 @extends('layouts.app')
@@ -43,10 +61,10 @@
                             </button>
                             <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
                               <a class="dropdown-item" href="{{route('kategori.edit', $datang->id)}}"> Edit </a>
-                              <form action="{{route('kategori.destroy',$datang->id)}}" class="pull-left"  method="POST">
+                              <form action="{{route('kategori.destroy',$datang->id)}}" class="pull-left delete-confirm"  method="POST">
                               {{ csrf_field() }}
                               {{ method_field('DELETE') }}
-                              <button class="dropdown-item" onclick="return confirm('Anda yakin ingin menghapus data ini?')"> Delete
+                              <button class="dropdown-item delete-confirm" onclick="return delete-confirm "> Delete
                               </button>
                             </form>
                             </div>
