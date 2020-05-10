@@ -21,7 +21,10 @@ class TrayekController extends Controller
 
     $data = Trayek::all();
 
-    return response()->json($data,200);
+    $response['status'] = 'OK';
+    $response['result'] = $data;
+
+        return Response::json($response);
 
 }
     public function index()
@@ -83,14 +86,9 @@ class TrayekController extends Controller
     {
         $trayek = Trayek::find($id);
 
-        if ($trayek) {
-         $response['status'] = 'OK';
-         $response['result'] = $trayek;
-        } else {
-         $response['status'] = 'ERROR';
-         $response['message'] = 'User not found';
-        }
-      
+        $response['status'] = 'OK';
+        $response['result'] = $trayek;
+
         return Response::json($response);
     }
 
@@ -127,29 +125,6 @@ class TrayekController extends Controller
           $data->trayek_desc = $request->trayek_desc;
           $data->gambar = $imgName;
           $data->save();
-
-        // if($request->file('gambar')) {
-        //     $file = $request->file('gambar');
-        //     $dt = Carbon::now();
-        //     $acak  = $file->getClientOriginalExtension();
-        //     $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-        //     $request->file('gambar')->move("images/trayek", $fileName);
-        //     $gambar = $fileName;
-        // } else {
-        //     $gambar = NULL;
-        // }
-    
-
-        // Trayek::find($id)->update([
-        //     'trayek_name'      => $input['trayek_name'],
-        //     'trayek_price'     => $input['trayek_price'],
-        //     'trayek_desc'      => $input['trayek_desc'],
-        //     'gambar'           => $gambar,
-            
-           
-        // ]);
-                
-
          
         return redirect()->route('trayek.index');
     }
@@ -163,8 +138,4 @@ class TrayekController extends Controller
         return redirect()->route('trayek.index');
     }
 
-    public function datatrayek(){
-        
-        return Datatables::of(Trayek::query())->make(true);
-    }
 }

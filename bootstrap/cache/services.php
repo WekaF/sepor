@@ -45,6 +45,7 @@
     41 => 'App\\Providers\\EventServiceProvider',
     42 => 'App\\Providers\\RouteServiceProvider',
     43 => 'Yajra\\Datatables\\DatatablesServiceProvider',
+    44 => 'RealRashid\\SweetAlert\\SweetAlertServiceProvider',
   ),
   'eager' => 
   array (
@@ -78,6 +79,7 @@
     27 => 'App\\Providers\\EventServiceProvider',
     28 => 'App\\Providers\\RouteServiceProvider',
     29 => 'Yajra\\Datatables\\DatatablesServiceProvider',
+    30 => 'RealRashid\\SweetAlert\\SweetAlertServiceProvider',
   ),
   'deferred' => 
   array (

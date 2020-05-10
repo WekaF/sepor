@@ -7,15 +7,18 @@ use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use DB;
+use Response;
 
 class KontakController extends Controller
 {
     public function kontak(){
 
         $data = Kontak::all();
-    
-        return response()->json($data,200);
-    
+
+        $response['status'] = 'OK';
+        $response['result'] = $data;
+
+        return Response::json($response);
     }
     public function index()
     {
@@ -62,7 +65,10 @@ class KontakController extends Controller
     {
         $kontak = DB::table('kontaks')->get()->groupBy('jenis');
 
-        return response()->json($kontak,200);
+        $response['status'] = 'OK';
+        $response['result'] = $kontak;
+
+        return Response::json($response);
     }
 
     /**
@@ -121,6 +127,10 @@ class KontakController extends Controller
         ->where('id',$id)
         ->get();
 
-return Response::json($kontak,200);
+        $response['status'] = 'OK';
+        $response['result'] = $kontak;
+
+        return Response::json($response);
+
     }
 }

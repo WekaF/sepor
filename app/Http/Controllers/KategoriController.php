@@ -43,6 +43,7 @@ class KategoriController extends Controller
     {
          
         $data = Kategori::findOrFail($id);
+        
         return view('kategori.edit', compact('data'));
         
     }
@@ -55,7 +56,8 @@ class KategoriController extends Controller
             'nama_kategori' => $request->get('nama_kategori'),
            
         ]);
-    alert()->success('Berhasil.','Data telah ditambahkan!');       
+ 
+    Alert::success('Berhasil.','Data telah ditambahkan!');     
     return redirect()->route('kategori.index');
    
     }
@@ -64,8 +66,10 @@ class KategoriController extends Controller
     {
 
         $kate = Kategori::with('subkategori')->where('id',$id)->get();
+        $response['status'] = 'OK';
+        $response['result'] = $kate;
 
-        return Response::json($kate,200);
+        return Response::json($response);
     }
     public function update(Request $request, $id)
     {
@@ -76,7 +80,7 @@ class KategoriController extends Controller
         ]);
                 
 
-        // alert()->success('Berhasil.','Data telah diubah!');
+        Alert::success('Berhasil.','Data telah ditambahkan!');
         return redirect()->route('kategori.index');
     }
 
@@ -86,6 +90,7 @@ class KategoriController extends Controller
         $kategori = \App\Kategori::find($id);
         $kategori->delete();
         alert()->success('Berhasil.','Data telah dihapus!');
+        
         return redirect()->route('kategori.index');
         
        }
@@ -96,8 +101,11 @@ class KategoriController extends Controller
         $kate = Kategori::with('subkategori')
                         ->where('id',$id)
                         ->get();
+                        
+        $response['status'] = 'OK';
+        $response['result'] = $kate;
 
-        return Response::json($kate,200);
+        return Response::json($response);                        
 
        }
 

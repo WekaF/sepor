@@ -15,8 +15,11 @@ class StasiunInfoController extends Controller
     public function infostat(){
 
         $data = StasiunInfo::all();
-    
-        return Response::json($data);
+
+        $response['status'] = 'OK';
+        $response['result'] = $data;
+
+        return Response::json($response);
     
     }
     public function index()
@@ -118,14 +121,9 @@ class StasiunInfoController extends Controller
     {
         $stas = StasiunInfo::find($id);
 
-        if ($stas) {
-         $response['status'] = 'OK';
-         $response['result'] = $stas;
-        } else {
-         $response['status'] = 'ERROR';
-         $response['message'] = 'User not found';
-        }
-      
+        $response['status'] = 'OK';
+        $response['result'] = $stas;
+
         return Response::json($response);
     }
 

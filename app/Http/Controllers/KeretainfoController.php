@@ -20,7 +20,7 @@ class KeretainfoController extends Controller
 
         $response['status'] = 'OK';
         $response['result'] = $detail;
-      
+
         return Response::json($response);
     
     }
@@ -200,12 +200,19 @@ class KeretainfoController extends Controller
     {
         $kereta = DetailKA::with('jenis')->where('jenis_id',$id)->get();
       
-        return response()->json($kereta,200);
-    }
+        $response['status'] = 'OK';
+        $response['result'] = $kereta;
+
+        return Response::json($response);
+   }
     public function detail($id){
      
         $detail = DetailKA::where('id',$id)->get();
 
-        return response()->json($detail,200);
+        $response['status'] = 'OK';
+        $response['result'] = $detail;
+
+        return Response::json($response);
+     
     }
 }

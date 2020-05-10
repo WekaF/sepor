@@ -177,6 +177,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Yajra\Datatables\DatatablesServiceProvider::class,
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
 
 
     ],
@@ -234,7 +235,7 @@ return [
         'Flash'     => Laracasts\Flash\Flash::class,
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
         'Str' => Illuminate\Support\Str::class,
-
+        'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
 
         
 

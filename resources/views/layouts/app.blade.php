@@ -215,7 +215,7 @@
     <script src="{{asset('assets/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('js/datatables.bootstrap.js')}}"></script>
     <script src="{{ asset('js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{ asset('assets/js/shared/sweetalert2.all.js')}}"></script>
+    <script src="{{ asset('vendor/sweetalerjs/sweetalert.all.js')}}"></script>
     @include('sweetalert::alert')
     @section('js')
 
