@@ -1,5 +1,8 @@
 /node_modules
 /public/hot
+public/images/berita
+public/images/destinasi
+public/images/denah
 /public/storage
 /storage/*.key
 /vendor
