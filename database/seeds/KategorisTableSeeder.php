@@ -41,8 +41,19 @@ class KategorisTableSeeder extends Seeder
                 'nama_kategori'    => 'Hotel',
                 'created_at'      => \Carbon\Carbon::now(),
                 'updated_at'      => \Carbon\Carbon::now()
+              ],              
+              [
+                'id'  			=> 6,
+                'nama_kategori'    => 'Terminal',
+                'created_at'      => \Carbon\Carbon::now(),
+                'updated_at'      => \Carbon\Carbon::now()
               ],
-              
+              [
+                'id'  			=> 7,
+                'nama_kategori'    => 'Bandara',
+                'created_at'      => \Carbon\Carbon::now(),
+                'updated_at'      => \Carbon\Carbon::now()
+              ],
         ]);
     }
 }
