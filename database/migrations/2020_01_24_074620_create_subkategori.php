@@ -16,7 +16,7 @@ class CreateSubkategori extends Migration
         Schema::create('subkategori', function (Blueprint $table) {
             $table->Increments('id');
             $table->String('nama_subkategori');
-            $table->String('deskripsi')->nullable();
+            $table->Text('deskripsi')->nullable();
             $table->string('long')->nullable();
             $table->string('lat')->nullable();
             $table->string('gambar')->nullable();

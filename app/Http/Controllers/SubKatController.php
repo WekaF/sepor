@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\SubKategori;
 use App\Kategori;
 use App\Http\Requests;
@@ -21,7 +22,8 @@ class SubKatController extends Controller
     private $subkate;
 
 
-    public function subkat(){
+    public function subkat()
+    {
 
         $subkat = SubKategori::get();
       
@@ -31,24 +33,18 @@ class SubKatController extends Controller
         return Response::json($response);
 
     }
-    
+
     public function index(Request $request)
 
     {
 
-        
-        
-
         // $data = SubKategori::all();
         $subkategori = SubKategori::all();
         $count = SubKategori::count();
-        $gambar = SubKategori::pluck('gambar','id');
+        $gambar = SubKategori::pluck('gambar', 'id');
         //  dd($subkategori->all());
-      
-         return view('subkategori.index',compact('subkategori'))->with('count',$count)->with(json_encode($gambar,true));
-       
-            
-        
+
+        return view('subkategori.index', compact('subkategori'))->with('count', $count)->with(json_encode($gambar, true));
     }
     public function create(Request $request)
     {
@@ -56,46 +52,42 @@ class SubKatController extends Controller
         $kategori = Kategori::get();
 
         return view('subkategori.create')
-        ->with('kategori',$kategori);
-
-     
+            ->with('kategori', $kategori);
     }
     public function edit($id)
     {
-         
+
         $data = SubKategori::findOrFail($id);
-      
+
         $kategori = Kategori::get();
-       
+
         if (empty($data)) {
             Flash::error('Barang not found');
 
             return redirect(route('subkategori.index'));
         }
 
-        return view('subkategori.edit',compact('data'))->with('subkategori', $data)->with('kategori',$kategori);
+        return view('subkategori.edit', compact('data'))->with('subkategori', $data)->with('kategori', $kategori);
     }
     public function store(Request $request)
     {
-    
-         $input=$request->all();
-       
- 
+
+        $input = $request->all();
+
+
         //  dd($request->all());
-    
 
-        if($request->hasfile('gambar'))
-        {
 
-           foreach($request->file('gambar') as $image)
-           {
-               $name=$image->getClientOriginalName();
-               $image->move(public_path().'/images/destinasi', $name);  
-               $gambar[] = $name;  
-           }
+        if ($request->hasfile('gambar')) {
+
+            foreach ($request->file('gambar') as $image) {
+                $name = $image->getClientOriginalName();
+                $image->move(public_path() . '/images/destinasi', $name);
+                $gambar[] = $name;
+            }
         }
 
-        SubKategori::Create( [
+        SubKategori::Create([
             'nama_subkategori' => $input['nama_subkategori'],
             'deskripsi'        => $input['deskripsi'],
             'long'             => $input['long'],
@@ -105,14 +97,13 @@ class SubKatController extends Controller
             'gambar'           => json_encode($gambar),
         ]);
 
-        
 
-      
 
-       
-    alert()->success('Berhasil.','Data telah ditambahkan!');       
-    return redirect()->route('subkategori.index');
-      
+
+
+
+        alert()->success('Berhasil.', 'Data telah ditambahkan!');
+        return redirect()->route('subkategori.index');
     }
 
     public function show($id)
@@ -130,25 +121,23 @@ class SubKatController extends Controller
     public function update(Request $request, $id)
     {
         $data = SubKategori::findOrFail($id);
-        $input=$request->all();
+        $input = $request->all();
 
-          if($request->hasfile('gambar'))
-        {
-            $foto = public_path("/images/destinasi/".$data->gambar);
+        if ($request->hasfile('gambar')) {
+            $foto = public_path("/images/destinasi/" . $data->gambar);
             if (File::exists($foto)) {
                 File::delete($foto);
             }
-           foreach($request->file('gambar') as $image)
-           {
-               $name=$image->getClientOriginalName();
-               $image->move(public_path().'/images/destinasi', $name);  
-               $gambar[] = $name;  
-           }
-
-        }else{
+            foreach ($request->file('gambar') as $image) {
+                $name = $image->getClientOriginalName();
+                $image->move(public_path() . '/images/destinasi', $name);
+                $gambar[] = $name;
+            }
+        } else {
             $name = $data->nama_subkategori;
         }
 
+<<<<<<< HEAD
           $data->nama_subkategori = $request->nama_subkategori;
           $data->deskripsi = $request->deskripsi;
           $data->long = $request->long;
@@ -160,19 +149,32 @@ class SubKatController extends Controller
        
           alert()->success('Berhasil.','Data telah di Update!');             
         return redirect()->route('subkategori.index',compact('data'));
+=======
+        $data->nama_subkategori = $request->nama_subkategori;
+        $data->deskripsi = $request->deskripsi;
+        $data->long = $request->long;
+        $data->lat = $request->lat;
+        $data->no_telp = $request->no_telp;
+        $data->kategori_id = $request->kategori_id;
+        $data->gambar = json_encode($gambar);
+        $data->save();
+
+
+        return redirect()->route('subkategori.index', compact('data'));
+>>>>>>> aa66798b6e8d588307fa0c7e29808275ecd06642
     }
 
     public function destroy($id)
     {
-       
+
         $kategori = \App\SubKategori::find($id);
         $kategori->delete();
-        alert()->success('Berhasil.','Data telah dihapus!');
+        alert()->success('Berhasil.', 'Data telah dihapus!');
         return redirect()->route('subkategori.index');
-        
-       }
+    }
 
-       public function list($id){
+    public function list($id)
+    {
 
        
         $list = SubKategori::where('id',$id)
@@ -184,12 +186,20 @@ class SubKatController extends Controller
         return Response::json($response);
         
 
+        $temp = $list[0];
+        $temp = str_replace("\""," ",$temp['gambar']);
+        $temp = str_replace("[","",$temp);
+        $temp = str_replace("]","",$temp);
+        $temp = str_replace(" ","",$temp);
+        $images = explode(',', $temp);
 
+
+        $response['status'] = 'OK';
+        $response['result'] = $list;
+        $response['images'] = $images;
 
         
-       }
 
-      
-   
+        return Response::json($response, 200);
+    }
 }
-

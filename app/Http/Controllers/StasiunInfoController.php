@@ -14,7 +14,7 @@ class StasiunInfoController extends Controller
 {
     public function infostat(){
 
-        $data = StasiunInfo::all();
+        $data = StasiunInfo::all()->take(1);
 
         $response['status'] = 'OK';
         $response['result'] = $data;
