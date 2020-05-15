@@ -36,11 +36,11 @@ class HomeController extends Controller
        $detail  = DetailKA::get();
        $kontak = Kontak::get();
        $berita = berita::get();
-       $feedback = Feedbacks::get();
+       $feedback = Feedbacks::paginate(5);
       
 
 
-        return view('dashboard',compact('subkategori','trayek','taxi','detail','kontak','berita','feedback'));
+        return view('dashboard',compact('subkategori','trayek','taxi','detail','kontak','berita','feedback'))->with('i', (request()->input('page', 1) - 1) * 10);
       
     }
     

@@ -91,7 +91,7 @@ class KeretainfoController extends Controller
             'gambar_jalur'       => $gambar2,
            
         ]);
-       
+    alert()->success('Berhasil.','Data telah ditambahkan!');        
     return redirect()->route('keretainfo.index');   
     }
 

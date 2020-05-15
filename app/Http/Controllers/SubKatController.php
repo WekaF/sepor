@@ -158,7 +158,7 @@ class SubKatController extends Controller
           $data->gambar = json_encode($gambar);
           $data->save();
        
-                
+          alert()->success('Berhasil.','Data telah di Update!');             
         return redirect()->route('subkategori.index',compact('data'));
     }
 

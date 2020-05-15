@@ -207,7 +207,7 @@
                 <header class="card-header bg-lightest">
                
                   <div class="card-title flexbox">
-                    <img class="avatar" src="assets/img/avatar/1.jpg" alt="...">
+                    <img class="avatar" src="{{asset('assets/img/avatar/1.jpg')}}" alt="...">
                     <div>
                       <h6 class="mb-0">{{$data->nama}} <small class="sidetitle fs-11">{{$data->email}}</small></h6>
                       <small>{{ Carbon\Carbon::parse($data->created_at)->diffForHumans()}}</small>
@@ -221,6 +221,8 @@
                 
                 @endforeach  
               </div>
+
+              {{$feedback->links()}}
 
             </div>
           </div>

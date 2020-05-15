@@ -126,6 +126,7 @@ class TrayekController extends Controller
           $data->gambar = $imgName;
           $data->save();
          
+          alert()->success('Berhasil.','Data telah diubah!');
         return redirect()->route('trayek.index');
     }
 
@@ -135,6 +136,7 @@ class TrayekController extends Controller
         $data = Trayek::FindOrFail($id);
         $data->delete();
 
+        alert()->success('Berhasil.','Data telah diubah!');
         return redirect()->route('trayek.index');
     }
 

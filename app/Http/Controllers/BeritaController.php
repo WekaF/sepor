@@ -132,6 +132,7 @@ class BeritaController extends Controller
         $data = berita::FindOrFail($id);
         $data->delete();
 
+        alert()->success('Berhasil.','Data telah dihapus!');     
         return redirect()->route('berita.index');
     }
 }

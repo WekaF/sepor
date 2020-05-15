@@ -121,6 +121,7 @@ class TaxiController extends Controller
         $data = Taxi::FindOrFail($id);
         $data->delete();
 
+        alert()->success('Berhasil.','Data telah dihapus!');
         return redirect()->route('taxi.index');
     }
 }

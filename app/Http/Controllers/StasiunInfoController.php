@@ -107,7 +107,7 @@ class StasiunInfoController extends Controller
 
         ]);
 
-        alert()->success('selamat');
+        alert()->success('Berhasil.','Data telah ditambahkan!');     
         return redirect()->route('stasiuninfo.index');
     }
 
@@ -201,6 +201,9 @@ class StasiunInfoController extends Controller
             'denah_evakuasi' => $gambar4,
             'stand_komersil' =>$request->get('stand_komersil'),
         ]);
+
+        alert()->success('Berhasil.','Data telah diubah!');
+        return redirect()->route('stasiuninfo.index',compact('data'));
     }
 
     /**
@@ -213,7 +216,8 @@ class StasiunInfoController extends Controller
     {
         $data = StasiunInfo::FindOrFail($id);
         $data->delete();
-
+        
+        alert()->success('Berhasil.','Data telah dihapus!');
         return redirect()->route('stasiuninfo.index');
     }
 }
