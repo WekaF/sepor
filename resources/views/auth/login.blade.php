@@ -17,8 +17,8 @@
     <link href="{{ asset('assets/css/style.min.css')}}" rel="stylesheet">
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
-    <link rel="icon" href="../assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="{{asset('assets/img/apple-touch-icon.png')}}">
+    <link rel="icon" href="{{asset('assets/img/favicon.png')}}">
   </head>
 
   <body>
@@ -76,7 +76,7 @@
 
 
       <footer class="col-12 align-self-end text-center fs-13">
-        <p class="mb-0"><small>Copyright © 2017 <a href="http://thetheme.io/theadmin">TheAdmin</a>. All rights reserved.</small></p>
+        <p class="mb-0"><small>Copyright © 2017 <a href="https://github.com/WekaF">WekaDev</a>. All rights reserved.</small></p>
       </footer>
     </div>
 
