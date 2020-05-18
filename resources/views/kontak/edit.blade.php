@@ -36,13 +36,21 @@
                             <div class="form-group">
                             <label for="judul" class="col-md-4 control-label">Nomer Kontak</label>
                             <div class="col-md-6">
+<<<<<<< HEAD
                                 <input id="isbn" type="number" class="form-control" name="progres_stasiun" value="{{$data->nomor}}"required>
+=======
+                                <input id="isbn" type="text" class="form-control" name="nomor" value="{{$data->nomor}}"required>
+>>>>>>> fixing
                             </div>
                             </div>
                         <button type="submit" class="btn btn-primary" id="submit">
                                     Update
                         </button>
+<<<<<<< HEAD
                         <a href="{{route('kategori.index')}}" class="btn btn-light pull-right">Back</a>
+=======
+                        <a href="{{route('kontak.index')}}" class="btn btn-light pull-right">Back</a>
+>>>>>>> fixing
                     </div>
                   </div>
                 </div>

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php
+=======
+    <?php
+>>>>>>> fixing
 
 /**
  * Laravel - A PHP Framework For Web Artisans

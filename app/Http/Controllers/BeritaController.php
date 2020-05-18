@@ -115,7 +115,28 @@ class BeritaController extends Controller
     {
         $data = berita::findOrFail($id);
 
+<<<<<<< HEAD
         berita::find($id)->update($request->all());
+=======
+        if($request->file('gambar')) {
+            $file = $request->file('gambar');
+            $dt = Carbon::now();
+            $acak  = $file->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $request->file('gambar')->move("images/berita", $fileName);
+            $gambar = $fileName;
+        } else {
+            $gambar = NULL;
+        }
+
+       berita::find($id)->update([
+        'judul'      => $request->get('judul'),
+        'isi'        => $request->get('isi'),
+        'gambar'     => $gambar
+            
+           
+        ]);
+>>>>>>> fixing
                 
          alert()->success('Berhasil.','Data telah diubah!');
         return redirect()->route('berita.index',compact('data'));

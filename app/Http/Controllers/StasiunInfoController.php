@@ -49,62 +49,23 @@ class StasiunInfoController extends Controller
 
         // dd($request->all());
 
-        if($request->file('gambar1')) {
-            $file = $request->file('gambar1');
+        if($request->file('gambar')) {
+            $file = $request->file('gambar');
             $dt = Carbon::now();
             $acak  = $file->getClientOriginalExtension();
             $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            $request->file('gambar1')->move("images/denah", $fileName);
-            $gambar1 = $fileName;
+            $request->file('gambar')->move("images/denah", $fileName);
+            $gambar = $fileName;
         } else {
-            $gambar1 = NULL;
-        }
-
-        if($request->file('gambar2')) {
-            $file = $request->file('gambar2');
-            $dt = Carbon::now();
-            $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            $request->file('gambar2')->move("images/denah", $fileName);
-            $gambar2 = $fileName;
-        } else {
-            $gambar2 = NULL;
+            $gambar = NULL;
         }
 
         
-        if($request->file('gambar3')) {
-            $file = $request->file('gambar3');
-            $dt = Carbon::now();
-            $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            $request->file('gambar3')->move("images/denah", $fileName);
-            $gambar3 = $fileName;
-        } else {
-            $gambar3 = NULL;
-        }
-
-        if($request->file('gambar4')) {
-            $file = $request->file('gambar4');
-            $dt = Carbon::now();
-            $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            $request->file('gambar4')->move("images/denah", $fileName);
-            $gambar4 = $fileName;
-        } else {
-            $gambar4 = NULL;
-        }
-
-        
-
         StasiunInfo::create([
 
-            'denah_stasiun' => $gambar1,
-            'prosedur_evakuasi' => $gambar2,
-            'peta_jaringan' => $gambar3,
-            'denah_evakuasi' => $gambar4,
-            'stand_komersil' =>$request->get('stand_komersil'),
-
-
+            'nama_denah' => $request->get('nama_denah'),
+            'gambar' => $gambar,
+            'deskripsi' => $request->get('deskripsi'),
         ]);
 
         alert()->success('Berhasil.','Data telah ditambahkan!');     
@@ -118,12 +79,16 @@ class StasiunInfoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    { 
+        $data = Stasiuninfo::findOrFail($id);
+        
         $stas = StasiunInfo::find($id);
 
         $response['status'] = 'OK';
         $response['result'] = $stas;
 
+       
+        return view('stasiuninfo.show', compact('data'));
         return Response::json($response);
     }
 
@@ -135,7 +100,9 @@ class StasiunInfoController extends Controller
      */
     public function edit($id)
     {
-        return view('stasiuninfo.edit');
+        $data = Stasiuninfo::findOrFail($id);
+
+        return view('stasiuninfo.edit',compact('data'));
     }
 
     /**
@@ -147,63 +114,26 @@ class StasiunInfoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = stasiuninfo::findOrFail($id);
-
-        if($request->file('gambar1')) {
-            $file = $request->file('gambar1');
+        if($request->file('gambar')) {
+            $file = $request->file('gambar');
             $dt = Carbon::now();
             $acak  = $file->getClientOriginalExtension();
             $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            $request->file('gambar1')->move("images/denah", $fileName);
-            $gambar1 = $fileName;
+            $request->file('gambar')->move("images/denah", $fileName);
+            $gambar = $fileName;
         } else {
-            $gambar1 = NULL;
+            $gambar = NULL;
         }
-
-        if($request->file('gambar2')) {
-            $file = $request->file('gambar2');
-            $dt = Carbon::now();
-            $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            $request->file('gambar2')->move("images/denah", $fileName);
-            $gambar2 = $fileName;
-        } else {
-            $gambar2 = NULL;
-        }
-
-        
-        if($request->file('gambar3')) {
-            $file = $request->file('gambar3');
-            $dt = Carbon::now();
-            $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            $request->file('gambar3')->move("images/denah", $fileName);
-            $gambar3 = $fileName;
-        } else {
-            $gambar3 = NULL;
-        }
-
-        if($request->file('gambar4')) {
-            $file = $request->file('gambar4');
-            $dt = Carbon::now();
-            $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            $request->file('gambar4')->move("images/denah", $fileName);
-            $gambar4 = $fileName;
-        } else {
-            $gambar4 = NULL;
-        }
-
-        stasiuninfo::find($id)->update([
-            'denah_stasiun' => $gambar1,
-            'prosedur_evakuasi' => $gambar2,
-            'peta_jaringan' => $gambar3,
-            'denah_evakuasi' => $gambar4,
-            'stand_komersil' =>$request->get('stand_komersil'),
+        Stasiuninfo::find($id)->update([
+            'nama_denah' => $request->get('nama_denah'),
+            'gambar'     => $gambar,
+            'deskripsi' => $request->get('deskripsi'),
+            
+           
         ]);
 
         alert()->success('Berhasil.','Data telah diubah!');
-        return redirect()->route('stasiuninfo.index',compact('data'));
+        return redirect()->route('stasiuninfo.index');
     }
 
     /**

@@ -80,12 +80,15 @@ class KontakController extends Controller
     public function edit($id)
     {
         $data = Kontak::findOrFail($id);
+<<<<<<< HEAD
       
         if (empty($data)) {
             Flash::error('Barang not found');
 
             return redirect(route('kontak.index'));
         }
+=======
+>>>>>>> fixing
 
         return view('kontak.edit',compact('data'));
     }
@@ -99,12 +102,19 @@ class KontakController extends Controller
      */
     public function update(Request $request, $id)
     {
+<<<<<<< HEAD
         $data = Kontak::findOrFail($id);
 
         Kontak::find($id)->update($request->all());
                 
          alert()->success('Berhasil.','Data telah diubah!');
         return redirect()->route('kontak.index',compact('data'));
+=======
+        Kontak::find($id)->update($request->all());
+                
+         alert()->success('Berhasil.','Data telah diubah!');
+        return redirect()->route('kontak.index');
+>>>>>>> fixing
     }
 
     /**

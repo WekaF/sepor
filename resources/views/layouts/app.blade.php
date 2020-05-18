@@ -96,7 +96,10 @@
             <span class="topbar-btn" data-toggle="dropdown">hai, {{ Auth::user()->name }}</span>
             <div class="dropdown-menu dropdown-menu-right"> 
               <div class="dropdown-divider"></div>
+<<<<<<< HEAD
               <a class="dropdown-item" href="page-extra/user-lock-1.html"><i class="ti-lock"></i> Lock</a>
+=======
+>>>>>>> fixing
               <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();"><i class="ti-power-off"></i> Logout
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -105,6 +108,7 @@
             </div>
           </li>
 
+<<<<<<< HEAD
           <!-- Notifications -->
           <li class="dropdown d-none d-md-block">
             <span class="topbar-btn has-new" data-toggle="dropdown"><i class="ti-bell"></i></span>
@@ -160,6 +164,8 @@
           </li>
           <!-- END Notifications -->
 
+=======
+>>>>>>> fixing
           <!-- Messages -->
           
         </ul>
@@ -173,9 +179,16 @@
     <main>
 
       <div class="main-content">
+<<<<<<< HEAD
 
             @yield('content')
 
+=======
+      
+
+            @yield('content')
+            
+>>>>>>> fixing
       </div><!--/.main-content -->
 
 

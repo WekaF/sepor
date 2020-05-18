@@ -76,7 +76,15 @@
 
     <!-- Begin page content -->
     <main role="main" class="container">
+<<<<<<< HEAD
         @yield('content')
+=======
+      <div class="main-content">
+
+      @yield('content')
+
+      </div>  
+>>>>>>> fixing
     </main>
 
     <footer class="site-footer">
