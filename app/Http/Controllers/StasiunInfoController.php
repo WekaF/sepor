@@ -87,8 +87,9 @@ class StasiunInfoController extends Controller
         $response['status'] = 'OK';
         $response['result'] = $stas;
 
-        return Response::json($response);
+       
         return view('stasiuninfo.show', compact('data'));
+        return Response::json($response);
     }
 
     /**

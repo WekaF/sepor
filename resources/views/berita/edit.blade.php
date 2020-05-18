@@ -40,11 +40,7 @@
                         <div class="form-group{{ $errors->has('judul') ? ' has-error' : '' }}">
                             <label for="judul" class="col-md-4 control-label">Nama Kategori</label>
                             <div class="col-md-6">
-<<<<<<< HEAD
-                                <input id="judul" type="text" class="form-control" name="nama_kategori" value="{{ $data->judul }}" required>
-=======
                                 <input id="judul" type="text" class="form-control" name="judul" value="{{ $data->judul }}" required>
->>>>>>> fixing
                                 @if ($errors->has('judul'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('judul') }}</strong>
@@ -55,11 +51,7 @@
                         <div class="form-group">
                         <label for="exampleTextarea1" class="col-md-4 control-label">Isi Berita</label>
                         <div class="col-md-6">
-<<<<<<< HEAD
-                        <textarea name="isi" class="form-control" id="exampleTextarea1" rows="10" required>{{$data->judul}}</textarea>
-=======
                         <textarea name="isi" class="form-control" id="exampleTextarea1" rows="10" required>{{$data->isi}}</textarea>
->>>>>>> fixing
                         </div>
                         
                       </div>

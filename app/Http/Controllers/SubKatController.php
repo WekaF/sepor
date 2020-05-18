@@ -82,7 +82,7 @@ class SubKatController extends Controller
 
             foreach ($request->file('gambar') as $image) {
                 $name = $image->getClientOriginalName();
-                $image->move(public_path() . '/images/destinasi', $name);
+                $image->move(public_path() . '/storage/images/destinasi', $name);
                 $gambar[] = $name;
             }
         }
@@ -96,10 +96,6 @@ class SubKatController extends Controller
             'kategori_id'      => $input['kategori_id'],
             'gambar'           => json_encode($gambar),
         ]);
-
-
-
-
 
 
         alert()->success('Berhasil.', 'Data telah ditambahkan!');

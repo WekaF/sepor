@@ -77,7 +77,7 @@
     <!-- Begin page content -->
     <main role="main" class="container">
         @yield('content')
-    </main>
+      </main>
 
     <footer class="site-footer">
         <div class="row">

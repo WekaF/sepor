@@ -47,11 +47,7 @@
                                   <td>
                                   @if($datang->gambar)
                                       @foreach (json_decode($datang->gambar,true) as $p) 
-<<<<<<< HEAD
-                                         <img src="{{url('images/destinasi/'. $p)}}" style="height:100px; width:100px"/>
-=======
                                          <img src="{{url('storage/images/destinasi/'. $p)}}" style="height:100px; width:100px"/>
->>>>>>> fixing
                                       @endforeach
                                   @endif
                                   </td>

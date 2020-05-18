@@ -60,25 +60,17 @@ $('#form-delete').on('submit', function(e){
               @foreach($data as $data)
                           <tr>
                                 <td>{{$data->jenis->jenis_kereta}}</td>
-<<<<<<< HEAD
-                                <td>{{$data->no_ka}}</td>
-=======
                                 <td>
                                 <a href="{{route('keretainfo.show', $data->id)}}"> 
                                 {{$data->no_ka}}
                                 </td>
->>>>>>> fixing
                                 <td>{{$data->nama_kereta}}</td>
                                 <td>{{$data->jam}}</td>
                                 <td>{{$data->kelaska}}</td>
                                 <td>{{$data->relasi}}</td>
                                 <td class="py-1">
                                       @if($data->progres_stasiun)
-<<<<<<< HEAD
-                                        <img src="{{url('images/keretainfo/'. $data->progres_stasiun)}}" alt="image" style="width: 100px; height:100px " />
-=======
                                         <img src="{{url('images/keretainfo/'. $data->progres_stasiun)}}" alt="image" style="width: 100px; height:100px" class="rounded-circle" />
->>>>>>> fixing
                                       @else
                                         <img src="{{url('images/keretainfo/default.jpg')}}" alt="image" style="width: 100px; height:100px" />
                                       @endif
@@ -86,11 +78,7 @@ $('#form-delete').on('submit', function(e){
                                       </td>
                                       <td class="py-1">
                                       @if($data->gambar_jalur)
-<<<<<<< HEAD
-                                        <img src="{{url('images/keretainfo/'. $data->gambar_jalur)}}" alt="image" style="width: 100px; height:100px " />
-=======
                                         <img src="{{url('images/keretainfo/'. $data->gambar_jalur)}}" alt="image" style="width: 100px; height:100px " class="rounded-circle" />
->>>>>>> fixing
                                       @else
                                         <img src="{{url('images/keretainfo/default.jpg')}}" alt="image" style="width: 100px; height:100px" />
                                       @endif

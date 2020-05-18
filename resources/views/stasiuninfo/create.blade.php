@@ -37,64 +37,25 @@
                     
                     {{ csrf_field() }}
                      
-<<<<<<< HEAD
-
-                      
-                      <div class="form-group">
-                            <label for="email" class="col-md-4 control-label">Denah Stasiun</label>
-                            <div class="col-md-6">
-                                <img width="200" height="200" />
-                                <input required type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar1">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email" class="col-md-4 control-label">Prosedur Evakuasi</label>
-                            <div class="col-md-6">
-                                <img width="200" height="200" />
-                                <input required type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar2">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email" class="col-md-4 control-label">Peta Jaringan Kereta Api</label>
-                            <div class="col-md-6">
-                                <img width="200" height="200" />
-                                <input required type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar3">
-=======
                     <div class="form-group">
                             <label for="judul" class="col-md-4 control-label">Nama Denah</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="nama_denah" required>
->>>>>>> fixing
                             </div>
                         </div>
 
                         <div class="form-group">
-<<<<<<< HEAD
-                            <label for="email" class="col-md-4 control-label">Denah Evakuasi</label>
-                            <div class="col-md-6">
-                                <img width="200" height="200" />
-                                <input required type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar4">
-=======
                             <label for="email" class="col-md-4 control-label">Gambar</label>
                             <div class="col-md-6">
                                 <img style="width:400px; height:300px" />
                                 <input required type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar">
->>>>>>> fixing
                             </div>
                         </div>
 
                         <div class="form-group">
-<<<<<<< HEAD
-                        <label for="exampleTextarea1" class="col-md-4 control-label">Stand Komersil</label>
-                            <div class="col-md-6">
-                              <textarea name="stand_komersil" class="form-control" id="exampleTextarea1" rows="6"></textarea>
-=======
                         <label for="exampleTextarea1" class="col-md-4 control-label">Deskripsi</label>
                             <div class="col-md-6">
                               <textarea name="deskripsi" class="form-control" id="exampleTextarea1" rows="6"></textarea>
->>>>>>> fixing
                               </div>
                         </div>
 
