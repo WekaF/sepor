@@ -123,8 +123,6 @@ class SubKatController extends Controller
         $data = SubKategori::findOrFail($id);
         $input = $request->all();
 
-<<<<<<< HEAD
-=======
         // if ($request->hasfile('gambar')) {
         //        foreach($request->file('gambar') as $image){
         //            $file = $image->file('gambar');
@@ -139,7 +137,6 @@ class SubKatController extends Controller
         //     $name = $data->nama_subkategori;
         // }
 
->>>>>>> fixing
         if ($request->hasfile('gambar')) {
             $foto = public_path("/images/destinasi/" . $data->gambar);
             if (File::exists($foto)) {
@@ -147,21 +144,13 @@ class SubKatController extends Controller
             }
             foreach ($request->file('gambar') as $image) {
                 $name = $image->getClientOriginalName();
-<<<<<<< HEAD
-                $image->move(public_path() . '/images/destinasi', $name);
-=======
                 $image->move(public_path() . '/storage/images/destinasi', $name);
->>>>>>> fixing
                 $gambar[] = $name;
             }
         } else {
             $name = $data->nama_subkategori;
         }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> fixing
           $data->nama_subkategori = $request->nama_subkategori;
           $data->deskripsi = $request->deskripsi;
           $data->long = $request->long;
@@ -169,35 +158,14 @@ class SubKatController extends Controller
           $data->no_telp = $request->no_telp;
           $data->kategori_id = $request->kategori_id;
           $data->gambar = json_encode($gambar);
-<<<<<<< HEAD
-=======
     
->>>>>>> fixing
           $data->save();
        
           alert()->success('Berhasil.','Data telah di Update!');             
         return redirect()->route('subkategori.index',compact('data'));
-<<<<<<< HEAD
-=======
-        $data->nama_subkategori = $request->nama_subkategori;
-        $data->deskripsi = $request->deskripsi;
-        $data->long = $request->long;
-        $data->lat = $request->lat;
-        $data->no_telp = $request->no_telp;
-        $data->kategori_id = $request->kategori_id;
-        $data->gambar = json_encode($gambar);
-        $data->save();
-
-
-        return redirect()->route('subkategori.index', compact('data'));
->>>>>>> aa66798b6e8d588307fa0c7e29808275ecd06642
+    
     }
 
-=======
-    }
-
-
->>>>>>> fixing
     public function destroy($id)
     {
 

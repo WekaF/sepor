@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-
-=======
 @section('js')
 
 <script type="text/javascript">
@@ -25,7 +22,6 @@
         })
         </script>
 @stop
->>>>>>> fixing
 @section('title','Edit Berita')
 @extends('layouts.app')
 

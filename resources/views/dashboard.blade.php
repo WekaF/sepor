@@ -64,20 +64,12 @@
             </div>
 		  </div>
 		  
-<<<<<<< HEAD
-<div class="col-12">
-=======
 <div class="col-lg-12">
->>>>>>> fixing
   <div class="divider text-uppercase fw-500">Informasi</div>
 </div>
 
 
-<<<<<<< HEAD
-
-=======
          
->>>>>>> fixing
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
@@ -89,10 +81,6 @@
                                   <th width="5px">No</th>
                                   <th width="50px">Kategori</th>
                                   <th width="100px">Nama Kereta</th>
-<<<<<<< HEAD
-                                  <th width="100px">Kelas Kereta</th>
-=======
->>>>>>> fixing
                                   <th width="100px">Relasi</th>
                                   <th width="10px">Jam</th>
                                   <th width="10px">Keterangan</th>
@@ -109,10 +97,6 @@
                                 </td>
                                 <td>{{$data->jenis->jenis_kereta}}</td>
                                 <td>{{$data->nama_kereta}}</td>
-<<<<<<< HEAD
-                                <td>{{$data->kelaska}}</td> 
-=======
->>>>>>> fixing
                                 <td>{{$data->relasi}}</td> 
                                 <td>{{$data->jam}}</td>
                                 <td>
@@ -131,10 +115,7 @@
                   </div>
                 </div>
               </div>
-<<<<<<< HEAD
-=======
           
->>>>>>> fixing
              
               
           <div class="col-lg-6 grid-margin stretch-card">

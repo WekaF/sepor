@@ -47,21 +47,13 @@ $(document).ready(function() {
 
                         <div class="form-group">
                             <div class="col-md-6">
-<<<<<<< HEAD
-                                <img width="200" height="200" @if($data->gambar_jalur) src="{{ asset('images/jalur/'.$data->gambar_jalur) }}" @endif />
-=======
                                 <img style="width:400px; height:300px" @if($data->gambar_jalur) src="{{ asset('images/keretainfo/'.$data->gambar_jalur) }}" @endif />
->>>>>>> fixing
                             </div>
 
                             <br>
                             <label for="judul" class="col-md-4 control-label">Progres Stasiun</label>
                             <div class="col-md-6">
-<<<<<<< HEAD
-                                <img width="200" height="200" @if($data->progres_stasiun) src="{{ asset('images/jalur/'.$data->progres_stasiun) }}" @endif />
-=======
                                 <img style="width:400px; height:300px" @if($data->progres_stasiun) src="{{ asset('images/keretainfo/'.$data->progres_stasiun) }}" @endif />
->>>>>>> fixing
                             </div>
                             
                         </div>

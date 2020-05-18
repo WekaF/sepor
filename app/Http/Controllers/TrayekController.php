@@ -130,10 +130,6 @@ class TrayekController extends Controller
         return redirect()->route('trayek.index');
     }
 
-<<<<<<< HEAD
-=======
- 
->>>>>>> fixing
     
     public function destroy($id)
     {

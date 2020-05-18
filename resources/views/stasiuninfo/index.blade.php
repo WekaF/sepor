@@ -24,17 +24,9 @@
             <table class="table table-striped table-bordered" cellspacing="0" data-provide="datatables">
               <thead>
                 <tr>
-<<<<<<< HEAD
-                <th>Denah Stasiun</th>
-                <th>Prosedur Evakuasi</th>
-                <th>Peta Jaringan Kereta Api</th>  
-                <th>Denah Evakuasi</th>
-                <th>Stand Komersil</th>
-=======
                 <th>Nama Denah</th>
                 <th>Gambar</th>
                 <th>Deskripsi</th>  
->>>>>>> fixing
                 <th>Action</th>
                 </tr>
               </thead>
@@ -42,40 +34,6 @@
              
               @foreach($data as $data)
                           <tr>
-<<<<<<< HEAD
-                                  <!-- <td>{{$data->denah_stasiun}}</td>                                  
-                                  <td>{{$data->denah_evakuasi}}</td>
-                                  <td>{{$data->peta_jaringan}}</td> -->
-
-                                  <td class="">
-                                      @if($data->denah_stasiun)
-                                        <img src="{{url('images/denah/'. $data->denah_stasiun)}}" alt="image" style="width: 100px; height:100px" class="rounded-circle"/>
-                                      @else
-                                        <img src="{{url('images/denah/default.jpg')}}" alt="image" style="width: 100px; height:100px" />
-                                      @endif
-                                  
-                                      </td>
-                                  <td class="">
-                                      @if($data->denah_evakuasi)
-                                        <img src="{{url('images/denah/'. $data->denah_evakuasi)}}" alt="image" style="width: 100px; height:100px " class="rounded-circle"/>
-                                      @else
-                                        <img src="{{url('images/denah/default.jpg')}}" alt="image" style="width: 100px; height:100px" />
-                                      @endif
-                                  
-                                      </td>
-                                      <td class="">
-                                      @if($data->peta_jaringan)
-                                        <img src="{{url('images/denah/'. $data->peta_jaringan)}}" alt="image" style="width: 100px; height:100px" class="rounded-circle"/>
-                                      @else
-                                        <img src="{{url('images/denah/default.jpg')}}" alt="image" style="width: 100px; height:100px" />
-                                      @endif
-                                  
-                                      </td>       
-                                      </td>
-                                      <td class="">
-                                      @if($data->denah_evakuasi)
-                                        <img src="{{url('images/denah/'. $data->denah_evakuasi)}}" alt="image" style="width:100px; height:100px " class="rounded-circle"/>
-=======
                                    <td>
                                    <a href="{{route('stasiuninfo.show', $data->id)}}">  
                                    {{$data->nama_denah}}
@@ -84,17 +42,12 @@
                                       <td class="">
                                       @if($data->gambar)
                                         <img src="{{url('images/denah/'. $data->gambar)}}" alt="image" style="width:100px; height:100px " class="rounded-circle"/>
->>>>>>> fixing
                                       @else
                                         <img src="{{url('images/denah/default.jpg')}}" alt="image" style="width: 100px; height:100px" />
                                       @endif
                                   
                                       </td>        
-<<<<<<< HEAD
-                                      <td>{{$data->stand_komersil}}</td>
-=======
                                       <td>{{$data->deskripsi}}</td>
->>>>>>> fixing
                                       
                                   
                                   <td>

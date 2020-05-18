@@ -115,9 +115,6 @@ class BeritaController extends Controller
     {
         $data = berita::findOrFail($id);
 
-<<<<<<< HEAD
-        berita::find($id)->update($request->all());
-=======
         if($request->file('gambar')) {
             $file = $request->file('gambar');
             $dt = Carbon::now();
@@ -136,7 +133,6 @@ class BeritaController extends Controller
             
            
         ]);
->>>>>>> fixing
                 
          alert()->success('Berhasil.','Data telah diubah!');
         return redirect()->route('berita.index',compact('data'));
