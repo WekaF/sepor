@@ -13,7 +13,8 @@
 
 @section('content')
 
-              <div class="card">
+          <div class="card">
+          <div class="col-md-12">
           <h4 class="card-title"><strong>Tambah</strong> Destinasi</h4>
           <div class="col-lg-2">
             <a href="{{route('subkategori.create')}}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Tambah Data</a>
@@ -45,12 +46,12 @@
                                   <td>{{$datang->deskripsi}}</td>
                                   
                                   <td>
-                                  @if($datang->gambar)
-                                      @foreach (json_decode($datang->gambar,true) as $p) 
-                                         <img src="{{url('storage/images/destinasi/'. $p)}}" style="height:100px; width:100px"/>
+                                    @if($datang->gambar)
+                                      @foreach (json_decode($datang->gambar, true) as $p)
+                                         <img src="{{url('images/destinasi/'. $p)}}" style="height:100px; width:100px"/>
                                       @endforeach
-                                  @endif
-                                  </td>
+                                         @endif
+                                    </td>
                                   
                                  
 
@@ -80,6 +81,7 @@
               </tbody>
             </table>
           </div>
+        </div>
         </div>
            
 @endsection

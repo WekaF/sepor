@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\SubKategori;
 use App\Kategori;
 use App\Http\Requests;
-use App\User;
 use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
 use Carbon\Carbon;
@@ -13,6 +12,7 @@ use Datatables;
 use Response;
 use DB;
 use File;
+use Illuminate\Support\Facades\Storage;
 
 
 use Illuminate\Http\Request;
@@ -41,10 +41,10 @@ class SubKatController extends Controller
         // $data = SubKategori::all();
         $subkategori = SubKategori::all();
         $count = SubKategori::count();
-        $gambar = SubKategori::pluck('gambar', 'id');
+        
         //  dd($subkategori->all());
 
-        return view('subkategori.index', compact('subkategori'))->with('count', $count)->with(json_encode($gambar, true));
+        return view('subkategori.index', compact('subkategori'))->with('count', $count);
     }
     public function create(Request $request)
     {
@@ -71,21 +71,25 @@ class SubKatController extends Controller
     }
     public function store(Request $request)
     {
-
         $input = $request->all();
-
-
         //  dd($request->all());
-
-
-        if ($request->hasfile('gambar')) {
-
-            foreach ($request->file('gambar') as $image) {
-                $name = $image->getClientOriginalName();
-                $image->move(public_path() . '/storage/images/destinasi', $name);
-                $gambar[] = $name;
+        if($request->hasfile('gambar')) {
+            foreach($request->file('gambar')as $file){
+                $dt = Carbon::now();
+                $acak  = $file->getClientOriginalName();
+                $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+                // $file->move(public_path() .'/images/destinasi', $fileName);
+                // $path = Storage::putFile('public/images/destinasi',$request->file('gambar'));
+                $place = 'public/images/destinasi' . $filename;
+                Storage::put($place, File::get($file));
+                $gambar[] = $fileName;
+                
             }
+           
+        } else {
+            $gambar = NULL;
         }
+
 
         SubKategori::Create([
             'nama_subkategori' => $input['nama_subkategori'],
@@ -97,6 +101,7 @@ class SubKatController extends Controller
             'gambar'           => json_encode($gambar),
         ]);
 
+        dd(json_encode($gambar));
 
         alert()->success('Berhasil.', 'Data telah ditambahkan!');
         return redirect()->route('subkategori.index');
@@ -116,47 +121,54 @@ class SubKatController extends Controller
     }
     public function update(Request $request, $id)
     {
+        // dd($request->all());
         $data = SubKategori::findOrFail($id);
         $input = $request->all();
 
+        $input=$request->all();
         // if ($request->hasfile('gambar')) {
-        //        foreach($request->file('gambar') as $image){
-        //            $file = $image->file('gambar');
-        //            $dt = Carbon::now();
-        //            $acak  = $file->getClientOriginalName();
-        //            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-        //            $image->file('gambar')->move("images/destinasi", $fileName);
-        //            $gambar[] = $fileName;
+        //     $foto = public_path("/images/destinasi/" . $data->gambar);
+        //     if (File::exists($foto)) {
+        //         File::delete($foto);
         //     }
-        //  }
-        // else{
+        //     foreach ($request->file('gambar') as $image) {
+        //         $name = $image->getClientOriginalName();
+        //         $image->move(public_path() . '/images/destinasi', $name);
+        //         $gambar[] = $name;
+        //     }
+        // } else {
         //     $name = $data->nama_subkategori;
         // }
 
-        if ($request->hasfile('gambar')) {
-            $foto = public_path("/images/destinasi/" . $data->gambar);
-            if (File::exists($foto)) {
-                File::delete($foto);
-            }
-            foreach ($request->file('gambar') as $image) {
-                $name = $image->getClientOriginalName();
-                $image->move(public_path() . '/storage/images/destinasi', $name);
+
+
+        if($request->hasfile('gambar')) {
+            foreach($request->file('gambar')as $file){
+                $name  = $file->getClientOriginalName();
+                $path = Storage::putfile('public/images/destinasi', $file);
+                $file->move('images/destinasi', $name);
+                // $path = 'public/images/destinasi' . $fileName;
+                // Storage::put($path, File::get($file));
                 $gambar[] = $name;
             }
+           
         } else {
-            $name = $data->nama_subkategori;
+            $gambar = NULL;
         }
 
-          $data->nama_subkategori = $request->nama_subkategori;
-          $data->deskripsi = $request->deskripsi;
-          $data->long = $request->long;
-          $data->lat = $request->lat;
-          $data->no_telp = $request->no_telp;
-          $data->kategori_id = $request->kategori_id;
-          $data->gambar = json_encode($gambar);
-    
-          $data->save();
-       
+
+        Subkategori::find($id)->update( [
+            'nama_subkategori' => $input['nama_subkategori'],
+            'deskripsi'        => $input['deskripsi'],
+            'long'             => $input['long'],
+            'lat'              => $input['lat'],
+            'no_telp'          => $input['no_telp'],
+            'kategori_id'      => $input['kategori_id'],
+            'gambar'           => json_encode($gambar),
+           
+        ]);
+            // dd(json_encode($gambar));
+
           alert()->success('Berhasil.','Data telah di Update!');             
         return redirect()->route('subkategori.index',compact('data'));
     
