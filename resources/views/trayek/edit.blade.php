@@ -59,7 +59,7 @@
                             <label for="email" class="col-md-4 control-label">Gambar</label>
                             <div class="col-md-6">
                               <img src="{{ url('images/trayek/'.$data->gambar) }}" style="width:400px; height:300px">
-                                <input type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar">
+                                <input type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar" >
                             </div>
                         </div>
                      

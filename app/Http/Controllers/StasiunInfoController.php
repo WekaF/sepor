@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
 use Carbon\Carbon;
 use Response;
+use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Http\Request;
 
@@ -51,14 +52,13 @@ class StasiunInfoController extends Controller
 
         if($request->file('gambar')) {
             $file = $request->file('gambar');
-            $dt = Carbon::now();
-            $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            $request->file('gambar')->move("images/denah", $fileName);
-            $gambar = $fileName;
-        } else {
-            $gambar = NULL;
-        }
+            $name  = $file->getClientOriginalName();
+            $path = Storage::putfile('public/images/denah', $file);
+            $request->file('gambar')->move('images/denah', $name);
+            $gambar = $name;
+    } else {
+        $gambar = NULL;
+    }
 
         
         StasiunInfo::create([
@@ -116,14 +116,14 @@ class StasiunInfoController extends Controller
     {
         if($request->file('gambar')) {
             $file = $request->file('gambar');
-            $dt = Carbon::now();
-            $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            $request->file('gambar')->move("images/denah", $fileName);
-            $gambar = $fileName;
-        } else {
-            $gambar = NULL;
-        }
+            $name  = $file->getClientOriginalName();
+            $path = Storage::putfile('public/images/denah', $file);
+            $request->file('gambar')->move('images/denah', $name);
+            $gambar = $name;
+    } else {
+        $gambar = NULL;
+    }
+    
         Stasiuninfo::find($id)->update([
             'nama_denah' => $request->get('nama_denah'),
             'gambar'     => $gambar,

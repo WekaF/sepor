@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
 use Carbon\Carbon;
 use Response;
+use Illuminate\Support\Facades\Storage;
+use File;
 
 use Illuminate\Http\Request;
 
@@ -59,25 +61,22 @@ class KeretainfoController extends Controller
 
         if($request->file('gambar1')) {
             $file = $request->file('gambar1');
-            $dt = Carbon::now();
-            $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            $request->file('gambar1')->move("images/keretainfo", $fileName);
-            $gambar1 = $fileName;
-        } else {
-            $gambar1 = NULL;
-        }
-
-        if($request->file('gambar2')) {
-            $file = $request->file('gambar2');
-            $dt = Carbon::now();
-            $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            $request->file('gambar2')->move("images/keretainfo", $fileName);
-            $gambar2 = $fileName;
-        } else {
-            $gambar2 = NULL;
-        }
+            $name  = $file->getClientOriginalName();
+            $path = Storage::putfile('public/images/keretainfo', $file);
+            $request->file('gambar1')->move('images/keretainfo', $name);
+            $gambar1 = $name;
+    } else {
+        $gambar = NULL;
+    }
+    if($request->file('gambar2')) {
+        $file = $request->file('gambar2');
+        $name  = $file->getClientOriginalName();
+        $path = Storage::putfile('public/images/keretainfo', $file);
+        $request->file('gambar2')->move('images/keretainfo', $name);
+        $gambar2 = $name;
+} else {
+    $gambar = NULL;
+}
 
         DetailKA::create([  
             'nama_kereta'        => $request->get('nama_kereta'),
@@ -144,25 +143,23 @@ class KeretainfoController extends Controller
 
         if($request->file('gambar1')) {
             $file = $request->file('gambar1');
-            $dt = Carbon::now();
-            $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            $request->file('gambar1')->move("images/keretainfo", $fileName);
-            $gambar1 = $fileName;
-        } else {
-            $gambar1 = NULL;
-        }
-
-        if($request->file('gambar2')) {
-            $file = $request->file('gambar2');
-            $dt = Carbon::now();
-            $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            $request->file('gambar2')->move("images/keretainfo", $fileName);
-            $gambar2 = $fileName;
-        } else {
-            $gambar2 = NULL;
-        }
+            $name  = $file->getClientOriginalName();
+            $path = Storage::putfile('public/images/keretainfo', $file);
+            $request->file('gambar1')->move('images/keretainfo', $name);
+            $gambar1 = $name;
+    } else {
+        $gambar = NULL;
+    }
+    if($request->file('gambar2')) {
+        $file = $request->file('gambar2');
+        $name  = $file->getClientOriginalName();
+        $path = Storage::putfile('public/images/keretainfo', $file);
+        $request->file('gambar2')->move('images/keretainfo', $name);
+        $gambar2 = $name;
+} else {
+    $gambar = NULL;
+}
+    
         DetailKA::find($id)->update([  
             'nama_kereta'        => $request->get('nama_kereta'),
             'no_ka'              => $request->get('no_ka'),

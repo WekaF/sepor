@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
 use Carbon\Carbon;
 use Response;
+use Illuminate\Support\Facades\Storage;
 
 
 use Illuminate\Http\Request;
@@ -53,14 +54,13 @@ class BeritaController extends Controller
     {
         if($request->file('gambar')) {
             $file = $request->file('gambar');
-            $dt = Carbon::now();
-            $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            $request->file('gambar')->move("images/berita", $fileName);
-            $gambar = $fileName;
-        } else {
-            $gambar = NULL;
-        }
+            $name  = $file->getClientOriginalName();
+            $path = Storage::putfile('public/images/berita', $file);
+            $request->file('gambar')->move('images/berita', $name);
+            $gambar = $name;
+    } else {
+        $gambar = NULL;
+    }
 
              berita::create([  
             'judul'      => $request->get('judul'),
@@ -117,14 +117,13 @@ class BeritaController extends Controller
 
         if($request->file('gambar')) {
             $file = $request->file('gambar');
-            $dt = Carbon::now();
-            $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            $request->file('gambar')->move("images/berita", $fileName);
-            $gambar = $fileName;
-        } else {
-            $gambar = NULL;
-        }
+            $name  = $file->getClientOriginalName();
+            $path = Storage::putfile('public/images/berita', $file);
+            $request->file('gambar')->move('images/berita', $name);
+            $gambar = $name;
+    } else {
+        $gambar = NULL;
+    }
 
        berita::find($id)->update([
         'judul'      => $request->get('judul'),

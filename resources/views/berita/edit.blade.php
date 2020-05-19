@@ -59,8 +59,8 @@
                       <div class="form-group">
                             <label for="email" class="col-md-4 control-label">Gambar</label>
                             <div class="col-md-6">
-                            <img src="{{ url('images/berita/'.$data->berita) }}" style="width:400px; height:300px">
-                                <input required type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar" multipart>
+                            <img src="{{ url('images/berita/'.$data->gambar) }}" style="width:400px; height:300px">
+                                <input required type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar" >
                             </div>
                         </div>
                         

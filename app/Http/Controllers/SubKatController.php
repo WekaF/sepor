@@ -72,22 +72,17 @@ class SubKatController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        //  dd($request->all());
+      
         if($request->hasfile('gambar')) {
             foreach($request->file('gambar')as $file){
-                $dt = Carbon::now();
-                $acak  = $file->getClientOriginalName();
-                $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-                // $file->move(public_path() .'/images/destinasi', $fileName);
-                // $path = Storage::putFile('public/images/destinasi',$request->file('gambar'));
-                $place = 'public/images/destinasi' . $filename;
-                Storage::put($place, File::get($file));
-                $gambar[] = $fileName;
-                
+                $name  = $file->getClientOriginalName();
+                $path = Storage::putfile('public/images/destinasi', $file);
+                $file->move('images/destinasi', $name);
+                $gambar[] = $name;
             }
            
         } else {
-            $gambar = NULL;
+            $gambar[] = NULL;
         }
 
 
@@ -124,36 +119,16 @@ class SubKatController extends Controller
         // dd($request->all());
         $data = SubKategori::findOrFail($id);
         $input = $request->all();
-
-        $input=$request->all();
-        // if ($request->hasfile('gambar')) {
-        //     $foto = public_path("/images/destinasi/" . $data->gambar);
-        //     if (File::exists($foto)) {
-        //         File::delete($foto);
-        //     }
-        //     foreach ($request->file('gambar') as $image) {
-        //         $name = $image->getClientOriginalName();
-        //         $image->move(public_path() . '/images/destinasi', $name);
-        //         $gambar[] = $name;
-        //     }
-        // } else {
-        //     $name = $data->nama_subkategori;
-        // }
-
-
-
         if($request->hasfile('gambar')) {
             foreach($request->file('gambar')as $file){
                 $name  = $file->getClientOriginalName();
                 $path = Storage::putfile('public/images/destinasi', $file);
                 $file->move('images/destinasi', $name);
-                // $path = 'public/images/destinasi' . $fileName;
-                // Storage::put($path, File::get($file));
                 $gambar[] = $name;
             }
            
         } else {
-            $gambar = NULL;
+            $gambar[] = NULL;
         }
 
 
@@ -183,33 +158,5 @@ class SubKatController extends Controller
         return redirect()->route('subkategori.index');
     }
 
-    public function list($id)
-    {
-
-       
-        $list = SubKategori::where('id',$id)
-                             ->get();
-        
-        $response['status'] = 'OK';
-        $response['result'] = $list;
-
-        return Response::json($response);
-        
-
-        $temp = $list[0];
-        $temp = str_replace("\""," ",$temp['gambar']);
-        $temp = str_replace("[","",$temp);
-        $temp = str_replace("]","",$temp);
-        $temp = str_replace(" ","",$temp);
-        $images = explode(',', $temp);
-
-
-        $response['status'] = 'OK';
-        $response['result'] = $list;
-        $response['images'] = $images;
-
-        
-
-        return Response::json($response, 200);
-    }
+   
 }
