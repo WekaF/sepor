@@ -12,4 +12,8 @@ class Feedbacks extends Model
         'email',
         'saran',
     ];
+
+    public function feedback(){
+        return Feedbacks::all();
+    }
 }

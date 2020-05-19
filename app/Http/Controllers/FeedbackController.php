@@ -17,14 +17,21 @@ class FeedbackController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function feed(){
         $feedback = Feedbacks::all();
 
         $response['status'] = 'OK';
         $response['result'] = $feedback;
+        return Response::json($response); 
+    }
+    public function index()
+    {
+        $feedback = Feedbacks::paginate();
 
-        return Response::json($response);
+      
+       return view('feedback.index',compact('feedback'))->with('i', (request()->input('page', 1) - 1) * 10);
+     
+
         
     }
 

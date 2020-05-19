@@ -58,7 +58,7 @@ Route::group(array('prefix' => 'keretainfo'), function(){
  });
 
  Route::group(array('prefix' => 'feedback'), function(){
-   Route::get('','FeedbackController@index');
+   Route::get('','FeedbackController@feed');
    Route::post('','FeedbackController@store');
    Route::get('/{id}','FeedbackController@show'); 
 });

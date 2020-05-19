@@ -16,7 +16,7 @@
 
 <li class="menu-item">
             <a class="menu-link" href="#">
-              <span class="icon ti-layout"></span>
+              <span class="icon fa fa-taxi"></span>
               <span class="title">Transportasi</span>
               <span class="arrow"></span>
             </a>
@@ -41,7 +41,7 @@
 
           <li class="menu-item">
             <a class="menu-link" href="#">
-              <span class="icon ti-layout"></span>
+              <span class="icon fa fa-map-marker"></span>
               <span class="title">Destinasi</span>
               <span class="arrow"></span>
             </a>
@@ -64,7 +64,7 @@
           </li>
           <li class="menu-item">
             <a class="menu-link" href="#">
-              <span class="icon ti-layout"></span>
+              <span class="icon fa fa-info"></span>
               <span class="title">Informasi Stasiun</span>
               <span class="arrow"></span>
             </a>
@@ -96,13 +96,21 @@
                   <span class="title">Kontak</span>
                 </a>
               </li>
-              <li class="menu-item ">
-                <a class="menu-link" href="/berita">
-                  <span class="dot"></span>
-                  <span class="title">Berita </span>
-                </a>
-              </li>
+            
             </ul>
+          </li>
+
+          <li class="menu-item">
+           <a class="menu-link" href="/berita">
+              <span class="icon fa fa-newspaper-o"></span>
+              <span class="title">Berita</span>
+            </a>
+          </li>
+          <li class="menu-item">
+           <a class="menu-link" href="/feedback">
+              <span class="icon fa fa-comment"></span>
+              <span class="title">Lihat Feedback</span>
+            </a>
           </li>
 
 </ul>
