@@ -77,6 +77,17 @@
                             </div>
 
                             <div class="form-group">
+                            <label for="judul" class="col-md-4 control-label">Jalur</label>
+                            <div class="col-md-6">
+                                        <select name="jalur_id" class="form-control">
+                                                @foreach($jalur as $item)
+                                                <option value="{{$item->id}}">{{$item->nama_jalur}}</option>
+                                                @endforeach
+                                        </select>
+                            </div>
+                        </div>
+
+                            <div class="form-group">
                             <label for="email" class="col-md-4 control-label">Proges Stasiun</label>
                             <div class="col-md-6">
                                 <img width="200" height="200" />
@@ -84,13 +95,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="email" class="col-md-4 control-label">Gambar Jalur</label>
-                            <div class="col-md-6">
-                                <img width="200" height="200" />
-                                <input type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar2" required>
-                            </div>
-                        </div>
+                        
 
                         <div class="form-group">
                             <label for="judul" class="col-md-4 control-label">Jenis Kereta</label>

@@ -14,7 +14,6 @@ class CreateDetkeretasTable extends Migration
     public function up()
     {
         Schema::create('detkeretas', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->string('nama_kereta')->nullable();  
             $table->string('no_ka')->nullable();   
@@ -22,7 +21,7 @@ class CreateDetkeretasTable extends Migration
             $table->string('kelaska')->nullable();
             $table->string('relasi')->nullable();
             $table->string('progres_stasiun')->nullable();
-            $table->string('gambar_jalur')->nullable();
+            $table->unsignedInteger('jalur_id')->nullable();
             $table->unsignedBigInteger('jenis_id')->nullable();
             $table->enum('keterangan',['Normal','Bermasalah'])->nullable();
             $table->timestamps();
@@ -36,6 +35,10 @@ class CreateDetkeretasTable extends Migration
                   ->references('id')
                   ->on('jeniskeretas')
                   ->onDelete('cascade');  
+            $table->foreign('jalur_id')
+                  ->references('id')
+                  ->on('jalurs')
+                  ->onDelete('cascade');
                    
         });
     }

@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Response;
 use Illuminate\Support\Facades\Storage;
 use File;
+use DB;
 
 use Illuminate\Http\Request;
 
@@ -29,10 +30,11 @@ class KeretainfoController extends Controller
     public function index()
     {
         $data = DetailKA::all();
-        $jenis = JenisKA::pluck('jenis_kereta','id');
-        // $jalur = Jalur::where('jalur');
+         $jenis = DB::table('jeniskeretas')->get()->pluck('jensi_kereta');
+        
+        
 
-        // dd($data->all());
+        //  dd($jalur->all());
         
         return view('keretainfo.index',compact('data'))->with('jenis',$jenis);
     }
@@ -45,7 +47,8 @@ class KeretainfoController extends Controller
     public function create()
     {
          $jenis = JenisKA::get();
-        return view('keretainfo.create',compact('jenis'));
+         $jalur = Jalur::get();
+        return view('keretainfo.create',compact('jenis'))->with('jalur',$jalur);
     }
 
     /**
@@ -68,15 +71,7 @@ class KeretainfoController extends Controller
     } else {
         $gambar = NULL;
     }
-    if($request->file('gambar2')) {
-        $file = $request->file('gambar2');
-        $name  = $file->getClientOriginalName();
-        $path = Storage::putfile('public/images/keretainfo', $file);
-        $request->file('gambar2')->move('images/keretainfo', $name);
-        $gambar2 = $name;
-} else {
-    $gambar = NULL;
-}
+
 
         DetailKA::create([  
             'nama_kereta'        => $request->get('nama_kereta'),
@@ -84,10 +79,11 @@ class KeretainfoController extends Controller
             'jam'                => $request->get('jam'),
             'kelaska'            => $request->get('kelaska'),
             'relasi'             => $request->get('relasi'),
+            'jalur_id'           => $request->input('jalur_id'),
             'jenis_id'           => $request->input('jenis_id'),
             'keterangan'         => $request->get('keterangan'),
             'progres_stasiun'    => $gambar1,
-            'gambar_jalur'       => $gambar2,
+           
            
         ]);
     alert()->success('Berhasil.','Data telah ditambahkan!');        
@@ -118,6 +114,7 @@ class KeretainfoController extends Controller
         $data = DetailKA::findOrFail($id);
       
         $jenis = JenisKA::get();
+        $jalur = Jalur::get();
         
         if (empty($data)) {
             Flash::error('Barang not found');
@@ -125,7 +122,7 @@ class KeretainfoController extends Controller
             return redirect(route('keretainfo.index'));
         }
 
-        return view('keretainfo.edit',compact('data'))->with('jenis',$jenis);
+        return view('keretainfo.edit',compact('data'))->with('jenis',$jenis)->with('jalur',$jalur);
     }
 
     /**
@@ -150,15 +147,7 @@ class KeretainfoController extends Controller
     } else {
         $gambar = NULL;
     }
-    if($request->file('gambar2')) {
-        $file = $request->file('gambar2');
-        $name  = $file->getClientOriginalName();
-        $path = Storage::putfile('public/images/keretainfo', $file);
-        $request->file('gambar2')->move('images/keretainfo', $name);
-        $gambar2 = $name;
-} else {
-    $gambar = NULL;
-}
+   
     
         DetailKA::find($id)->update([  
             'nama_kereta'        => $request->get('nama_kereta'),
@@ -166,10 +155,10 @@ class KeretainfoController extends Controller
             'jam'                => $request->get('jam'),
             'kelaska'            => $request->get('kelaska'),
             'relasi'             => $request->get('relasi'),
+            'jalur_id'           => $request->input('jalur_id'),
             'jenis_id'           => $request->input('jenis_id'),
             'keterangan'         => $request->get('keterangan'),
             'progres_stasiun'    => $gambar1,
-            'gambar_jalur'       => $gambar2,
            
         ]);
 

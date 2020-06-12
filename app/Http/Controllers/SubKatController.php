@@ -96,7 +96,7 @@ class SubKatController extends Controller
             'gambar'           => json_encode($gambar),
         ]);
 
-        dd(json_encode($gambar));
+        // dd(json_encode($gambar));
 
         alert()->success('Berhasil.', 'Data telah ditambahkan!');
         return redirect()->route('subkategori.index');

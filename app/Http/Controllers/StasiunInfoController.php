@@ -48,23 +48,24 @@ class StasiunInfoController extends Controller
     public function store(Request $request)
     {
 
-        // dd($request->all());
+        if($request->hasfile('gambar')) {
+            foreach($request->file('gambar')as $file){
+                $name  = $file->getClientOriginalName();
+                $path = Storage::putfile('public/images/denah', $file);
+                $file->move('images/denah', $name);
+                $gambar[] = $name;
+            }
+           
+        } else {
+            $gambar[] = NULL;
+        }
 
-        if($request->file('gambar')) {
-            $file = $request->file('gambar');
-            $name  = $file->getClientOriginalName();
-            $path = Storage::putfile('public/images/denah', $file);
-            $request->file('gambar')->move('images/denah', $name);
-            $gambar = $name;
-    } else {
-        $gambar = NULL;
-    }
 
         
         StasiunInfo::create([
 
             'nama_denah' => $request->get('nama_denah'),
-            'gambar' => $gambar,
+            'gambar' => json_encode($gambar),
             'deskripsi' => $request->get('deskripsi'),
         ]);
 
@@ -114,19 +115,22 @@ class StasiunInfoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if($request->file('gambar')) {
-            $file = $request->file('gambar');
-            $name  = $file->getClientOriginalName();
-            $path = Storage::putfile('public/images/denah', $file);
-            $request->file('gambar')->move('images/denah', $name);
-            $gambar = $name;
-    } else {
-        $gambar = NULL;
-    }
+        if($request->hasfile('gambar')) {
+            foreach($request->file('gambar')as $file){
+                $name  = $file->getClientOriginalName();
+                $path = Storage::putfile('public/images/denah', $file);
+                $file->move('images/denah', $name);
+                $gambar[] = $name;
+            }
+           
+        } else {
+            $gambar[] = NULL;
+        }
+
     
         Stasiuninfo::find($id)->update([
             'nama_denah' => $request->get('nama_denah'),
-            'gambar'     => $gambar,
+            'gambar'     => json_encode($gambar),
             'deskripsi' => $request->get('deskripsi'),
             
            

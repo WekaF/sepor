@@ -51,14 +51,16 @@ class TrayekController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        if($request->file('gambar')) {
-                $file = $request->file('gambar');
+        if($request->hasfile('gambar')) {
+            foreach($request->file('gambar')as $file){
                 $name  = $file->getClientOriginalName();
                 $path = Storage::putfile('public/images/trayek', $file);
-                $request->file('gambar')->move('images/trayek', $name);
-                $gambar = $name;
+                $file->move('images/trayek', $name);
+                $gambar[] = $name;
+            }
+           
         } else {
-            $gambar = NULL;
+            $gambar[] = NULL;
         }
 
         $input=$request->all();
@@ -67,7 +69,7 @@ class TrayekController extends Controller
             'trayek_name'      => $request->get('trayek_name'),
             'trayek_price'     => $request->get('trayek_price'),
             'trayek_desc'      => $request->get('trayek_desc'),
-            'gambar'           => $gambar
+            'gambar'           => json_encode($gambar),
             
            
         ]);
@@ -107,21 +109,23 @@ class TrayekController extends Controller
 
         $input=$request->all();
 
-        if($request->file('gambar')) {
-            $file = $request->file('gambar');
-            $name  = $file->getClientOriginalName();
-            $path = Storage::putfile('public/images/trayek', $file);
-            $request->file('gambar')->move('images/trayek', $name);
-            $gambar = $name;
-    } else {
-        $gambar = NULL;
-    }
+        if($request->hasfile('gambar')) {
+            foreach($request->file('gambar')as $file){
+                $name  = $file->getClientOriginalName();
+                $path = Storage::putfile('public/images/trayek', $file);
+                $file->move('images/trayek', $name);
+                $gambar[] = $name;
+            }
+           
+        } else {
+            $gambar[] = NULL;
+        }
 
         Trayek::find($id)->update([  
             'trayek_name'      => $request->get('trayek_name'),
             'trayek_price'     => $request->get('trayek_price'),
             'trayek_desc'      => $request->get('trayek_desc'),
-            'gambar'           => $gambar
+            'gambar'           => json_encode($gambar),
             
            
         ]);

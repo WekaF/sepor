@@ -41,10 +41,10 @@
 
                                       <td class="">
                                       @if($data->gambar)
-                                        <img src="{{url('images/denah/'. $data->gambar)}}" alt="image" style="width:100px; height:100px " class="rounded-circle"/>
-                                      @else
-                                        <img src="{{url('images/denah/default.jpg')}}" alt="image" style="width: 100px; height:100px" />
-                                      @endif
+                                      @foreach (json_decode($data->gambar, true) as $p)
+                                         <img src="{{url('images/denah/'. $p)}}" style="height:100px; width:100px"/>
+                                      @endforeach
+                                         @endif
                                   
                                       </td>        
                                       <td>{{$data->deskripsi}}</td>

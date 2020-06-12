@@ -31,4 +31,5 @@ Route::resource('jeniska','JeniskeretaController');
 Route::resource('stasiuninfo','StasiunInfoController');
 Route::resource('kontak','KontakController');
 Route::resource('berita','BeritaController');
-Route::get('feedback', 'feedbackController@index');
+Route::resource('feedback', 'feedbackController');
+Route::resource('jalur','JalurController');

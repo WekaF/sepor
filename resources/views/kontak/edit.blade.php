@@ -19,7 +19,7 @@
                       <div class="form-group">
                             <label for="deskripsi" class="col-md-4 control-label">jenis</label>
                             <div class="col-md-6">
-                                 <select name="jenis" class="form-control" value="{{$data->jenis}}">
+                                 <select name="jenis" class="form-control" value="{{$data->jenis}}" required>
                                     <option value="">-- Pilih Kategori --</option>
                                     <option value="darurat">Darurat</option>
                                     <option value="pelanggan">Pelanggan</option>

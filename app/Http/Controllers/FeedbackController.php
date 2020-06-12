@@ -27,9 +27,10 @@ class FeedbackController extends Controller
     public function index()
     {
         $feedback = Feedbacks::paginate();
+        $count = Feedbacks::get();
 
       
-       return view('feedback.index',compact('feedback'))->with('i', (request()->input('page', 1) - 1) * 10);
+       return view('feedback.index',compact('feedback'))->with('i', (request()->input('page', 1) - 1) * 10)->with('count',$count);
      
 
         

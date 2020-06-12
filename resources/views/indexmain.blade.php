@@ -58,7 +58,9 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     {{ csrf_field() }}
                     </form>></a>
+                    <a class="dropdown-item" href="/dashboard"><i class="ti-user"></i> Dashboard</a>
             </div>
+           
           </li>
           @endguest
           </div>

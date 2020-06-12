@@ -16,18 +16,16 @@ class DetailKA extends Model
         'progres_stasiun',
         'jenis_id',
         'keterangan',
-        'gambar_jalur'
+        'jalur_id'
     ];
-    
-    public function detail()
-    {
-    	return $this->hasMany(DetailKA::class);
-    }
     public function jenis(){
         return $this->belongsTo(JenisKA::class,'jenis_id');
     }
     public function index(){
         return DetailKA::all();
+    }
+    public function jalur(){
+        return $this->belongsTo(JalurKA::class,'jalur_id');
     }
 
 }

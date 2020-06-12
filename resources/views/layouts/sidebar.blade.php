@@ -83,6 +83,12 @@
                   <span class="title">Jenis Kereta Api</span>
                 </a>
               </li>
+              <li class="menu-item ">
+                <a class="menu-link" href="/jalur">
+                  <span class="dot"></span>
+                  <span class="title">Jalur</span>
+                </a>
+              </li>
 
               <li class="menu-item ">
                 <a class="menu-link" href="/stasiuninfo">

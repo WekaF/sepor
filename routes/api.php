@@ -63,7 +63,12 @@ Route::group(array('prefix' => 'keretainfo'), function(){
    Route::get('/{id}','FeedbackController@show'); 
 });
 
+Route::group(array('prefix' => 'jalur'), function(){
+   Route::get('','JalurController@jalur');
+   Route::get('/{id}','JalurController@jalurget'); 
+});
 // Route::get('feedback','FeedbackController@index');
 // Route::post('feedback','FeedbackController@store');
 // Route::get('feedback/{id}','FeedbackController@show'); 
+
 

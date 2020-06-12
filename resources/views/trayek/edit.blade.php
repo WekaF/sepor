@@ -1,26 +1,31 @@
 @section('js')
 
 <script type="text/javascript">
-        function readURL() {
-            var input = this;
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $(input).prev().attr('src', e.target.result);
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
+  $("#gambar").change(function(){
+  $('#image_preview').html("");
+  var total_file=document.getElementById("uploadFile").files.length;
+  for(var i=0;i<total_file;i++){
+  $('#image_preview').append("<img src='"+URL.createObjectURL(event.target.files[i])+"'>");
+  }
+});
+$('form').ajaxForm(function() 
+{
+alert("Uploaded SuccessFully");
+}); 
+ 
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+      $(".btn-success").click(function(){ 
+          var html = $(".clone").html();
+          $(".increment").after(html);
+      });
+      $("body").on("click",".btn-danger",function(){ 
+          $(this).parents(".control-group").remove();
+      });
+    });
+</script>
 
-        $(function () {
-            $(".uploads").change(readURL)
-            $("#f").submit(function(){
-                // do ajax submit or just classic form submit
-              //  alert("fake subminting")
-                return false
-            })
-        })
-        </script>
 @stop        
 @section('title','Edit Angkutan')
 @extends('layouts.app')
@@ -56,15 +61,26 @@
                       </div>
 
                       <div class="form-group">
-                            <label for="email" class="col-md-4 control-label">Gambar</label>
-                            <div class="col-md-6">
-                              <img src="{{ url('images/trayek/'.$data->gambar) }}" style="width:400px; height:300px">
-                                <input type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar" >
-                            </div>
+                            <label id="gambar" for="gambar" class="col-md-4 control-label gambar">Gambar</label>
+                            <div class="col-md-8">                                                       
+                            <div class="input-group control-group increment" >
+                               <input type="file" name="gambar[]" class="form-control" multiple>
+                          <div class="input-group-btn"> 
+                            <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
+                          </div>
                         </div>
+                            <div class="clone hide">
+                              <div class="control-group input-group" style="margin-top:10px">
+                                <input type="file" name="gambar[]" class="form-control" multiple>
+                                <div class="input-group-btn"> 
+                                  <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>  
                      
 
-                      <button type="submit" class="btn btn-success mr-2">Update</button>
+                      <button type="submit" class="btn btn-primary mr-2">Update</button>
                       <a href="{{route('trayek.index')}}">
                       <button class="btn btn-light">Cancel</button>
                       </a>

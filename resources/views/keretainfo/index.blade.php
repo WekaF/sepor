@@ -49,46 +49,39 @@ $('#form-delete').on('submit', function(e){
                 <th >Jam</th> 
                 <th >Kelas Kereta</th>
                 <th >Relasi</th>
+                <th >Jalur</th>
                 <th >Progres Stasiun</th>
-                <th >Gambar Jalur</th>
                 <th>Keterangan</th>
                 <th>Action</th>
                 </tr>
               </thead>
               <tbody>
              
-              @foreach($data as $data)
+              @foreach($data as $item)
                           <tr>
-                                <td>{{$data->jenis->jenis_kereta}}</td>
+                                <td>{{$item->jenis->jenis_kereta}}</td>
                                 <td>
-                                <a href="{{route('keretainfo.show', $data->id)}}"> 
-                                {{$data->no_ka}}
+                                <a href="{{route('keretainfo.show', $item->id)}}"> 
+                                {{$item->no_ka}}
                                 </td>
-                                <td>{{$data->nama_kereta}}</td>
-                                <td>{{$data->jam}}</td>
-                                <td>{{$data->kelaska}}</td>
-                                <td>{{$data->relasi}}</td>
+                                <td>{{$item->nama_kereta}}</td>
+                                <td>{{$item->jam}}</td>
+                                <td>{{$item->kelaska}}</td>
+                                <td>{{$item->relasi}}</td>
+                                <td> {{$item->jalur_id}}</td>
                                 <td class="py-1">
-                                      @if($data->progres_stasiun)
-                                        <img src="{{url('images/keretainfo/'. $data->progres_stasiun)}}" alt="image" style="width: 100px; height:100px" class="rounded-circle" />
-                                      @else
-                                        <img src="{{url('images/keretainfo/default.jpg')}}" alt="image" style="width: 100px; height:100px" />
-                                      @endif
-                                  
-                                      </td>
-                                      <td class="py-1">
-                                      @if($data->gambar_jalur)
-                                        <img src="{{url('images/keretainfo/'. $data->gambar_jalur)}}" alt="image" style="width: 100px; height:100px " class="rounded-circle" />
+                                      @if($item->progres_stasiun)
+                                        <img src="{{url('images/keretainfo/'. $item->progres_stasiun)}}" alt="image" style="width: 100px; height:100px" class="rounded-circle" />
                                       @else
                                         <img src="{{url('images/keretainfo/default.jpg')}}" alt="image" style="width: 100px; height:100px" />
                                       @endif
                                   
                                       </td>
                                 <td>
-                                @if($data->keterangan == "Normal")
-                                <span class="badge badge-success">{{$data->keterangan}}</span>
+                                @if($item->keterangan == "Normal")
+                                <span class="badge badge-success">{{$item->keterangan}}</span>
                                 @else
-                                <span class="badge badge-danger">{{$data->keterangan}}</span>
+                                <span class="badge badge-danger">{{$item->keterangan}}</span>
                                 @endif
 
                                 </td>
@@ -99,8 +92,8 @@ $('#form-delete').on('submit', function(e){
                               Action
                             </button>
                             <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
-                              <a class="dropdown-item" href="{{route('keretainfo.edit', $data->id)}}"> Edit </a>
-                              <form action="{{route('keretainfo.destroy',$data->id)}}" class="pull-left"  method="POST">
+                              <a class="dropdown-item" href="{{route('keretainfo.edit', $item->id)}}"> Edit </a>
+                              <form action="{{route('keretainfo.destroy',$item->id)}}" class="pull-left"  method="POST">
                               {{ csrf_field() }}
                               {{ method_field('DELETE') }}
                               <button class="dropdown-item" onclick="return confirm('Anda yakin ingin menghapus data ini?')"> Delete

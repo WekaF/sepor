@@ -17,10 +17,12 @@
 <div class="row">
 <div class="col-6 col-lg-3">
             <div class="card card-body ">
-              <h6 class="text-uppercase text-gray">Angkutan</h6>
+              <h6 class="text-uppercase text-gray">Angkutan & Taxi</h6>
               <div class="flexbox mt-2">
                 <span class="fa fa-car text-gray fs-30"></span>
                 <span class="fs-30">{{$trayek->count()}}</span>
+                <span class="fa fa-taxi text-gray fs-30"></span>
+                <span class="fs-30">{{$taxi->count()}}</span>
               </div>
             </div>
           </div>
@@ -42,10 +44,10 @@
 
           <div class="col-6 col-lg-3">
             <div class="card card-body bg-danger">
-              <h6 class="text-uppercase text-white">Taxi</h6>
+              <h6 class="text-uppercase text-white">Feedback</h6>
               <div class="flexbox mt-2">
-                <span class="fa fa-car fs-30"></span>
-                <span class="fs-30">{{$taxi->count()}}</span>
+                <span class="fa fa-comment fs-30"></span>
+                <span class="fs-30">{{$feedback->count()}}</span>
               </div>
             </div>
           </div>
@@ -83,6 +85,7 @@
                                   <th width="100px">Nama Kereta</th>
                                   <th width="100px">Relasi</th>
                                   <th width="10px">Jam</th>
+                                  <th width="10px">ID Jalur</th>
                                   <th width="10px">Keterangan</th>
                                  
                           </tr>
@@ -99,6 +102,7 @@
                                 <td>{{$data->nama_kereta}}</td>
                                 <td>{{$data->relasi}}</td> 
                                 <td>{{$data->jam}}</td>
+                                <td>  <a href="{{route('jalur.show', $data->id)}}"> {{$data->jalur_id}}</td>
                                 <td>
                                 @if($data->keterangan == "Normal")
                                 <span class="badge badge-success">{{$data->keterangan}}</span>
