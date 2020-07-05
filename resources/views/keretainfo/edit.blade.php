@@ -94,7 +94,7 @@
                               </div>
 
                             <div class="form-group">
-                            <label for="email" class="col-md-4 control-label">Proges Stasiun</label>
+                            <label for="email" class="col-md-4 control-label">Stasiun Pemberhentian</label>
                             <div class="col-md-6">
                             <img src="{{ url('images/keretainfo/'.$data->progres_stasiun) }}" style="width:400px; height:300px">
                                 <input required type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar1" >

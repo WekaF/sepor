@@ -88,7 +88,7 @@
                         </div>
 
                             <div class="form-group">
-                            <label for="email" class="col-md-4 control-label">Proges Stasiun</label>
+                            <label for="email" class="col-md-4 control-label">Stasiun Pemberhentian</label>
                             <div class="col-md-6">
                                 <img width="200" height="200" />
                                 <input type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar1" required>

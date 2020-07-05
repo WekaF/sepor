@@ -25,7 +25,7 @@ class DetailKA extends Model
         return DetailKA::all();
     }
     public function jalur(){
-        return $this->belongsTo(JalurKA::class,'jalur_id');
+        return $this->belongsTo(Jalur::class);
     }
 
 }

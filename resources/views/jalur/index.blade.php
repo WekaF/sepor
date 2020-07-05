@@ -26,7 +26,6 @@
                 <tr>
                 <th>ID JALUR</th>
                 <th>Nama Jalur</th>
-                <th>Gambar</th>
                 <th>Deskripsi</th>  
                 <th>Action</th>
                 </tr>
@@ -39,16 +38,7 @@
                                    <td>
                                    <a href="{{route('jalur.show', $data->id)}}">  
                                    {{$data->nama_jalur}}
-                                    </td>
-
-                                      <td class="">
-                                      @if($data->gambar)
-                                        <img src="{{url('images/jalur/'. $data->gambar)}}" alt="image" style="width:100px; height:100px " class="rounded-circle"/>
-                                      @else
-                                        <img src="{{url('images/denah/default.jpg')}}" alt="image" style="width: 100px; height:100px" />
-                                      @endif
-                                  
-                                      </td>        
+                                    </td>    
                                       <td>{{$data->deskripsi}}</td>
                                       
                                   

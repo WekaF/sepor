@@ -44,14 +44,6 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="email" class="col-md-4 control-label">Gambar</label>
-                            <div class="col-md-6">
-                                <img src="{{ url('images/jalur/'.$data->gambar) }}" style="width:400px; height:300px" />
-                                <input required type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
                         <label for="exampleTextarea1" class="col-md-4 control-label">Stand Komersil</label>
                             <div class="col-md-8">
                               <textarea name="deskripsi" class="form-control" id="exampleTextarea1" rows="4">{{$data->deskripsi}}</textarea>

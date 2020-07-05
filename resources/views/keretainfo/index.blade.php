@@ -49,14 +49,14 @@ $('#form-delete').on('submit', function(e){
                 <th >Jam</th> 
                 <th >Kelas Kereta</th>
                 <th >Relasi</th>
-                <th >Jalur</th>
-                <th >Progres Stasiun</th>
+                <th >ID Jalur</th>
+                <th >Stasiun Pemberhentian</th>
                 <th>Keterangan</th>
                 <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-             
+          
               @foreach($data as $item)
                           <tr>
                                 <td>{{$item->jenis->jenis_kereta}}</td>

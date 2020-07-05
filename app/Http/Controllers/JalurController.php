@@ -36,22 +36,10 @@ class JalurController extends Controller
 
    
     public function store(Request $request)
-    {
-        if($request->file('gambar')) {
-            $file = $request->file('gambar');
-            $name  = $file->getClientOriginalName();
-            $path = Storage::putfile('public/images/jalur', $file);
-            $request->file('gambar')->move('images/jalur', $name);
-            $gambar = $name;
-    } else {
-        $gambar = NULL;
-    }
-
-        
+    {   
         Jalur::create([
 
             'nama_jalur' => $request->get('nama_jalur'),
-            'gambar' => $gambar,
             'deskripsi' => $request->get('deskripsi'),
         ]);
 
@@ -78,19 +66,8 @@ class JalurController extends Controller
     
     public function update(Request $request, $id)
     {
-        if($request->file('gambar')) {
-            $file = $request->file('gambar');
-            $name  = $file->getClientOriginalName();
-            $path = Storage::putfile('public/images/denah', $file);
-            $request->file('gambar')->move('images/denah', $name);
-            $gambar = $name;
-    } else {
-        $gambar = NULL;
-    }
-    
         Jalur::find($id)->update([
             'nama_jalur' => $request->get('nama_jalur'),
-            'gambar'     => $gambar,
             'deskripsi' => $request->get('deskripsi'),
             
            

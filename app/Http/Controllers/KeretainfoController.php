@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DetailKA;
 use App\JenisKA;
+use App\Jalur;
 use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
 use Carbon\Carbon;
@@ -30,13 +31,12 @@ class KeretainfoController extends Controller
     public function index()
     {
         $data = DetailKA::all();
-         $jenis = DB::table('jeniskeretas')->get()->pluck('jensi_kereta');
-        
-        
+        $jenis = DB::table('jeniskeretas')->get()->pluck('jensi_kereta');
+        $jalur = DB::table('jalurs')->get()->pluck('nama_jalur');        
 
         //  dd($jalur->all());
         
-        return view('keretainfo.index',compact('data'))->with('jenis',$jenis);
+        return view('keretainfo.index',compact('data'))->with('jenis',$jenis)->with('jalur',$jalur);
     }
 
     /**

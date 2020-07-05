@@ -45,11 +45,7 @@ $(document).ready(function() {
                       <h4 class="card-title">Detail <b>{{$data->nama_jalur}}</b> </h4>
                       <form class="forms-sample">
 
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <img style="width:400px; height:300px" @if($data->gambar) src="{{ asset('images/jalur/'.$data->gambar) }}" @endif />
-                            </div>                            
-                        </div>
+                      
 
                         <div class="form-group{{ $errors->has('judul') ? ' has-error' : '' }}">
                             <label for="judul" class="col-md-4 control-label"><b>Deskripsi</b></label>

@@ -45,14 +45,6 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="email" class="col-md-4 control-label">Gambar</label>
-                            <div class="col-md-6">
-                                <img style="width:400px; height:300px" />
-                                <input required type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
                         <label for="exampleTextarea1" class="col-md-4 control-label">Deskripsi</label>
                             <div class="col-md-6">
                               <textarea name="deskripsi" class="form-control" id="exampleTextarea1" rows="6"></textarea>

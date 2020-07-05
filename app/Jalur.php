@@ -9,7 +9,6 @@ class Jalur extends Model
     protected $table = 'jalurs';
     protected $fillable = [
         'nama_jalur',
-        'gambar',
         'deskripsi'
     ];
 

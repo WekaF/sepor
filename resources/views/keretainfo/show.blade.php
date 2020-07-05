@@ -51,7 +51,7 @@ $(document).ready(function() {
                             </div>
 
                             <br>
-                            <label for="judul" class="col-md-4 control-label">Progres Stasiun</label>
+                            <label for="judul" class="col-md-4 control-label">Stasiun Pemberhentian</label>
                             <div class="col-md-6">
                                 <img style="width:400px; height:300px" @if($data->progres_stasiun) src="{{ asset('images/keretainfo/'.$data->progres_stasiun) }}" @endif />
                             </div>

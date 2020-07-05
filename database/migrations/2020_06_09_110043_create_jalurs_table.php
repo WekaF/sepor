@@ -16,7 +16,6 @@ class CreateJalursTable extends Migration
         Schema::create('jalurs', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('nama_jalur');
-            $table->string('gambar');
             $table->string('deskripsi');
             $table->timestamps();
         });
